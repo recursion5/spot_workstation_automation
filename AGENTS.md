@@ -9,7 +9,7 @@ This file is binding for any agent working in this repository.
 3. [docs/STATUS.md](docs/STATUS.md)
 4. [docs/OPEN-QUESTIONS.md](docs/OPEN-QUESTIONS.md)
 5. [docs/DECISIONS/README.md](docs/DECISIONS/README.md) and any ADRs it lists as accepted
-6. Current GitHub issues
+6. Current GitHub issues, or `docs/issues/` if GitHub Issues is not writable
 7. The most recent discovery run manifest, if any (`evidence/` pointers or `SPOT_EVIDENCE_ROOT`)
 
 Then inspect git status, repair missing scaffold required by the spec, and continue the current phase only.

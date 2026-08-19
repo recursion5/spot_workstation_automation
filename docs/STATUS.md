@@ -26,6 +26,7 @@
 
 - Remote interrogation of the specimen. No POS hostname/IP or WinRM endpoint is known yet. Controller LAN observations are in [DISCOVERIES.md](DISCOVERIES.md).
 - Admin credentials exist only with the operator; they must never enter git.
+- GitHub Issues/labels API returned 403 with the MCP integration token. Tracking is in [issues/](issues/) until that is fixed. Git push via deploy key works.
 
 ## Controller facts (this agent host)
 

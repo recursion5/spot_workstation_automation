@@ -1,0 +1,8 @@
+{
+  "RDGatewayAddress": "https://rds.example.com",
+  "ClientName": "EXAMPLECOUNTER1",
+  "APIURL": "https://api.example.com",
+  "DisableDeleteRDPFiles": false,
+  "PrintingClientInstallCount": 1,
+  "ConnectionMode": 1
+}

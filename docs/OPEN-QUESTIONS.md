@@ -17,7 +17,7 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | ID | Question | Why it matters |
 | --- | --- | --- |
 | Q-010 | Is this specimen on Citrix + SPOTLauncher, SPOTWeb + ConnectLink, or both? | **Answered:** Citrix Receiver 4.9 LTSR + SPOTLauncher 1.1.169.3. No ConnectLink observed. |
-| Q-011 | Exact Citrix product/version, StoreFront/gateway URL, ICA vs HDX? | Product/version known (Receiver 4.9 LTSR 14.9.9002.6). Store/gateway URL still unknown. |
+| Q-011 | Exact Citrix product/version, StoreFront/gateway URL, ICA vs HDX? | Receiver 4.9 LTSR is installed. The **SPOT shortcut** is configured for RDS RemoteApp via `rds.mydrycleaner.com` / `RDCB.MYDRYCLEANER.COM`. Still unknown whether Citrix is used after double-click. |
 | Q-012 | Where is workstation identity stored locally? | Shortcut name `SPOT (VGCTX03COUNTER3)`; launcher under `ZenithAdmin` AppData; args `"/launch:SPOT"`. Still need config files inside SPOTLauncher. |
 | Q-013 | Account Key / store / workstation names as used in SPOT | Local hint `VGCTX03COUNTER3`. Hosted Account Key unknown. |
 

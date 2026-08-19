@@ -69,15 +69,22 @@ Directly observed facts, or facts taken from named vendor documentation. Interpr
 
 ### Launch path
 
-- Desktop shortcut: `C:\Users\ZenithUser\Desktop\SPOT (VGCTX03COUNTER3).lnk`
-- Target: `C:\Users\ZenithAdmin\AppData\Local\SBS\SPOTLauncher\SPOTLauncher.exe` with arguments `"/launch:SPOT"`
-- Same target also in the ZenithUser Start Menu under `SBS`.
-- **SPOTLauncher 1.1.169.3** (SPOT Business Systems, LLC). Uninstall location also listed under `C:\Users\ZenithUser\AppData\Local\SBS\SPOTLauncher\` — two per-user copies may exist.
-- Shortcut display name includes **`VGCTX03COUNTER3`**. Hypothesis: this is the Citrix/SPOT workstation identity for this register.
-- **Citrix Receiver 4.9 LTSR** version `14.9.9002.6` at `C:\Program Files (x86)\Citrix\`. Not Workspace; no ConnectLink/SPOTWeb package observed.
-- Running at collection time: `Receiver.exe`, `redirector.exe`, `SelfServicePlugin.exe`, `wfcrun32.exe` (started 2026-08-07).
-- Protocol handler: `receiver` → `URL:Citrix Receiver`.
-- No `.ica` files found in the searched trees (bodies would not have been exported anyway).
+- Desktop shortcut: `C:\Users\ZenithUser\Desktop\SPOT (VGCTX03COUNTER3).lnk` with arguments `"/launch:SPOT"`.
+- **SPOTLauncher 1.1.169.3** lives at `C:\Users\ZenithUser\AppData\Local\SBS\SPOTLauncher\` (exe, `settings.json`, `apps.json`). The `.lnk` target string still points at a **ZenithAdmin** AppData path that **does not exist** on disk. Hypothesis: stale shortcut target; the working files are under ZenithUser.
+- `settings.json` (no password fields):
+  - `ClientName`: `VGCTX03COUNTER3`
+  - `RDGatewayAddress`: `https://rds.mydrycleaner.com`
+  - `APIURL`: `https://api.mydrycleaner.com`
+  - `ConnectionMode`: `1`
+- `apps.json` publishes RemoteApp **SPOT** via RDS, not an `.ica` file:
+  - Brokers: `MDCRDCB01/02/03.MYDRYCLEANER.COM` (`full address` `RDCB.MYDRYCLEANER.COM`)
+  - Gateway: `rds.mydrycleaner.com`
+  - RDP username: `VGCTX03COUNTER3`, domain `mydrycleaner.com`
+  - RemoteApp program `||spot`, command line `/autologin /useaduser /rdsvirtualchannel`
+  - `redirectprinters:i:0` (RDP printer redirection off), COM port redirection on
+- **Citrix Receiver 4.9 LTSR** `14.9.9002.6` is also installed and running (`Receiver.exe`, `wfcrun32.exe`, `redirector.exe`, `SelfServicePlugin.exe` since 2026-08-07). No ConnectLink/SPOTWeb package observed.
+- **Hypothesis:** this station uses SPOTLauncher → RDS RemoteApp as the employee launch path. Citrix Receiver is present (legacy or still used for something else). A short launch trace is required to see which process actually starts after the double-click.
+- No `.ica` files found in the searched trees.
 
 ### Printers and USB
 

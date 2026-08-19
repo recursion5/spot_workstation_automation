@@ -16,7 +16,7 @@
 
 ## In progress
 
-- Interpreting launch path (`SPOTLauncher` + Citrix Receiver 4.9 LTSR).
+- Launch path: SPOTLauncher is configured for **RDS RemoteApp** (`rds.mydrycleaner.com`, client `VGCTX03COUNTER3`). Citrix Receiver is also installed. A launch trace is still needed.
 - Printer/PnP correlation (logical names captured; USB mapping still partly hypothesis).
 - How the desktop returns after reboot (`AutoAdminLogon` is currently `0`).
 

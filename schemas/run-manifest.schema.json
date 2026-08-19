@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.spot-discovery/schemas/run-manifest.json",
+  "title": "Discovery run manifest",
+  "type": "object",
+  "required": ["run_id", "schema"],
+  "properties": {
+    "run_id": { "type": "string" },
+    "schema": { "type": "string" },
+    "profile": { "type": "string" },
+    "store": { "type": "string" },
+    "register": { "type": "string" },
+    "role": { "type": "string" },
+    "target_hostname": { "type": "string" },
+    "dns_hostname": { "type": ["string", "null"] },
+    "started_at": { "type": "string" },
+    "ended_at": { "type": "string" },
+    "timezone": { "type": "string" },
+    "collector_version": { "type": "string" },
+    "status": {
+      "type": "string",
+      "enum": ["success", "failed", "partial"]
+    },
+    "warnings": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "output_root": { "type": "string" },
+    "redaction_status": { "type": "string" },
+    "known_gaps": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "packaged_at": { "type": "string" },
+    "checksum_file": { "type": "string" }
+  },
+  "additionalProperties": true
+}

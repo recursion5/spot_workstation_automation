@@ -1,0 +1,13 @@
+---
+- name: Verify WinRM connectivity
+  hosts: pos_workstations
+  gather_facts: true
+  tasks:
+    - name: Report identity
+      ansible.windows.win_shell: |
+        $os = Get-CimInstance Win32_OperatingSystem
+        "computer=$env:COMPUTERNAME os=$($os.Caption) build=$($os.BuildNumber)"
+      register: ident
+    - name: Show identity
+      ansible.builtin.debug:
+        var: ident.stdout

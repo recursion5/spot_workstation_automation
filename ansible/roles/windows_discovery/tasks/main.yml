@@ -1,0 +1,5 @@
+---
+- name: Ensure discovery root exists
+  ansible.windows.win_file:
+    path: '{{ spot_discovery_root }}'
+    state: directory

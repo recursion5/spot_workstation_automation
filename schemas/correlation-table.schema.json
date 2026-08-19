@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.spot-discovery/schemas/correlation-table.json",
+  "title": "Printer correlation table",
+  "type": "object",
+  "required": ["mappings"],
+  "properties": {
+    "run_id": { "type": "string" },
+    "mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["logical_printer", "mapping_confidence"],
+        "properties": {
+          "logical_printer": { "type": "string" },
+          "windows_port": { "type": ["string", "null"] },
+          "port_monitor": { "type": ["string", "null"] },
+          "driver": { "type": ["string", "null"] },
+          "pnp_device_id": { "type": ["string", "null"] },
+          "share_name": { "type": ["string", "null"] },
+          "mapping_confidence": { "type": "string" },
+          "vendor_name_hint": { "type": ["string", "null"] }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "additionalProperties": true
+}

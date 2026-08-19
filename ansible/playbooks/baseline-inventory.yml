@@ -1,0 +1,21 @@
+---
+- name: Run Level A baseline inventory
+  hosts: pos_workstations
+  gather_facts: false
+  tasks:
+    - name: Stage collector scripts
+      ansible.windows.win_copy:
+        src: "{{ playbook_dir }}/../../scripts/windows/"
+        dest: 'C:\ProgramData\spot-discovery\staging\windows\'
+
+    - name: Invoke baseline
+      ansible.windows.win_shell: |
+        Set-Location 'C:\ProgramData\spot-discovery\staging\windows'
+        .\Invoke-Discovery.ps1 -Profile baseline -Store '{{ spot_store | default("unassigned") }}' -Register '{{ spot_register | default("specimen-01") }}' -Role '{{ spot_role | default("back-office") }}'
+      args:
+        executable: powershell
+      register: discovery
+
+    - name: Show dispatcher output
+      ansible.builtin.debug:
+        var: discovery.stdout

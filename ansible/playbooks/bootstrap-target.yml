@@ -1,0 +1,11 @@
+---
+- name: Copy WinRM bootstrap script (does not run it unless extra-var run_bootstrap=true)
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Remind operator
+      ansible.builtin.debug:
+        msg: >-
+          Bootstrap-WinRM.ps1 must be run elevated on the specimen by the
+          operator. Remote bootstrap of WinRM from this controller is a
+          chicken-and-egg problem. See docs/RUNBOOK.md.

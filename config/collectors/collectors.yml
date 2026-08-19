@@ -1,0 +1,18 @@
+---
+profiles:
+  baseline:
+    - selfcheck
+    - system_identity
+    - accounts
+    - software
+    - services_tasks_startup
+    - printer_inventory
+    - pnp_usb
+    - network
+    - shortcuts
+    - citrix_spot_hints
+    - eventlog_inventory
+  printers:
+    - printer_inventory
+    - pnp_usb
+default_output_root: 'C:\ProgramData\spot-discovery\runs'

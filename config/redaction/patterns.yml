@@ -1,0 +1,22 @@
+---
+# Substring match, case-insensitive, against registry value names,
+# shortcut arguments, and similar fields. Matching values are omitted.
+name_needles:
+  - password
+  - passwd
+  - pwd
+  - secret
+  - token
+  - credential
+  - authticket
+  - cleartext
+  - connectionstring
+  - privatekey
+  - pin
+
+never_export_registry_values:
+  - HKLM\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\DefaultPassword
+
+never_export_file_bodies:
+  - "*.ica"
+  - "*.cr"

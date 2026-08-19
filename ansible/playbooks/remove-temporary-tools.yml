@@ -1,0 +1,9 @@
+---
+- name: Remove staged collector copies (keep evidence)
+  hosts: pos_workstations
+  gather_facts: false
+  tasks:
+    - name: Remove staging
+      ansible.windows.win_file:
+        path: 'C:\ProgramData\spot-discovery\staging'
+        state: absent

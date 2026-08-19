@@ -1,0 +1,9 @@
+---
+- name: Stage discovery scripts only (no Sysmon/ProcMon)
+  hosts: pos_workstations
+  gather_facts: false
+  tasks:
+    - name: Copy windows collectors
+      ansible.windows.win_copy:
+        src: "{{ playbook_dir }}/../../scripts/windows/"
+        dest: 'C:\ProgramData\spot-discovery\staging\windows\'

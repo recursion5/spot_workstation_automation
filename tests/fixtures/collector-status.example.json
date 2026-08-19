@@ -1,0 +1,10 @@
+{
+  "collector": "printer_inventory",
+  "version": "1",
+  "run_id": "example",
+  "started_at": "2026-08-19T00:00:00Z",
+  "ended_at": "2026-08-19T00:00:01Z",
+  "status": "success",
+  "output_files": [],
+  "warnings": []
+}

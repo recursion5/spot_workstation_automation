@@ -1,0 +1,65 @@
+# Secrets and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.pfx
+*.p12
+*.key
+id_*
+!id_*.pub
+*.vault
+vault.yml
+ansible/inventory/local/*.yml
+ansible/inventory/local/*.ini
+ansible/inventory/local/*.json
+!ansible/inventory/local/.gitkeep
+auth/
+secrets/
+credentials.json
+winrm.json
+
+# Evidence bundles and large/sensitive captures
+evidence/**
+!evidence/README.md
+!evidence/.gitkeep
+!evidence/*.pointer.md
+*.pml
+*.pml.zip
+*.etl
+*.evtx
+*.dmp
+*.hdmp
+*.mdmp
+*.pcap
+*.pcapng
+*.cab
+*.vhd
+*.vhdx
+*.wim
+procmon*
+Sysmon*.exe
+Procmon*.exe
+
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+*.egg-info/
+
+# Ansible
+*.retry
+.ansible/
+
+# OS / editor
+Thumbs.db
+Desktop.ini
+.DS_Store
+*~
+*.swp
+
+# Local operator notes that may contain hostnames/secrets
+docs/LOCAL-*.md
+*.local.md

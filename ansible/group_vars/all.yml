@@ -1,0 +1,3 @@
+---
+spot_discovery_root: 'C:\ProgramData\spot-discovery'
+spot_controller_cidr: '10.0.253.225/32'

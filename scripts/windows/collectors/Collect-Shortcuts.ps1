@@ -15,6 +15,8 @@ try {
         "$env:PUBLIC\Desktop",
         "$env:PUBLIC\Start Menu",
         "$env:ProgramData\Microsoft\Windows\Start Menu",
+        'C:\Users\ZenithUser\Desktop',
+        'C:\Users\ZenithUser\AppData\Roaming\Microsoft\Windows\Start Menu',
         "$env:USERPROFILE\Desktop",
         "$env:APPDATA\Microsoft\Windows\Start Menu"
     )
@@ -32,7 +34,7 @@ try {
         shortcuts     = $links
         flagged_only  = @($links | Where-Object { $_.flagged })
         search_roots  = $roots
-        note          = 'Current-user Desktop/Start Menu is the account running this collector, which may be admin rather than the auto-logon POS user. Public Desktop is still captured.'
+        note          = 'Includes Public plus ZenithUser (shop-floor) Desktop/Start Menu when those folders are readable. Admin profile is also scanned if this collector runs as ZenithAdmin.'
     }
     $out = Join-Path $RunRoot 'launch\shortcuts.json'
     Write-Utf8Json -Path $out -Object $payload

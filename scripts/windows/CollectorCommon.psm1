@@ -61,6 +61,18 @@ function Get-SpotSha256 {
     return (Get-FileHash -LiteralPath $Path -Algorithm SHA256).Hash.ToLowerInvariant()
 }
 
+function Get-SpotProp {
+    param(
+        $Object,
+        [Parameter(Mandatory)][string]$Name,
+        $Default = $null
+    )
+    if ($null -eq $Object) { return $Default }
+    $prop = $Object.PSObject.Properties[$Name]
+    if ($null -eq $prop) { return $Default }
+    return $prop.Value
+}
+
 function Test-SpotSecretName {
     param([string]$Name)
     if (-not $Name) { return $false }
@@ -111,19 +123,21 @@ function Get-SpotUninstallEntries {
     $rows = @()
     foreach ($path in $paths) {
         Get-ItemProperty -Path $path -ErrorAction SilentlyContinue | ForEach-Object {
-            if (-not $_.DisplayName) { return }
+            $display = Get-SpotProp $_ 'DisplayName'
+            if (-not $display) { return }
+            $uninstall = Get-SpotProp $_ 'UninstallString'
             $rows += [ordered]@{
-                display_name     = $_.DisplayName
-                display_version  = $_.DisplayVersion
-                publisher        = $_.Publisher
-                install_location = $_.InstallLocation
-                install_date     = $_.InstallDate
-                uninstall_string = if (Test-SpotSecretName $_.UninstallString) { '[redacted]' } else { $_.UninstallString }
-                quiet_uninstall  = $null
-                modify_path      = $_.ModifyPath
-                psn              = $_.PSChildName
-                wow64            = ($_.PSPath -match 'WOW6432Node')
-                estimated_size_kb = $_.EstimatedSize
+                display_name      = $display
+                display_version   = Get-SpotProp $_ 'DisplayVersion'
+                publisher         = Get-SpotProp $_ 'Publisher'
+                install_location  = Get-SpotProp $_ 'InstallLocation'
+                install_date      = Get-SpotProp $_ 'InstallDate'
+                uninstall_string  = if (Test-SpotSecretName $uninstall) { '[redacted]' } else { $uninstall }
+                quiet_uninstall   = $null
+                modify_path       = Get-SpotProp $_ 'ModifyPath'
+                psn               = $_.PSChildName
+                wow64             = ($_.PSPath -match 'WOW6432Node')
+                estimated_size_kb = Get-SpotProp $_ 'EstimatedSize'
             }
         }
     }
@@ -180,13 +194,13 @@ function Get-SpotWinlogonAutoLogon {
     }
     return [ordered]@{
         source                    = 'winlogon'
-        auto_admin_logon          = [string]$props.AutoAdminLogon
-        default_user_name         = [string]$props.DefaultUserName
-        default_domain_name       = [string]$props.DefaultDomainName
+        auto_admin_logon          = [string](Get-SpotProp $props 'AutoAdminLogon')
+        default_user_name         = [string](Get-SpotProp $props 'DefaultUserName')
+        default_domain_name       = [string](Get-SpotProp $props 'DefaultDomainName')
         default_password_present  = $defaultPasswordPresent
-        auto_logon_count_present  = ($null -ne $props.AutoLogonCount)
-        force_auto_logon          = [string]$props.ForceAutoLogon
-        shell                     = [string]$props.Shell
+        auto_logon_count_present  = $null -ne (Get-SpotProp $props 'AutoLogonCount')
+        force_auto_logon          = [string](Get-SpotProp $props 'ForceAutoLogon')
+        shell                     = [string](Get-SpotProp $props 'Shell')
         # DefaultPassword value is never exported.
     }
 }
@@ -220,7 +234,9 @@ function Get-SpotInterestingPaths {
         "${env:ProgramFiles(x86)}\ConnectLink",
         "$env:ProgramData\Citrix",
         "$env:ProgramData\SPOT",
-        "$env:PUBLIC\Desktop"
+        "$env:PUBLIC\Desktop",
+        "${env:ProgramFiles(x86)}\Citrix\ICA Client",
+        "$env:ProgramFiles\Citrix\ICA Client"
     )
 }
 

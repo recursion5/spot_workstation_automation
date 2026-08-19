@@ -12,17 +12,18 @@ $outputs = @()
 
 try {
     $users = @(Get-LocalUser | ForEach-Object {
+        $last = Get-SpotProp $_ 'LastLogon'
+        $expires = Get-SpotProp $_ 'PasswordExpires'
         [ordered]@{
             name                     = $_.Name
             enabled                  = $_.Enabled
-            description              = $_.Description
-            principal_source         = [string]$_.PrincipalSource
-            last_logon               = if ($_.LastLogon) { $_.LastLogon.ToUniversalTime().ToString('o') } else { $null }
-            password_required        = $_.PasswordRequired
-            password_expires         = if ($_.PasswordExpires) { $_.PasswordExpires.ToUniversalTime().ToString('o') } else { $null }
-            user_may_change_password = $_.UserMayChangePassword
+            description              = Get-SpotProp $_ 'Description'
+            principal_source         = [string](Get-SpotProp $_ 'PrincipalSource')
+            last_logon               = if ($last) { $last.ToUniversalTime().ToString('o') } else { $null }
+            password_required        = Get-SpotProp $_ 'PasswordRequired'
+            password_expires         = if ($expires) { $expires.ToUniversalTime().ToString('o') } else { $null }
+            user_may_change_password = Get-SpotProp $_ 'UserMayChangePassword'
             sid                      = $_.SID.Value
-            # never export password hashes or values
         }
     })
     $groups = @()

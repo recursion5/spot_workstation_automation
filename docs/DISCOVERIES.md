@@ -10,10 +10,9 @@ Directly observed facts, or facts taken from named vendor documentation. Interpr
 - Gateway `10.0.253.1` reverse-DNS `OPNsense.vogueclean.int`.
 - `10.0.253.110` reverse-DNS `zenith-dsm.vogueclean.int`; HTTP banner `nginx`; ports 22, 139, 445, 80, 443, 5357 open. Consistent with a Synology DSM NAS, not a POS PC.
 - DNS search/suffix `vogueclean.int`.
-- No WinRM listener (TCP 5985/5986) found on ARP neighbors in `10.0.253.0/24`.
-- Other neighbors on that subnet answered SSH only (likely other Linux systems).
+- Earlier ARP scan did not see WinRM. The specimen was later found at `10.0.253.204` on the **same** subnet (see specimen section).
 
-**Hypothesis (not proven):** POS workstations live on a different VLAN behind OPNsense. A firewall rule will be required for controller → WinRM.
+**Superseded hypothesis:** POS PCs are not necessarily on another VLAN. This specimen is on `10.0.253.0/24`.
 
 ## POS product (vendor documentation)
 
@@ -24,7 +23,7 @@ Directly observed facts, or facts taken from named vendor documentation. Interpr
 - Two documented access methods:
   1. **Citrix + SPOTLauncher** — desktop shortcut “SPOT”; SPOTLauncher can install/update the Citrix client; documented launcher version as of the update article: `1.1.169.3`.
   2. **SPOTWeb + ConnectLink** — browser session plus a tray app that bridges printers, scanners, and cash drawers. ConnectLink is bound to a workstation-specific URL and key. SPOTWeb removes the need for Citrix, Receiver/Workspace, and SPOTLauncher.
-- Operator expects the specimen to use a Citrix-receiver-style setup. Treat SPOTWeb as possible coexistence, not as the current fact.
+- Operator expected a Citrix-receiver-style setup. **Confirmed on the specimen** (see below). No ConnectLink/SPOTWeb client observed in the Level A inventory.
 - Workstation selection (Account Key, store, workstation) is part of the hosted application login, not only the Windows hostname.
 - SPOT program configuration for printers lives under Setup → Program Configuration → Workstation (printer path, tag printers, cash drawers). That state is **inside the hosted app** and may not exist as a local file.
 
@@ -49,6 +48,58 @@ Directly observed facts, or facts taken from named vendor documentation. Interpr
 - This specimen does not take payments.
 - Still forbid memory dumps and do not collect PIN material.
 
-## Not yet observed on any POS PC
+## Specimen ZENITH-WS3 (observed 2026-08-19, run `20260819T203635Z-43b3934a`)
 
-No local inventory, printer list, shortcut target, Citrix product, or auto-logon mechanism has been collected from the specimen.
+**Class: Discovery** unless labeled otherwise. Collected over WinRM as `ZenithAdmin` while `ZenithUser` was logged on.
+
+### Computer
+
+- Hostname `ZENITH-WS3`, workgroup (not a domain).
+- Windows 11 Pro build 26200.
+- Hardware: MINIX Technology Limited **NEO Z100-0dB**.
+- Ethernet IPv4 `10.0.253.204/24`.
+
+### Accounts
+
+- Enabled local users: `ZenithUser`, `ZenithAdmin`. Built-in `Administrator` is disabled.
+- Administrators group contains `Administrator` (disabled), `ZenithAdmin`, and `ZenithUser`.
+- Shop-floor session: `ZENITH-WS3\ZenithUser`.
+- Winlogon: `DefaultUserName=ZenithUser`, `AutoAdminLogon=0`, no `DefaultPassword` value present.
+- **Open question:** operator described auto-logon after reboot. The registry currently does not enable classic Winlogon auto-logon. The desktop may simply stay logged on, or another mechanism exists.
+
+### Launch path
+
+- Desktop shortcut: `C:\Users\ZenithUser\Desktop\SPOT (VGCTX03COUNTER3).lnk`
+- Target: `C:\Users\ZenithAdmin\AppData\Local\SBS\SPOTLauncher\SPOTLauncher.exe` with arguments `"/launch:SPOT"`
+- Same target also in the ZenithUser Start Menu under `SBS`.
+- **SPOTLauncher 1.1.169.3** (SPOT Business Systems, LLC). Uninstall location also listed under `C:\Users\ZenithUser\AppData\Local\SBS\SPOTLauncher\` — two per-user copies may exist.
+- Shortcut display name includes **`VGCTX03COUNTER3`**. Hypothesis: this is the Citrix/SPOT workstation identity for this register.
+- **Citrix Receiver 4.9 LTSR** version `14.9.9002.6` at `C:\Program Files (x86)\Citrix\`. Not Workspace; no ConnectLink/SPOTWeb package observed.
+- Running at collection time: `Receiver.exe`, `redirector.exe`, `SelfServicePlugin.exe`, `wfcrun32.exe` (started 2026-08-07).
+- Protocol handler: `receiver` → `URL:Citrix Receiver`.
+- No `.ica` files found in the searched trees (bodies would not have been exported anyway).
+
+### Printers and USB
+
+| Windows name | Driver | Port |
+| --- | --- | --- |
+| `Tag` | Generic / Text Only | `USB001` |
+| `EPSON` | EPSON TM-T88V Receipt5 | `ESDPRT001` |
+| Brother HL-L2380DW series Printer | Microsoft IPP Class Driver | WSD-… |
+| Microsoft Print to PDF | Microsoft Print To PDF | `PORTPROMPT:` |
+
+- No Windows printer named `Cash Drawer` (matches operator: this PC is not customer-facing).
+- `Tag` is **not** shared. No `net use` LPT mapping and no `Tag Fix.bat` found. That **disagrees** with SPOT vendor USB-tag instructions. Hypothesis: this station prints tags via USB001 Generic/Text, or the hosted app/Citrix path does not need LPT1 here.
+- USB device **Star SP742 (ESP-001)** (`USB\VID_0519&PID_0001`) is present. Hypothesis: this is the tag printer hardware (vendor docs mention Star SP700 more often; SP742 is a related Star impact printer).
+- USB device **EPSON USB Controller for TM/BA/EU Printers** (`USB\VID_04B8&PID_0202`) is present. Maps to the `EPSON` logical printer via Epson APD5 virtual port `ESDPRT001` (hypothesis until a print trace).
+- Epson APD5 5.11.1.0 and TM-T88V utility installed.
+- Star Micronics Printer Software 3.8.1 installed.
+- HID USB devices include `VID_0536` (typical handheld barcode vendor) and keyboard/mouse-class devices. Hypothesis: at least one USB barcode scanner is attached.
+
+### What remains unknown
+
+- Exact Citrix store/gateway URL and how `VGCTX03COUNTER3` is assigned.
+- Hosted SPOT Program Configuration (printer names inside the app).
+- Whether tag printing actually uses `USB001` without LPT1.
+- Auto-logon after a real reboot.
+- Launch process tree (needs a short trace around double-clicking the SPOT shortcut).

@@ -1,61 +1,39 @@
 # Project status
 
-**Phase:** 1 — bootstrap and discovery  
+**Phase:** 1 — discovery (remote access working)  
 **Date:** 2026-08-19  
-**Specimen identity:** `store=unassigned`, `register=specimen-01` (placeholder; see ADR-0006)  
-**Provisioning:** not started (forbidden in this phase)
+**Specimen:** `ZENITH-WS3` at `10.0.253.204`  
+**Identity placeholders:** `store=unassigned`, `register=specimen-01`, `role=back-office`  
+**Provisioning:** not started
 
 ## Done
 
-- Repository scaffold matching [project-spec.md](../project-spec.md) §6.
-- Agent startup rules in `AGENTS.md`.
-- ADR mechanism and initial decisions.
-- Gitignore rules excluding credentials and raw evidence.
-- Example inventory with no real credentials.
-- Windows WinRM bootstrap script and local discovery entrypoint.
-- Baseline collectors (system, accounts, software, services/startup, printers, PnP/USB, network, shortcuts, event-log inventory, SPOT/Citrix hints).
-- Evidence manifest schema and controller packaging/validation commands.
-- Controller tooling packages identified: Ansible, `pywinrm`.
+- Repository scaffold, ADRs, collectors, controller CLI, Ansible.
+- WinRM from this controller to ZENITH-WS3 as `ZenithAdmin` (password only in gitignored `.env`).
+- Two Level A baseline runs. Latest: `20260819T203635Z-43b3934a` (evidence outside git).
+- Collector StrictMode bugs fixed; shop-floor user context collector added.
+- Boot-time tmux/Grok service on this VM (`grok-tmux.service`).
 
 ## In progress
 
-- First live WinRM connection to the specimen workstation.
-- First approved discovery run.
+- Interpreting launch path (`SPOTLauncher` + Citrix Receiver 4.9 LTSR).
+- Printer/PnP correlation (logical names captured; USB mapping still partly hypothesis).
+- How the desktop returns after reboot (`AutoAdminLogon` is currently `0`).
 
-## Blocked
+## Not running
 
-- Remote interrogation of the specimen. No POS hostname/IP or WinRM endpoint is known yet. Controller LAN observations are in [DISCOVERIES.md](DISCOVERIES.md).
-- Admin credentials exist only with the operator; they must never enter git.
-- GitHub Issues/labels API returned 403 with the MCP integration token. Tracking is in [issues/](issues/) until that is fixed. Git push via deploy key works.
+- Sysmon, ProcMon, or other all-day traces.
+- Phase 2 provisioning.
 
-## Controller facts (this agent host)
+## Latest evidence
 
-| Item | Value | Class |
-| --- | --- | --- |
-| Hostname | `utility-agent` | Discovery |
-| IPv4 | `10.0.253.225/24` | Discovery |
-| Default gateway | `10.0.253.1` (`OPNsense.vogueclean.int`) | Discovery |
-| Public IPv4 observed | `47.190.138.13` | Discovery |
-| DNS suffix observed | `vogueclean.int` | Discovery |
+- Controller path: `/home/grok-agent/spot-discovery/evidence/20260819T203635Z-43b3934a/`
+- Pointer: [evidence/20260819T203635Z-43b3934a.pointer.md](../evidence/20260819T203635Z-43b3934a.pointer.md)
+- Do not commit the zip or JSON bodies (may contain host identifiers; keep out of git except the pointer).
 
-WinRM ports 5985/5986 were not open on any host scanned on `10.0.253.0/24`.
+## Next (when operator returns)
 
-## Next actions
-
-1. Operator runs `scripts/windows/Bootstrap-WinRM.ps1` on the specimen.
-2. Operator provides hostname, IPv4, and local admin username.
-3. If the PC is not on `10.0.253.0/24`, add an OPNsense allow rule: `10.0.253.225` → specimen TCP 5985.
-4. Controller `spotctl.py verify-connectivity`.
-5. Remote baseline inventory, printer/PnP first.
-6. Package evidence outside git; commit only the manifest pointer.
-
-## Tool evaluation (Phase 1)
-
-| Tool | Status |
-| --- | --- |
-| Native PowerShell / CIM / PrintManagement | Implemented for Level A |
-| WinRM / PS Remoting | Bootstrap script ready; live test pending |
-| Ansible `psrp` / `winrm` | Playbooks sketched; PSRP preferred after connectivity works |
-| Process Monitor | Not installed. Short traces only, operator-approved. |
-| Sysmon | Deferred (ADR-0007). Requires operator approval. |
-| WPR/ETW | Deferred until a question ProcMon/Sysmon/inventory cannot answer. |
+1. Confirm whether employees expect auto-logon after reboot (registry currently says no).
+2. Short approved traces: POS shortcut launch, one tag print, one invoice print.
+3. Decide store/register codes (Q-040).
+4. Optional: remove admin rights from `ZenithUser` later — not a Phase 1 task unless asked.

@@ -6,29 +6,30 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 
 | ID | Question | Why it matters | Blocking? |
 | --- | --- | --- | --- |
-| Q-001 | What is the specimen hostname and IPv4? | WinRM target | Yes |
-| Q-002 | Which VLAN/subnet are POS PCs on, and does OPNsense allow 5985 from `10.0.253.225`? | Path from controller | Yes |
-| Q-003 | Local admin account name for remoting (workgroup vs domain)? | Auth | Yes |
-| Q-004 | Is the auto-logon standard user already logged on during business hours? | User-hive collection | No |
+| Q-001 | What is the specimen hostname and IPv4? | **Answered:** `ZENITH-WS3` / `10.0.253.204`. | No |
+| Q-002 | Which VLAN/subnet are POS PCs on, and does OPNsense allow 5985 from `10.0.253.225`? | **Answered for this PC:** same subnet `10.0.253.0/24`; no extra firewall rule needed. | No |
+| Q-003 | Local admin account name for remoting (workgroup vs domain)? | **Answered:** workgroup; remoting user `ZenithAdmin`. `ZenithUser` is also an administrator. | No |
+| Q-004 | Is the auto-logon standard user already logged on during business hours? | **Answered:** `ZenithUser` was logged on during collection. | No |
+| Q-005 | Winlogon `AutoAdminLogon` is `0` and no DefaultPassword is present. How does the desktop return after reboot? | Contradicts operator “auto-logon” description. | Yes for replacement design |
 
 ## Application architecture
 
 | ID | Question | Why it matters |
 | --- | --- | --- |
-| Q-010 | Is this specimen on Citrix + SPOTLauncher, SPOTWeb + ConnectLink, or both? | Launch-path collectors |
-| Q-011 | Exact Citrix product/version, StoreFront/gateway URL, ICA vs HDX? | Reproduce launch |
-| Q-012 | Where is workstation identity stored locally (shortcut args, ICA file, registry, ConnectLink key, launcher config)? | Station replacement |
-| Q-013 | Account Key / store / workstation names as used in SPOT (pseudonymize in git-safe output) | Identity model |
+| Q-010 | Is this specimen on Citrix + SPOTLauncher, SPOTWeb + ConnectLink, or both? | **Answered:** Citrix Receiver 4.9 LTSR + SPOTLauncher 1.1.169.3. No ConnectLink observed. |
+| Q-011 | Exact Citrix product/version, StoreFront/gateway URL, ICA vs HDX? | Product/version known (Receiver 4.9 LTSR 14.9.9002.6). Store/gateway URL still unknown. |
+| Q-012 | Where is workstation identity stored locally? | Shortcut name `SPOT (VGCTX03COUNTER3)`; launcher under `ZenithAdmin` AppData; args `"/launch:SPOT"`. Still need config files inside SPOTLauncher. |
+| Q-013 | Account Key / store / workstation names as used in SPOT | Local hint `VGCTX03COUNTER3`. Hosted Account Key unknown. |
 
 ## Peripherals
 
 | ID | Question | Why it matters |
 | --- | --- | --- |
-| Q-020 | Exact Windows printer names on the specimen? Vendor docs often use `EPSON`, `Tag`, `Cash Drawer`. | Application contract |
-| Q-021 | Tag printer USB vs parallel, and whether `net use LPT1` / `Tag Fix.bat` exists | Hardware-bound vs reproducible |
-| Q-022 | Invoice printer model (Epson TM-T88x vs Star mcPrint3 vs other) | Driver package |
-| Q-023 | Are barcode scanners HID keyboard-wedge, USB COM, or vendor middleware? | Replacement mapping |
-| Q-024 | This specimen has no cash drawer (operator). Confirm no `Cash Drawer` printer object. | Role differences |
+| Q-020 | Exact Windows printer names on the specimen? | **Answered:** `Tag`, `EPSON`, Brother HL-L2380DW, Microsoft Print to PDF. No `Cash Drawer`. |
+| Q-021 | Tag printer USB vs parallel, and whether `net use LPT1` / `Tag Fix.bat` exists | USB (`USB001` Generic/Text). **No** share, **no** `net use`, **no** `Tag Fix.bat`. How SPOT still prints tags is open. |
+| Q-022 | Invoice printer model | **Answered:** Epson TM-T88V, Windows name `EPSON`, port `ESDPRT001`. |
+| Q-023 | Are barcode scanners HID keyboard-wedge, USB COM, or vendor middleware? | USB HID present (`VID_0536` and others). Confirm with a scan during a trace. |
+| Q-024 | This specimen has no cash drawer (operator). Confirm no `Cash Drawer` printer object. | **Answered:** none. |
 
 ## Security / collection policy
 

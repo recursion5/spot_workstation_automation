@@ -28,15 +28,20 @@ try {
     try {
         $tasks = @(Get-ScheduledTask | ForEach-Object {
             $info = $_ | Get-ScheduledTaskInfo
-            $blob = "$($_.TaskName) $($_.TaskPath) $($_.Actions.Execute)"
+            $execs = @($_.Actions | ForEach-Object { Get-SpotProp $_ 'Execute' })
+            $args = @($_.Actions | ForEach-Object {
+                $a = Get-SpotProp $_ 'Arguments'
+                if (Test-SpotSecretName $a) { '[redacted]' } else { $a }
+            })
+            $blob = "$($_.TaskName) $($_.TaskPath) $($execs -join ' ')"
             [ordered]@{
-                task_name  = $_.TaskName
-                path       = $_.TaskPath
-                state      = [string]$_.State
-                execute    = @($_.Actions | ForEach-Object { $_.Execute })
-                arguments  = @($_.Actions | ForEach-Object { if (Test-SpotSecretName $_.Arguments) { '[redacted]' } else { $_.Arguments } })
-                last_result = $info.LastTaskResult
-                flagged    = [bool]($blob -match $needles)
+                task_name   = $_.TaskName
+                path        = $_.TaskPath
+                state       = [string]$_.State
+                execute     = $execs
+                arguments   = $args
+                last_result = Get-SpotProp $info 'LastTaskResult'
+                flagged     = [bool]($blob -match $needles)
             }
         })
     } catch {

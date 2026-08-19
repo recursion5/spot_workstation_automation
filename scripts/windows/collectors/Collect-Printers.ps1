@@ -63,12 +63,12 @@ try {
         Get-PrinterPort -ErrorAction Stop | ForEach-Object {
             [ordered]@{
                 name           = $_.Name
-                description    = $_.Description
-                port_monitor   = $_.PortMonitor
-                printer_host   = $_.PrinterHostAddress
-                port_number    = $_.PortNumber
-                snmp_community = if ($_.SNMPCommunity) { '[present]' } else { $null }
-                protocol       = $_.Protocol
+                description    = Get-SpotProp $_ 'Description'
+                port_monitor   = Get-SpotProp $_ 'PortMonitor'
+                printer_host   = Get-SpotProp $_ 'PrinterHostAddress'
+                port_number    = Get-SpotProp $_ 'PortNumber'
+                snmp_community = if (Get-SpotProp $_ 'SNMPCommunity') { '[present]' } else { $null }
+                protocol       = Get-SpotProp $_ 'Protocol'
             }
         }
     })
@@ -139,12 +139,12 @@ try {
             Get-ChildItem $pKey | ForEach-Object {
                 $p = Get-ItemProperty $_.PSPath
                 $registryPrinters += [ordered]@{
-                    name      = $_.PSChildName
-                    port      = $p.Port
-                    driver    = $p.PrinterDriverData
-                    print_processor = $p.'Print Processor'
-                    datatype  = $p.Datatype
-                    share     = $p.ShareName
+                    name            = $_.PSChildName
+                    port            = Get-SpotProp $p 'Port'
+                    driver          = Get-SpotProp $p 'Printer Driver'
+                    print_processor = Get-SpotProp $p 'Print Processor'
+                    datatype        = Get-SpotProp $p 'Datatype'
+                    share           = Get-SpotProp $p 'Share Name'
                 }
             }
         }
@@ -175,7 +175,7 @@ try {
                     $tagFixCandidates += [ordered]@{
                         path   = $_.FullName
                         sha256 = Get-SpotSha256 -Path $_.FullName
-                        size   = $_.Length
+                        size   = Get-SpotProp $_ 'Length'
                     }
                 }
         }

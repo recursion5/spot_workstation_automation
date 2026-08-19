@@ -17,20 +17,23 @@ try {
         $dirHits += [ordered]@{ path = $p; exists = [bool]$exists }
         if ($exists) {
             Get-ChildItem $p -ErrorAction SilentlyContinue | Select-Object -First 50 | ForEach-Object {
-                $dirHits += [ordered]@{ path = $_.FullName; exists = $true; size = $_.Length; mode = [string]$_.Attributes }
+                $dirHits += [ordered]@{ path = $_.FullName; exists = $true; size = (Get-SpotProp $_ 'Length'); mode = [string]$_.Attributes }
             }
         }
     }
 
     $ica = @()
     $search = @(
+        "$env:PUBLIC\Desktop",
+        "$env:ProgramData",
+        'C:\Users\ZenithUser\Desktop',
+        'C:\Users\ZenithUser\Documents',
+        'C:\Users\ZenithUser\Downloads',
+        'C:\Users\ZenithUser\AppData\Roaming',
+        'C:\Users\ZenithUser\AppData\Local',
         "$env:USERPROFILE\Documents",
         "$env:USERPROFILE\Downloads",
-        "$env:USERPROFILE\Desktop",
-        "$env:PUBLIC\Desktop",
-        "$env:APPDATA",
-        "$env:LOCALAPPDATA",
-        "$env:ProgramData"
+        "$env:USERPROFILE\Desktop"
     )
     foreach ($root in $search) {
         if (-not (Test-Path $root)) { continue }
@@ -39,7 +42,7 @@ try {
             ForEach-Object {
                 $ica += [ordered]@{
                     path           = $_.FullName
-                    size           = $_.Length
+                    size           = Get-SpotProp $_ 'Length'
                     sha256         = Get-SpotSha256 -Path $_.FullName
                     last_write_utc = $_.LastWriteTimeUtc.ToString('o')
                     content        = '[not exported; ica files often contain credentials]'

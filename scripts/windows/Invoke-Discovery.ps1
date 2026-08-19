@@ -51,6 +51,7 @@ $profiles = @{
         'Collect-Network.ps1',
         'Collect-Shortcuts.ps1',
         'Collect-CitrixSpotHints.ps1',
+        'Collect-UserContext.ps1',
         'Collect-EventLogInventory.ps1'
     )
     cleanup   = @()

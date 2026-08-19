@@ -15,14 +15,14 @@ try {
         [ordered]@{
             instance_id     = $_.InstanceId
             class           = $_.Class
-            class_guid      = $_.ClassGuid
-            friendly_name   = $_.FriendlyName
-            status          = [string]$_.Status
-            problem         = $_.Problem
-            problem_code    = $_.ProblemCode
-            manufacturer    = $_.Manufacturer
-            service         = $_.Service
-            present         = [bool]$_.Present
+            class_guid      = Get-SpotProp $_ 'ClassGuid'
+            friendly_name   = Get-SpotProp $_ 'FriendlyName'
+            status          = [string](Get-SpotProp $_ 'Status')
+            problem         = Get-SpotProp $_ 'Problem'
+            problem_code    = Get-SpotProp $_ 'ProblemCode'
+            manufacturer    = Get-SpotProp $_ 'Manufacturer'
+            service         = Get-SpotProp $_ 'Service'
+            present         = [bool](Get-SpotProp $_ 'Present' $true)
         }
     })
 

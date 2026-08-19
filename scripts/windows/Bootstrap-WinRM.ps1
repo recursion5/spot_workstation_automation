@@ -104,8 +104,12 @@ $utf8 = New-Object System.Text.UTF8Encoding $false
 [System.IO.File]::WriteAllText($cardPath, ($card | ConvertTo-Json -Depth 6), $utf8)
 
 Write-Host ''
-Write-Host '==== CONNECTION CARD ====' -ForegroundColor Green
-$card | ConvertTo-Json -Depth 6
-Write-Host "Wrote $cardPath"
-Write-Host 'Do not put the administrator password in git or in this file.'
-Write-Host '========================='
+Write-Host '==== TELL THE AGENT THESE LINES ====' -ForegroundColor Green
+Write-Host ("Computer name: {0}" -f $env:COMPUTERNAME)
+Write-Host ("IP addresses:  {0}" -f ($card.ipv4_addresses -join '; '))
+Write-Host ("Logged-on user: {0}" -f $cs.UserName)
+Write-Host 'Also tell the agent the Windows administrator account name you used to run this script.'
+Write-Host 'Do not type the administrator password into chat unless the agent asks.'
+Write-Host '===================================='
+Write-Host ''
+Write-Host "Details were also saved to $cardPath"

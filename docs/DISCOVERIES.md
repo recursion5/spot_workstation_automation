@@ -125,6 +125,15 @@ Directly observed facts, or facts taken from named vendor documentation. Interpr
 
 **Hypothesis:** jobs were held in the hosted SPOT/RDS session and/or the printer’s own buffer, not in the Windows queue we can see. An internet blip can stall RDS RemoteApp (`mstsc`); power-cycling the printer is a local workaround. Not proven that the disconnect was the cause; it is a plausible explanation and matches “happens on occasion.”
 
+### Successful tag print (2026-08-20, run `20260820T004656Z-0053f8c4`)
+
+**Class: Discovery.** Operator printed one order; **5 tags** came out (order required 5). Network was stable. Recording stopped immediately after.
+
+- Windows PrintService Operational again had **no** events in the window.
+- Tag printer afterward: `Normal`, 0 jobs.
+
+**Hypothesis:** even a successful tag run does not show up as a normal Windows print-queue job. Tags likely go through SPOT/RDS and then the USB Star as raw/Generic-Text, not through PrintService Operational.
+
 ### What remains unknown
 
 - Exact Citrix store/gateway URL and how `VGCTX03COUNTER3` is assigned.

@@ -3,7 +3,8 @@
 **Phase:** 1 — discovery (remote access working)  
 **Date:** 2026-08-19  
 **Specimen:** `ZENITH-WS3` at `10.0.253.204`  
-**Identity placeholders:** `store=unassigned`, `register=specimen-01`, `role=back-office`  
+**SPOT license name (this PC):** `VGCTX03COUNTER3`  
+**Identity placeholders:** `store=unassigned`, `register=VGCTX03COUNTER3`, `role=back-office`  
 **Provisioning:** not started
 
 ## Done

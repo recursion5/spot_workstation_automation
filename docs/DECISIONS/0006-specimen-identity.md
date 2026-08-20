@@ -15,6 +15,8 @@ Until the operator provides codes, use:
 - `register`: `specimen-01`
 - `role`: `back-office` (operator: this PC is not customer-facing)
 
+**Update 2026-08-20:** Operator directed use of SPOT internal license names. This specimen is **`VGCTX03COUNTER3`** (confirmed on disk in the shortcut and `settings.json` `ClientName`; operator confirmed the `C` is real). Other stations at the store should use the same SPOT license name pattern.
+
 Hostname stays in the run manifest as observed. GitHub issues should prefer the placeholder, not the public hostname, when possible.
 
 ## Alternatives considered

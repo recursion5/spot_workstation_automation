@@ -44,4 +44,4 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 
 | ID | Question | Why it matters |
 | --- | --- | --- |
-| Q-040 | Operator-facing store id and register id for this specimen? | Manifest pseudonym |
+| Q-040 | Operator-facing store id and register id for this specimen? | **Answered for this PC:** SPOT license name `VGCTX03COUNTER3`. Store still `unassigned` until a store code is chosen. |

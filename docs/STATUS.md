@@ -3,6 +3,7 @@
 **Phase:** 1 — discovery (remote access working)  
 **Date:** 2026-08-19  
 **Specimen:** `ZENITH-WS3` at `10.0.253.204`  
+**Store:** Zenith (operator: two Vogue stores exist separately; this site is Zenith)  
 **SPOT license name (this PC):** `VGCTX03COUNTER3`  
 **Identity placeholders:** `store=unassigned`, `register=VGCTX03COUNTER3`, `role=back-office`  
 **Provisioning:** not started

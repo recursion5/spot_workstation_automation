@@ -67,6 +67,16 @@ Directly observed facts, or facts taken from named vendor documentation. Interpr
 - Winlogon: `DefaultUserName=ZenithUser`, `AutoAdminLogon=0`, no `DefaultPassword` value present.
 - **Open question:** operator described auto-logon after reboot. The registry currently does not enable classic Winlogon auto-logon. The desktop may simply stay logged on, or another mechanism exists.
 
+### Reboot test (2026-08-20 ~00:53Z)
+
+**Class: Discovery.**
+
+- `LastBootUpTime` 2026-08-20T00:53:32Z. This was a real reboot, not just a sleep.
+- Console session after boot: **`ZenithUser`** (active). Local accounts are still only `ZenithUser` and `ZenithAdmin` (plus disabled built-ins). There is **no** `VogueUser` account on this PC. Operator report of “VogueUser” is treated as the shop-floor account **ZenithUser** unless they say it was a different machine.
+- Winlogon still `AutoAdminLogon=0` and no `DefaultPassword` registry value. `DisableCAD=1` (no Ctrl+Alt+Del). Auto-logon happened anyway.
+- **Hypothesis:** automatic sign-in is stored somewhere other than the classic `AutoAdminLogon=1` + visible DefaultPassword (for example LSA secrets / netplwiz). Not proven.
+- Remote access as `ZenithAdmin` came back after the reboot without re-running the setup script. (WinRM took about a minute to accept connections.)
+
 ### Launch path
 
 - Desktop shortcut: `C:\Users\ZenithUser\Desktop\SPOT (VGCTX03COUNTER3).lnk` with arguments `"/launch:SPOT"`.

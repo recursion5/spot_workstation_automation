@@ -20,7 +20,7 @@
 - Launch path: live trace saw **`mstsc.exe`** start ~2 minutes after recording began (RDS). Citrix processes were already long-running.
 - Operator workflow 2026-08-20: tag print failed (not repaired). Invoice/scan/relaunch were attempted. Details in DISCOVERIES.
 - Printer/PnP correlation (logical names captured; USB mapping still partly hypothesis).
-- How the desktop returns after reboot (`AutoAdminLogon` is currently `0`).
+- Reboot test: `ZenithUser` auto-signed in; WinRM still works. Auto-logon mechanism still not the classic registry switch.
 
 ## Not running
 

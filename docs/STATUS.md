@@ -22,7 +22,7 @@
 | --- | --- | --- | --- | --- | --- |
 | ZENITH-WS3 | 10.0.253.204 | VGCTX03COUNTER3 | Win11 | yes (`ZenithAdmin`) | First specimen |
 | ZENITH-WS2 | 10.0.253.205 | VGCTX03COUNTER2 | Win11 | yes (`ZenithAdmin`) | Tag on USB002; Citrix **Workspace** shortcut |
-| ZENITH-WS1 | 10.0.253.212 | unknown | unknown | door open, login failed | Shop-floor `Zenith User` (space). Need this PC’s admin name/password. |
+| ZENITH-WS1 | 10.0.253.212 | VGCTX03COUNTER1 | **Win10 Pro 1809** (17763) | yes (`Zenith Admin`) | MINIX N42C-4. Has **CashDrawer**. Replacement candidate. |
 
 ## In progress
 

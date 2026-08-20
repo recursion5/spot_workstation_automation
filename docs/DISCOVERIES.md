@@ -51,7 +51,7 @@ Directly observed facts, or facts taken from named vendor documentation. Interpr
 ## Other Zenith PCs (access in progress)
 
 - **ZENITH-WS2** `10.0.253.205`: WinRM works as `ZenithAdmin`. Windows 11 Pro, same MINIX NEO Z100-0dB. Shortcut `SPOT (VGCTX03COUNTER2).lnk`. Printers `Tag` (USB002), `EPSON` TM-T88V, Brother. No `Cash Drawer` printer. Citrix **Workspace** Start Menu shortcut (WS3 has Receiver 4.9 LTSR). `ZenithUser` is logged on and is an administrator.
-- **ZENITH-WS1** `10.0.253.212`: bootstrap done, TCP 5985 open. Logged on `Zenith User` (name has a space). WS3 admin password rejected. Waiting on this PC’s admin account/password.
+- **ZENITH-WS1** `10.0.253.212`: WinRM works as **`Zenith Admin`** (space in the name; same password as the other Zenith PCs). Windows **10 Pro** build **17763** (version 1809). Hardware **MINIX N42C-4** (older than the NEO Z100 boxes). Shortcut `SPOT (VGCTX03COUNTER1).lnk`. Printers: `EPSON` TM-T88V, **`CashDrawer`** on the same Epson port, Brother. **No `Tag` printer.** SPOTLauncher 1.1.169.3 under `Zenith User` AppData. Citrix folder present. Shop-floor account `Zenith User` (space) is an administrator. **Best first replacement candidate** (old OS + old hardware + customer-facing cash drawer).
 
 ## Specimen ZENITH-WS3 (observed 2026-08-19, run `20260819T203635Z-43b3934a`)
 

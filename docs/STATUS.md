@@ -16,6 +16,14 @@
 - Collector StrictMode bugs fixed; shop-floor user context collector added.
 - Boot-time tmux/Grok service on this VM (`grok-tmux.service`).
 
+## Workstations
+
+| Windows name | IP | SPOT name | OS | Remote | Notes |
+| --- | --- | --- | --- | --- | --- |
+| ZENITH-WS3 | 10.0.253.204 | VGCTX03COUNTER3 | Win11 | yes (`ZenithAdmin`) | First specimen |
+| ZENITH-WS2 | 10.0.253.205 | VGCTX03COUNTER2 | Win11 | yes (`ZenithAdmin`) | Tag on USB002; Citrix **Workspace** shortcut |
+| ZENITH-WS1 | 10.0.253.212 | unknown | unknown | door open, login failed | Shop-floor `Zenith User` (space). Need this PC’s admin name/password. |
+
 ## In progress
 
 - Launch path: live trace saw **`mstsc.exe`** start ~2 minutes after recording began (RDS). Citrix processes were already long-running.

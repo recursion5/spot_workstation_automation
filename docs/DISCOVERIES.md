@@ -48,6 +48,11 @@ Directly observed facts, or facts taken from named vendor documentation. Interpr
 - This specimen does not take payments.
 - Still forbid memory dumps and do not collect PIN material.
 
+## Other Zenith PCs (access in progress)
+
+- **ZENITH-WS2** `10.0.253.205`: WinRM works as `ZenithAdmin`. Windows 11 Pro, same MINIX NEO Z100-0dB. Shortcut `SPOT (VGCTX03COUNTER2).lnk`. Printers `Tag` (USB002), `EPSON` TM-T88V, Brother. No `Cash Drawer` printer. Citrix **Workspace** Start Menu shortcut (WS3 has Receiver 4.9 LTSR). `ZenithUser` is logged on and is an administrator.
+- **ZENITH-WS1** `10.0.253.212`: bootstrap done, TCP 5985 open. Logged on `Zenith User` (name has a space). WS3 admin password rejected. Waiting on this PC’s admin account/password.
+
 ## Specimen ZENITH-WS3 (observed 2026-08-19, run `20260819T203635Z-43b3934a`)
 
 **Class: Discovery** unless labeled otherwise. Collected over WinRM as `ZenithAdmin` while `ZenithUser` was logged on.

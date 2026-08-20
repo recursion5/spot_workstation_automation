@@ -103,6 +103,19 @@ Directly observed facts, or facts taken from named vendor documentation. Interpr
 - Star Micronics Printer Software 3.8.1 installed.
 - HID USB devices include `VID_0536` (typical handheld barcode vendor) and keyboard/mouse-class devices. Hypothesis: at least one USB barcode scanner is attached.
 
+### Operator workflow trace (2026-08-20, run `20260820T001911Z-9af4f7de`)
+
+**Class: Discovery.** Window 00:19:11Z–00:28:22Z. Operator ran launch / print / scan / relaunch. Tag print failed; operator did not reboot or change settings.
+
+- At 00:21:29Z Windows SmartScreen started; at 00:21:33Z **`mstsc.exe`** (Remote Desktop client) started. This matches SPOTLauncher RDS RemoteApp, not a new Citrix ICA process.
+- `SPOTLauncher.exe` was not still running at stop. Hypothesis: launcher starts `mstsc` and exits.
+- Citrix `Receiver.exe` / `wfcrun32.exe` were already running since 2026-08-07; they did not start during this workflow.
+- Windows PrintService Operational log had **no** events in the window. Tag printer ended `Normal`, 0 jobs. No leftover stuck job.
+- Application log Universal Print: spooler job **56** completed 00:26:58Z under `ZenithUser`, with `opc-life-over-warning` (photoconductor-style warning → likely the **Brother** laser, not the Epson thermal).
+- Process-create watcher log was not produced (tooling gap). Procmon backing file remains on the PC (`procmon.pml`, 128 MB allocated) for later analysis; not copied into git.
+
+**Hypothesis:** tag printing often never reaches a completed Windows spooler job. Failure is consistent with a hosted-app or USB/raw path, not a queue sitting on the PC afterward.
+
 ### What remains unknown
 
 - Exact Citrix store/gateway URL and how `VGCTX03COUNTER3` is assigned.

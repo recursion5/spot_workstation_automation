@@ -26,7 +26,7 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | ID | Question | Why it matters |
 | --- | --- | --- |
 | Q-020 | Exact Windows printer names on the specimen? | **Answered:** `Tag`, `EPSON`, Brother HL-L2380DW, Microsoft Print to PDF. No `Cash Drawer`. |
-| Q-021 | Tag printer USB vs parallel, and whether `net use LPT1` / `Tag Fix.bat` exists | USB (`USB001` Generic/Text). **No** share, **no** `net use`, **no** `Tag Fix.bat`. How SPOT still prints tags is open. |
+| Q-021 | Tag printer USB vs parallel, and whether `net use LPT1` / `Tag Fix.bat` exists | USB (`USB001` Generic/Text). **No** share, **no** `net use`, **no** `Tag Fix.bat`. 2026-08-20 operator tag print failed; no Windows spooler job remained. |
 | Q-022 | Invoice printer model | **Answered:** Epson TM-T88V, Windows name `EPSON`, port `ESDPRT001`. |
 | Q-023 | Are barcode scanners HID keyboard-wedge, USB COM, or vendor middleware? | USB HID present (`VID_0536` and others). Confirm with a scan during a trace. |
 | Q-024 | This specimen has no cash drawer (operator). Confirm no `Cash Drawer` printer object. | **Answered:** none. |

@@ -31,9 +31,15 @@
 - Printer/PnP correlation (logical names captured; USB mapping still partly hypothesis).
 - Reboot test: `ZenithUser` auto-signed in; WinRM still works. Auto-logon mechanism still not the classic registry switch.
 
+## Morning observation
+
+- systemd timer `spot-morning-observe.timer` fires **06:00 America/Chicago** (11:00 UTC).
+- Targets: WS1 and WS2. Low-overhead process snapshots every 2 minutes plus process-start events for SPOT/RDP/Citrix/print. No Procmon all day.
+- Cash-drawer check-in on WS1 can be observed after open (operator: not until morning).
+
 ## Not running
 
-- Sysmon, ProcMon, or other all-day traces.
+- Sysmon. No all-day Procmon.
 - Phase 2 provisioning.
 
 ## Latest evidence

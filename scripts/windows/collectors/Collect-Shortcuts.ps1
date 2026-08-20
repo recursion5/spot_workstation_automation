@@ -15,11 +15,13 @@ try {
         "$env:PUBLIC\Desktop",
         "$env:PUBLIC\Start Menu",
         "$env:ProgramData\Microsoft\Windows\Start Menu",
-        'C:\Users\ZenithUser\Desktop',
-        'C:\Users\ZenithUser\AppData\Roaming\Microsoft\Windows\Start Menu',
         "$env:USERPROFILE\Desktop",
         "$env:APPDATA\Microsoft\Windows\Start Menu"
     )
+    Get-ChildItem 'C:\Users' -Directory -ErrorAction SilentlyContinue | ForEach-Object {
+        $roots += (Join-Path $_.FullName 'Desktop')
+        $roots += (Join-Path $_.FullName 'AppData\Roaming\Microsoft\Windows\Start Menu')
+    }
     $links = @()
     foreach ($root in $roots) {
         if (-not (Test-Path $root)) { continue }

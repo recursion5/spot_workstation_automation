@@ -15,7 +15,12 @@ try {
     $targetNames = @()
     if ($auto.default_user_name) { $targetNames += $auto.default_user_name }
     $targetNames += 'ZenithUser'
-    $targetNames = @($targetNames | Select-Object -Unique)
+    $targetNames += 'Zenith User'
+    $cs = Get-CimInstance Win32_ComputerSystem -ErrorAction SilentlyContinue
+    if ($cs -and $cs.UserName -and $cs.UserName -match '\\(.+)$') {
+        $targetNames += $Matches[1]
+    }
+    $targetNames = @($targetNames | Where-Object { $_ } | Select-Object -Unique)
 
     $profiles = @()
     foreach ($name in $targetNames) {

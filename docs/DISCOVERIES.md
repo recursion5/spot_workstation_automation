@@ -116,6 +116,15 @@ Directly observed facts, or facts taken from named vendor documentation. Interpr
 
 **Hypothesis:** tag printing often never reaches a completed Windows spooler job. Failure is consistent with a hosted-app or USB/raw path, not a queue sitting on the PC afterward.
 
+**Operator-reported after the recording stopped (not captured in the trace):**
+
+- Power-cycled the tag printer (not the PC). Tags then printed. Operator says this is common.
+- Operator hypothesis: a brief site internet drop a few minutes earlier caused it.
+
+**Class: Discovery (read-only check after that power cycle):** Tag still `Normal` / 0 jobs; PrintService Operational still had no new events. USB view: Star SP742 OK on `USB001`; another Star SP742 instance `Unknown` on `USB002`.
+
+**Hypothesis:** jobs were held in the hosted SPOT/RDS session and/or the printer’s own buffer, not in the Windows queue we can see. An internet blip can stall RDS RemoteApp (`mstsc`); power-cycling the printer is a local workaround. Not proven that the disconnect was the cause; it is a plausible explanation and matches “happens on occasion.”
+
 ### What remains unknown
 
 - Exact Citrix store/gateway URL and how `VGCTX03COUNTER3` is assigned.

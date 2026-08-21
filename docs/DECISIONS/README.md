@@ -25,3 +25,4 @@ Template:
 | [0007](0007-sysmon-deferred.md) | Do not install Sysmon until approved | accepted |
 | [0008](0008-internal-notice.md) | Internal NOTICE, no public license | accepted |
 | [0009](0009-rds-not-citrix.md) | Replacement launch is SPOTLauncher RDS, not Citrix | accepted |
+| [0010](0010-usb-store-then-workstation.md) | Replacement USB: boot, pick store, pick workstation | accepted |

@@ -7,4 +7,6 @@ Placeholder: `store=unassigned`, `register=specimen-01`, `role=back-office` (ADR
 
 Need operator-facing store/register codes. Redact unique provider Account Key values in git-safe output.
 
+USB replacement menus (ADR-0010) will use these as labels. See issue 006 and Q-060/Q-061.
+
 Refs: Q-040.

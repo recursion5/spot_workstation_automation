@@ -54,5 +54,5 @@
 
 1. Saturday 2026-08-22 open is **08:00** CDT (watchers start then). Weekdays remain 06:00.
 2. Optional later: a real sale on WS1 if we should capture the cash-drawer **kick**.
-3. Decide store/register codes (Q-040). Sunday hours still unknown (Q-051).
-4. Phase 1 write-up `docs/DISCOVERY-REPORT.md` can be drafted; replacement playbooks stay Phase 2 and must follow ADR-0009 (RDS, not Citrix).
+3. Decide store/register **menu labels** for the USB installer (Q-040, Q-060, Q-061). Sunday hours still unknown (Q-051).
+4. Phase 1 write-up `docs/DISCOVERY-REPORT.md` can be drafted. Replacement **implementation** stays later phases: ADR-0009 (RDS, not Citrix) + ADR-0010 (USB → store → workstation).

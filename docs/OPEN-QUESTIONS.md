@@ -45,7 +45,10 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 
 | ID | Question | Why it matters |
 | --- | --- | --- |
-| Q-040 | Operator-facing store id and register id for this specimen? | **Answered for this PC:** SPOT license name `VGCTX03COUNTER3`. Store still `unassigned` until a store code is chosen. |
+| Q-040 | Operator-facing store id and register id for this specimen? | **Answered for this PC:** SPOT license name `VGCTX03COUNTER3`. Store still `unassigned` until a store code is chosen. USB store menu needs the official **store label** (Q-060). |
+| Q-060 | What labels should the USB **store** menu show (Zenith, Vogue …)? | Needed for ADR-0010. Technical `ClientName` can stay `VGCTX03COUNTERn`. |
+| Q-061 | Per-store **workstation** menu: names, roles (cash drawer vs tag vs back-office), and which SPOT `ClientName` each row maps to? | Zenith draft: Counter1=`VGCTX03COUNTER1` cash-drawer; Counter2=`VGCTX03COUNTER2` tag; Counter3=`VGCTX03COUNTER3` back-office. Confirm labels. Vogue unknown. |
+| Q-062 | After the USB choice, is Windows setup fully offline on the stick, or does it pull the rest from the NAS (`zenith-dsm`) once on the LAN? | Affects USB size, secret handling, and whether a store can rebuild if the NAS is down. |
 
 ## Store hours
 

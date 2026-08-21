@@ -17,6 +17,7 @@ Statements the operator or constitution say the future system must honor. Not di
 - Target OS: Windows 11 Pro POS workstations.
 - Application: Xplor Spot hosted POS (`https://xplorspot.com`).
 - **App delivery for replacements (2026-08-21):** SPOTLauncher → RDS RemoteApp (`mstsc`, `ConnectionMode` 1). Do **not** install Citrix Receiver/Workspace on new PCs. Some existing stations still use Citrix; that is leftover, not the target ([ADR-0009](DECISIONS/0009-rds-not-citrix.md)).
+- **Replacement operator flow (2026-08-21):** boot from USB → choose store → choose workstation → automation applies that identity. Not a cloned image. See [ADR-0010](DECISIONS/0010-usb-store-then-workstation.md). Implementation is Phase 3.
 - Employees do not perform Windows logon; a local standard user auto-logs on; POS is launched from a desktop shortcut.
 - Store open (Zenith): weekdays **06:00**, Saturday **08:00** America/Chicago. Sunday unknown. SPOT is not left running overnight.
 - A local administrative account exists.

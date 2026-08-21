@@ -1,7 +1,7 @@
 # Project status
 
 **Phase:** 1 — discovery (remote access working)  
-**Date:** 2026-08-19  
+**Date:** 2026-08-21  
 **Specimen:** `ZENITH-WS3` at `10.0.253.204`  
 **Store:** Zenith (operator: two Vogue stores exist separately; this site is Zenith)  
 **SPOT license name (this PC):** `VGCTX03COUNTER3`  
@@ -35,7 +35,7 @@
 
 - systemd timer `spot-morning-observe.timer` fires **06:00 America/Chicago** (11:00 UTC).
 - Targets: **WS1, WS2, and WS3**. Low-overhead process snapshots every 2 minutes plus process-start events for SPOT/RDP/Citrix/print. No Procmon all day.
-- Detached observers already running tonight (fixed so they survive WinRM). 6:00 a.m. job restarts them. This chat wakes ~9:15 a.m. local to read the files.
+- 2026-08-21 06:00 CDT job succeeded on WS1/WS2/WS3; watchers still alive at 09:20 with hundreds of snapshots. See DISCOVERIES morning-open section.
 - Cash-drawer check-in on WS1 can be observed after open (operator: not until morning).
 - Operator: SPOT is not left running overnight; the remote session also disconnects when idle. Expect launch activity at open, not leftover `mstsc` from the previous day.
 

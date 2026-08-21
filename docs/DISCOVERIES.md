@@ -62,6 +62,16 @@ Same gateway `https://rds.mydrycleaner.com` and API `https://api.mydrycleaner.co
 
 Watchers are running on **all three** PCs overnight; 6:00 a.m. job now includes WS3.
 
+### Morning open 2026-08-21 (observer files + live check ~09:20 CDT)
+
+**Class: Discovery.** Timer fired 11:00 UTC (06:00 CDT). All three watchers started `alive=True` and **kept running** (~383 snapshots on WS1/WS2 from overnight through 09:20). Process-start CIM events still only logged watcher restarts, not `mstsc`/`SPOTLauncher` (subscription gap). Snapshots every 2 minutes are the reliable source.
+
+- **WS1 (COUNTER1, cash drawer):** `Zenith User` logged on. New `mstsc` **pid 6168 at 06:05:42 CDT**. Two **older** `mstsc` processes from **2026-08-20 06:07 CDT are still running**. So this station did **not** drop all Remote Desktop clients overnight. No Citrix processes. Printers including `CashDrawer` show 0 jobs at 09:20; cannot see SPOT drawer check-in from Windows.
+- **WS2 (COUNTER2):** `ZenithUser` logged on. **No `mstsc`.** Two `SPOTLauncher` processes started **06:06:02 CDT**. Citrix Receiver stack still from boot 2026-08-13. Consistent with ConnectionMode 0 / Citrix-oriented launch, or launcher waiting on the user.
+- **WS3 (COUNTER3):** `ZenithUser` logged on. Same `mstsc` as **2026-08-20 09:59 CDT** still running (no new morning launch by 09:20). Citrix stack from last reboot.
+
+**Hypothesis:** operator “SPOT not left overnight / idle disconnect” is about the **hosted session**, not always the local `mstsc.exe` process. WS1 kept yesterday’s RDP clients and opened another at 06:05.
+
 ## Other Zenith PCs (access in progress)
 
 - **ZENITH-WS2** `10.0.253.205`: WinRM works as `ZenithAdmin`. Windows 11 Pro, same MINIX NEO Z100-0dB. Shortcut `SPOT (VGCTX03COUNTER2).lnk`. Printers `Tag` (USB002), `EPSON` TM-T88V, Brother. No `Cash Drawer` printer. Citrix **Workspace** Start Menu shortcut (WS3 has Receiver 4.9 LTSR). `ZenithUser` is logged on and is an administrator.

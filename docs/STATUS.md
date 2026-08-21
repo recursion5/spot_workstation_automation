@@ -26,7 +26,7 @@
 
 ## In progress
 
-- Launch path: live trace saw **`mstsc.exe`** start ~2 minutes after recording began (RDS). Citrix processes were already long-running.
+- Launch path is **station-dependent**. WS1 and WS3: desktop shortcut → SPOTLauncher `ConnectionMode` 1 → **`mstsc`** (RDS RemoteApp). WS2: shortcut → SPOTLauncher `ConnectionMode` 0 → Citrix ICA **`wfica32`** published app `SPOT - Auto Login`. Citrix Workspace still autostarts at logon on WS2 (and Receiver on WS3) even when SPOT itself is RDS.
 - Operator workflow 2026-08-20: tag print failed (not repaired). Invoice/scan/relaunch were attempted. Details in DISCOVERIES.
 - Printer/PnP correlation (logical names captured; USB mapping still partly hypothesis).
 - Reboot test: `ZenithUser` auto-signed in; WinRM still works. Auto-logon mechanism still not the classic registry switch.
@@ -36,7 +36,7 @@
 - systemd timer `spot-morning-observe.timer` fires **06:00 America/Chicago** (11:00 UTC).
 - Targets: **WS1, WS2, and WS3**. Low-overhead process snapshots every 2 minutes plus process-start events for SPOT/RDP/Citrix/print. No Procmon all day.
 - 2026-08-21 06:00 CDT job succeeded on WS1/WS2/WS3; watchers still alive at 09:20 with hundreds of snapshots. See DISCOVERIES morning-open section.
-- Coordinated reboot: **WS3 done** (two clicks); **WS1 done** (one click, no Citrix after reboot). Waiting on **WS2**.
+- Coordinated reboot: **all three done**. WS3 two clicks + `mstsc`; WS1 one click + `mstsc` (no Citrix); WS2 SPOT launched as Citrix ICA (`wfica32`), no `mstsc`.
 - Cash-drawer check-in on WS1 can be observed after open (operator: not until morning).
 - Operator: SPOT is not left running overnight; the remote session also disconnects when idle. Expect launch activity at open, not leftover `mstsc` from the previous day.
 
@@ -53,7 +53,7 @@
 
 ## Next (when operator returns)
 
-1. Confirm whether employees expect auto-logon after reboot (registry currently says no).
-2. Short approved traces: POS shortcut launch, one tag print, one invoice print.
+1. Coordinated reboot is complete on WS1/WS2/WS3. No further reboot needed unless something looks wrong on the floor.
+2. Optional later: a real sale on WS1 if we should capture the cash-drawer **kick** (check-in will not show in Windows).
 3. Decide store/register codes (Q-040).
-4. Optional: remove admin rights from `ZenithUser` later — not a Phase 1 task unless asked.
+4. Phase 1 write-up `docs/DISCOVERY-REPORT.md` can be drafted from current evidence; replacement playbooks stay Phase 2.

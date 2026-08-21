@@ -58,7 +58,7 @@ Same gateway `https://rds.mydrycleaner.com` and API `https://api.mydrycleaner.co
 | WS2 | VGCTX03COUNTER2 | **0** | 1 | Win11; Citrix Workspace present |
 | WS3 | VGCTX03COUNTER3 | 1 | 1 | Win11 |
 
-**Hypothesis:** `ConnectionMode` 0 vs 1 may distinguish Citrix-oriented vs RDS-oriented launch. Not proven. Count 2 on WS1 may reflect Epson + cash-drawer printer pair.
+**Hypothesis, now strongly supported by the WS2 reboot:** `ConnectionMode` 0 launches Citrix ICA; `ConnectionMode` 1 launches RDS (`mstsc`). Count 2 on WS1 may reflect Epson + cash-drawer printer pair.
 
 Watchers are running on **all three** PCs overnight; 6:00 a.m. job now includes WS3.
 
@@ -67,7 +67,7 @@ Watchers are running on **all three** PCs overnight; 6:00 a.m. job now includes 
 **Class: Discovery.** Timer fired 11:00 UTC (06:00 CDT). All three watchers started `alive=True` and **kept running** (~383 snapshots on WS1/WS2 from overnight through 09:20). Process-start CIM events still only logged watcher restarts, not `mstsc`/`SPOTLauncher` (subscription gap). Snapshots every 2 minutes are the reliable source.
 
 - **WS1 (COUNTER1, cash drawer):** `Zenith User` logged on. New `mstsc` **pid 6168 at 06:05:42 CDT**. Two **older** `mstsc` processes from **2026-08-20 06:07 CDT are still running**. So this station did **not** drop all Remote Desktop clients overnight. No Citrix processes. Printers including `CashDrawer` show 0 jobs at 09:20; cannot see SPOT drawer check-in from Windows.
-- **WS2 (COUNTER2):** `ZenithUser` logged on. **No `mstsc`.** Two `SPOTLauncher` processes started **06:06:02 CDT**. Citrix Receiver stack still from boot 2026-08-13. Consistent with ConnectionMode 0 / Citrix-oriented launch, or launcher waiting on the user.
+- **WS2 (COUNTER2):** `ZenithUser` logged on. **No `mstsc`.** Two `SPOTLauncher` processes started **06:06:02 CDT**. Citrix Receiver stack still from boot 2026-08-13. Snapshots could not show `wfica32` (observer regex gap, fixed after the reboot inspect). Consistent with ConnectionMode 0 / Citrix ICA; confirmed on the afternoon reboot.
 - **WS3 (COUNTER3):** `ZenithUser` logged on. Same `mstsc` as **2026-08-20 09:59 CDT** still running (no new morning launch by 09:20). Citrix stack from last reboot.
 
 **Hypothesis:** operator “SPOT not left overnight / idle disconnect” is about the **hosted session**, not always the local `mstsc.exe` process. WS1 kept yesterday’s RDP clients and opened another at 06:05.
@@ -94,9 +94,29 @@ Watchers are running on **all three** PCs overnight; 6:00 a.m. job now includes 
 - **Operator:** one double-click of the desktop shortcut; SPOT appeared. Contrasts with WS3 needing two attempts.
 - Observer running after reboot (`ZENITH-WS1$` scheduled task).
 
+### Coordinated reboot WS2 (2026-08-21 ~12:22 CDT)
+
+**Class: Discovery.**
+
+- Boot `2026-08-21T17:22:07Z`. Console auto-logon **`ZenithUser`** at 12:22 PM local. No password (operator).
+- Yesterday’s leftover processes are **gone**.
+- Citrix Workspace stack autostarted at logon (~**17:23:02Z**, ~55 seconds after boot): `concentr` (HKLM Wow6432Node Run), `Receiver.exe -autoupdate -startplugins`, `SelfServicePlugin`, `wfcrun32`, `redirector`. Product path `Citrix Workspace 26.3.10.69`.
+- **No `mstsc`.** Live SPOT session is Citrix ICA **`wfica32.exe`** pid 11816 at **17:23:22Z** (~75 seconds after boot). Command line `WFICA32.EXE MFService…`. Parent `wfcrun32`.
+- ICA file written **17:23:21Z**: `C:\Users\ZenithUser\AppData\Local\Citrix\SelfService\Temp\MDCDDC.SPOT - Auto Login.ica`. Published app **`SPOT - Auto Login`**. ICA `ClientName=VGCTX03COUNTER2`. AutologonAllowed=ON. (ICA also contains encrypted ticket/password fields; not stored in git.)
+- Prefetch `SPOTLAUNCHER.EXE` updated **17:23:25Z** — launcher ran and exited (not still in the process list). Matches operator “SPOT launched” plus `ConnectionMode` 0.
+- Observer started as `ZENITH-WS2$` at 17:22:47Z (boot task 12:22:23, logon task 12:22:29, last result 0). First post-reboot snapshot at 17:24:49 listed Receiver/wfcrun32 but **not** `wfica32` because the snapshot regex omitted it.
+
+### Coordinated reboot comparison (2026-08-21)
+
+| PC | Boot (UTC) | Auto-logon | Citrix at logon | SPOT session | Operator |
+| --- | --- | --- | --- | --- | --- |
+| WS3 | 17:13:19 | `ZenithUser` | Receiver stack | `mstsc` ~17:15:15 | two clicks |
+| WS1 | 17:17:29 | `Zenith User` | none | `mstsc` ~17:18:41 | one double-click |
+| WS2 | 17:22:07 | `ZenithUser` | Workspace stack | **`wfica32` ~17:23:22** | SPOT launched |
+
 ## Other Zenith PCs (access in progress)
 
-- **ZENITH-WS2** `10.0.253.205`: WinRM works as `ZenithAdmin`. Windows 11 Pro, same MINIX NEO Z100-0dB. Shortcut `SPOT (VGCTX03COUNTER2).lnk`. Printers `Tag` (USB002), `EPSON` TM-T88V, Brother. No `Cash Drawer` printer. Citrix **Workspace** Start Menu shortcut (WS3 has Receiver 4.9 LTSR). `ZenithUser` is logged on and is an administrator.
+- **ZENITH-WS2** `10.0.253.205`: WinRM works as `ZenithAdmin`. Windows 11 Pro, same MINIX NEO Z100-0dB. Shortcut `SPOT (VGCTX03COUNTER2).lnk`. Printers `Tag` (USB002), `EPSON` TM-T88V, Brother. No `Cash Drawer` printer. Citrix **Workspace 26.3.10.69** (WS3 has Receiver 4.9 LTSR). Post-reboot SPOT is ICA `wfica32` / published app `SPOT - Auto Login`, not `mstsc`. `ZenithUser` is logged on and is an administrator.
 - **ZENITH-WS1** `10.0.253.212`: WinRM works as **`Zenith Admin`** (space in the name; same password as the other Zenith PCs). Windows **10 Pro** build **17763** (version 1809). Hardware **MINIX N42C-4** (older than the NEO Z100 boxes). Shortcut `SPOT (VGCTX03COUNTER1).lnk`. Printers: `EPSON` TM-T88V, **`CashDrawer`** on the same Epson port, Brother. **No `Tag` printer.** SPOTLauncher 1.1.169.3 under `Zenith User` AppData. Citrix folder present. Shop-floor account `Zenith User` (space) is an administrator. **Best first replacement candidate** (old OS + old hardware + customer-facing cash drawer).
 
 ## Specimen ZENITH-WS3 (observed 2026-08-19, run `20260819T203635Z-43b3934a`)

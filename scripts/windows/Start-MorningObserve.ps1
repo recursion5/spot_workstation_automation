@@ -29,7 +29,7 @@ try {
     Register-CimIndicationEvent -ClassName Win32_ProcessStartTrace -SourceIdentifier SpotMorningStart -Action {
         $e = $Event.SourceEventArgs.NewEvent
         $n = [string]$e.ProcessName
-        if ($n -match "SPOT|mstsc|Citrix|Receiver|wfcrun|SelfService|spool|EPSON|Star|PCSVC|redirector|SPOTLauncher") {
+        if ($n -match "SPOT|mstsc|Citrix|Receiver|wfcrun|SelfService|spool|EPSON|Star|PCSVC|redirector|SPOTLauncher|wfica|concentr") {
             $line = (@{ t=[DateTime]::UtcNow.ToString("o"); event="start"; process=$n; pid=$e.ProcessId; parent=$e.ParentProcessId } | ConvertTo-Json -Compress)
             $log = Join-Path $env:ProgramData ("spot-discovery\observe\" + [DateTime]::UtcNow.ToString("yyyyMMdd") + "\process-events.jsonl")
             Add-Content -Path $log -Value $line -Encoding UTF8
@@ -39,7 +39,7 @@ try {
 while ($true) {
     Start-Sleep -Seconds 120
     $keep = Get-Process -ErrorAction SilentlyContinue |
-        Where-Object { $_.ProcessName -match "SPOT|mstsc|Citrix|Receiver|wfcrun|SelfService|spoolsv|PCSVC|redirector|SPOTLauncher" } |
+        Where-Object { $_.ProcessName -match "SPOT|mstsc|Citrix|Receiver|wfcrun|SelfService|spoolsv|PCSVC|redirector|SPOTLauncher|wfica|concentr" } |
         ForEach-Object { "{0} pid={1}" -f $_.ProcessName, $_.Id }
     $snap = Join-Path $dir ("snapshot-" + [DateTime]::UtcNow.ToString("HHmmss") + ".txt")
     Set-Content -Path $snap -Value (@((Get-Date).ToUniversalTime().ToString("o")) + $keep) -Encoding UTF8

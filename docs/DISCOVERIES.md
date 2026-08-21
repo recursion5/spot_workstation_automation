@@ -72,6 +72,17 @@ Watchers are running on **all three** PCs overnight; 6:00 a.m. job now includes 
 
 **Hypothesis:** operator “SPOT not left overnight / idle disconnect” is about the **hosted session**, not always the local `mstsc.exe` process. WS1 kept yesterday’s RDP clients and opened another at 06:05.
 
+### Coordinated reboot WS3 (2026-08-21 ~12:13 CDT)
+
+**Class: Discovery.**
+
+- Boot `2026-08-21T17:13:19Z`. Console auto-logon **`ZenithUser`** at 12:13 PM local. No password prompt (operator).
+- Yesterday’s leftover `mstsc` is **gone** (reboot cleared it).
+- Citrix Receiver stack started ~**17:14:28Z** (about 1 minute after boot, at logon) **before** the successful SPOT window — logon autostart, not the desktop shortcut.
+- One `mstsc` **pid 14096 at 17:15:15Z** (~2 minutes after boot).
+- **Operator:** first SPOT launch attempt did not show the app; second attempt did. Snapshots are every 2 minutes and did not catch a failed first `SPOTLauncher`/`mstsc`. Hypothesis: first click started something that exited or never showed UI; second click produced the surviving RDP session.
+- Boot marker and observer started as `ZENITH-WS3$` (SYSTEM scheduled task). Watcher running after reboot.
+
 ## Other Zenith PCs (access in progress)
 
 - **ZENITH-WS2** `10.0.253.205`: WinRM works as `ZenithAdmin`. Windows 11 Pro, same MINIX NEO Z100-0dB. Shortcut `SPOT (VGCTX03COUNTER2).lnk`. Printers `Tag` (USB002), `EPSON` TM-T88V, Brother. No `Cash Drawer` printer. Citrix **Workspace** Start Menu shortcut (WS3 has Receiver 4.9 LTSR). `ZenithUser` is logged on and is an administrator.

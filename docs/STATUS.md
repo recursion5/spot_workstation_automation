@@ -36,6 +36,7 @@
 - systemd timer `spot-morning-observe.timer` fires **06:00 America/Chicago** (11:00 UTC).
 - Targets: **WS1, WS2, and WS3**. Low-overhead process snapshots every 2 minutes plus process-start events for SPOT/RDP/Citrix/print. No Procmon all day.
 - 2026-08-21 06:00 CDT job succeeded on WS1/WS2/WS3; watchers still alive at 09:20 with hundreds of snapshots. See DISCOVERIES morning-open section.
+- Coordinated reboot: **WS3 done** (auto-logon + SPOT on second click). Waiting on WS1/WS2.
 - Cash-drawer check-in on WS1 can be observed after open (operator: not until morning).
 - Operator: SPOT is not left running overnight; the remote session also disconnects when idle. Expect launch activity at open, not leftover `mstsc` from the previous day.
 

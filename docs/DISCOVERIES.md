@@ -134,7 +134,7 @@ RustDesk is installed under `C:\Program Files\RustDesk\` with a service and Star
 | 3 | Zenith | Mark-In 1 (front mark-in) | ZENITH-WS2 | `VGCTX03COUNTER2` |
 | 3 | Zenith | Mark-In 2 (back mark-in) | ZENITH-WS3 | `VGCTX03COUNTER3` |
 
-Zenith mapping is operator 1/2/3 plus peripherals: only WS1 has `CashDrawer` and no `Tag`; WS2/WS3 have `Tag` and no cash drawer; WS3 was the non-customer-facing specimen (back mark-in). **Decision:** license names are `VGCTXssCOUNTERn` (operator shorthand `VGCTXCOUNTERx`). The `03` in the live Zenith `ClientName` is store 3. Vogue rows use `01` and `02`; those two stores have not been read on disk yet.
+Zenith mapping is operator 1/2/3 plus peripherals: only WS1 has `CashDrawer` and no `Tag`; WS2/WS3 have `Tag` and no cash drawer; WS3 was the non-customer-facing specimen (back mark-in). **Decision (operator-confirmed):** license names are `VGCTXssCOUNTERn` (store number after `VGCTX`). Live Zenith files match `03`. Vogue `01`/`02` follow the same rule; those PCs have not been read on disk.
 
 ### Coordinated reboot comparison (2026-08-21)
 

@@ -29,7 +29,7 @@ Hostname stays in the run manifest as observed. GitHub issues should prefer the 
 
 This specimen (ZENITH-WS3) is **store `zenith`**, register **`mark-in-2`**, role **`mark-in-back`**, SPOT `ClientName` **`VGCTX03COUNTER3`**. Catalog: `config/catalog/workstations.yml`.
 
-**Update 2026-08-21 (license names):** Operator: SPOT license names are `VGCTXCOUNTERx`. Live Zenith files use the store number in the string (`VGCTX03COUNTERn`). Catalog form is **`VGCTXssCOUNTERn`** with `ss` = store 01/02/03 and `n` = workstation order (Front Counter = 1).
+**Update 2026-08-21 (license names):** Operator: SPOT license names are `VGCTXCOUNTERx`, then confirmed the **store number** after `VGCTX`. Form is **`VGCTXssCOUNTERn`** with `ss` = store 01/02/03 and `n` = workstation order (Front Counter = 1). Live Zenith files match (`VGCTX03COUNTERn`).
 
 ## Alternatives considered
 

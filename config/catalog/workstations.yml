@@ -1,7 +1,7 @@
 # USB replacement menus. Operator labels are requirements.
-# License pattern VGCTXssCOUNTERn (operator: VGCTXCOUNTERx).
-# ss = store number 01/02/03. n = workstation 1/2/3.
-# Zenith (03) values are also on the live PCs.
+# License pattern VGCTXssCOUNTERn (operator confirmed store number after VGCTX).
+# ss = store 01/02/03. n = workstation 1/2/3.
+# Zenith (03) also matches the live PCs.
 schema: workstation-catalog/v1
 stores:
   - id: vogue-krum

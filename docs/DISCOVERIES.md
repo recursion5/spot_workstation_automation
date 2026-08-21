@@ -108,6 +108,21 @@ Watchers are running on **all three** PCs. Open times (**operator**): weekdays *
 - Prefetch `SPOTLAUNCHER.EXE` updated **17:23:25Z** — launcher ran and exited (not still in the process list). Matches operator “SPOT launched” plus `ConnectionMode` 0.
 - Observer started as `ZENITH-WS2$` at 17:22:47Z (boot task 12:22:23, logon task 12:22:29, last result 0). First post-reboot snapshot at 17:24:49 listed Receiver/wfcrun32 but **not** `wfica32` because the snapshot regex omitted it.
 
+### WS1 print outage (operator 2026-08-21, invoices + Brother reports)
+
+**Class: Discovery** (read-only WinRM ~20:10Z). **Hypothesis** on cause.
+
+Operator: ZENITH-WS1 (Front Counter) cannot print invoices (Epson thermal) or reports (Brother). Jobs never appear in Windows queues.
+
+Live state after a **second** reboot `2026-08-21T19:56:06Z` (2:56 p.m. CDT; first coordinated reboot was 12:17):
+
+- Spooler running. Epson `PCSVC` running. Printers `EPSON` (`ESDPRT001`, USB TM-T88V), `CashDrawer` (same port), and `Brother HL-L2380DW` (WSD) all `Normal`, `WorkOffline=False`, **0 jobs**.
+- USB Epson controller `VID_04B8&PID_0202` OK. Brother WSD/IPP device OK.
+- PrintService Operational and Admin: **no events** in the last 8 hours (same empty log we saw even on successful tag prints elsewhere).
+- SPOT RDS is up: `mstsc -Embedding` to `rds.mydrycleaner.com` (`68.220.19.78:443`). `ClientName` still `VGCTX03COUNTER1`. `redirectprinters:i:0`. Command line includes `/rdsvirtualchannel`. Loaded: `SBSRDPAddin_x64.dll` and Tricerat ScrewDrivers `sdrdp64.dll`.
+
+**Hypothesis:** this is not two independent local printer failures (USB thermal and network laser died together, both queues look healthy). SPOT is supposed to print through the **RDS virtual channel** (SBS add-in / ScrewDrivers), not native RDP printer redirection. If that channel or the **hosted workstation printer map** for `VGCTX03COUNTER1` is empty/wrong, jobs never hit Windows and nothing comes out. A Windows test page to `EPSON` and Brother would confirm the local stack; not sent (would waste paper).
+
 ### UPS, RustDesk, wallpaper (read 2026-08-21, no changes)
 
 **Class: Discovery.** WinRM as the admin user (HKCU wallpaper is that admin, not the shop-floor session).

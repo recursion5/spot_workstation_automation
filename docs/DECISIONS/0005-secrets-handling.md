@@ -22,3 +22,5 @@ Controller secrets: gitignored `.env` mode 600.
 ## Consequences
 
 Later provisioning must obtain secrets through an operator-controlled channel, not by replaying discovery JSON.
+
+**Update 2026-08-21:** That channel is the **NAS** (`dsm.vogueclean.int`). The replacement build **applies** SPOT-related secrets so SPOT support does not have to remote in. Values still never enter git. See ADR-0011.

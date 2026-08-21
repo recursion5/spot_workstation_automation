@@ -35,7 +35,7 @@ The replacement process is **USB boot → store menu → workstation menu → ap
 - One catalog drives both menus. Choosing a workstation selects the whole desired state: local accounts, auto-logon **behavior**, SPOTLauncher RDS (`ConnectionMode` 1, ADR-0009), `ClientName`, printer/peripheral **role**, shortcuts.
 - Do not clone the old disk. Do not make the operator type `VGCTX03COUNTER3` if a menu can offer “Mark-In 2 (back mark-in)”.
 - One USB serves all three stores. A separate USB per store is an implementation fallback, not the goal.
-- Secrets (admin / auto-logon / hosted-app) do not live in plaintext on the USB if that stick can leave the building. Prompt, protected store, or first-boot retrieval — design in Phase 3.
+- Secrets live on the **NAS** and are applied during the build (ADR-0011). They do not live in git or as plaintext on a stick that can leave the building.
 - Hardware-specific USB instance paths are **not** copied from the old PC (constitution §3). Printer *names* and roles come from the catalog; PnP binds on the new box.
 
 ## Alternatives considered

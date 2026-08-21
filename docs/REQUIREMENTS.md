@@ -27,6 +27,12 @@ Statements the operator or constitution say the future system must honor. Not di
 - Customer-facing workstations additionally have a cash drawer attached through the thermal invoice printer, plus network integration with an external payment terminal.
 - **This first specimen is not customer-facing and does not handle payments.**
 - Workstations that do take payments do not handle raw card data; the payment terminal encrypts/tokenizes off-box.
+- **UPS (2026-08-21):** every workstation on a UPS; run on battery until a graceful shutdown is required. Exception: UPS awaiting repair/replacement. [ADR-0011](DECISIONS/0011-replacement-policy-notes.md).
+- **RustDesk (2026-08-21):** in the replacement image, server **`dsm.vogueclean.int`**.
+- **Wallpaper (2026-08-21):** all users; black; text = store, Windows computer name, SPOT workstation ID. Appearance still to refine.
+- **Accounts (2026-08-21):** admin account plus a **standard** user that runs SPOT / auto-logon. Shop-floor should not be an administrator on new PCs.
+- **Secrets (2026-08-21):** stored on the NAS; SPOT-related secrets are applied by the build so we do not call SPOT to install/configure/attach hardware.
+- **OOBE (2026-08-21):** retail Windows 11 Pro boxes must not stop on the “new PC experience.” USB unattend skips it.
 
 ## Phase 1 acceptance
 

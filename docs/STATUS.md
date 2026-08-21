@@ -30,6 +30,7 @@
 - Operator workflow 2026-08-20: tag print failed (not repaired). Invoice/scan/relaunch were attempted. Details in DISCOVERIES.
 - Printer/PnP correlation (logical names captured; USB mapping still partly hypothesis).
 - Reboot test: `ZenithUser` auto-signed in; WinRM still works. Auto-logon mechanism still not the classic registry switch.
+- Replacement policy notes recorded (ADR-0011): UPS, RustDesk `dsm.vogueclean.int`, identity wallpaper, admin + standard SPOT user, secrets on NAS, skip retail OOBE. Refinement list: [issue 007](issues/007-replacement-refinements.md).
 
 ## Morning observation
 
@@ -54,5 +55,6 @@
 
 1. Saturday 2026-08-22 open is **08:00** CDT (watchers start then). Weekdays remain 06:00.
 2. Optional later: a real sale on WS1 if we should capture the cash-drawer **kick**.
-3. USB menus are recorded (ADR-0010 catalog). Vogue SPOT license names still unknown (Q-063). Sunday hours unknown (Q-051).
-4. Phase 1 write-up `docs/DISCOVERY-REPORT.md` can be drafted. Replacement **implementation** stays later phases.
+3. USB menus are recorded. Vogue SPOT license names still unknown (Q-063). Sunday hours unknown (Q-051).
+4. Replacement **implementation** stays later phases. Open refinements: wallpaper design, NAS share path, account names, UPS percent (issue 007).
+5. Phase 1 write-up `docs/DISCOVERY-REPORT.md` can be drafted.

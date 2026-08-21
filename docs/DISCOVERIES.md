@@ -108,6 +108,18 @@ Watchers are running on **all three** PCs. Open times (**operator**): weekdays *
 - Prefetch `SPOTLAUNCHER.EXE` updated **17:23:25Z** — launcher ran and exited (not still in the process list). Matches operator “SPOT launched” plus `ConnectionMode` 0.
 - Observer started as `ZENITH-WS2$` at 17:22:47Z (boot task 12:22:23, logon task 12:22:29, last result 0). First post-reboot snapshot at 17:24:49 listed Receiver/wfcrun32 but **not** `wfica32` because the snapshot regex omitted it.
 
+### UPS, RustDesk, wallpaper (read 2026-08-21, no changes)
+
+**Class: Discovery.** WinRM as the admin user (HKCU wallpaper is that admin, not the shop-floor session).
+
+| PC | UPS visible to Windows | Critical battery | RustDesk server in config | Admin HKCU wallpaper |
+| --- | --- | --- | --- | --- |
+| WS3 Mark-In 2 | **None** (no battery/UPS PnP) | Hibernate at 5%; low 10% do nothing | `10.0.253.110:21116` (not the DNS name) | Windows Spotlight |
+| WS2 Mark-In 1 | HID UPS `VID_0764` (CyberPower) | same | same IP | Spotlight/Iris |
+| WS1 Front Counter | APC USB UPS `VID_051D` | same, but **hibernate is not available** on this Win10 box | same IP | default `img0.jpg` |
+
+RustDesk is installed under `C:\Program Files\RustDesk\` with a service and Startup tray on the inventoried PCs. Desired replacement value is hostname **`dsm.vogueclean.int`** (ADR-0011). Shop-floor wallpaper was not read in this pass.
+
 ### Store and workstation catalog (operator 2026-08-21)
 
 **Class: Requirement (labels) + Discovery (Zenith ClientName map).** Source: `config/catalog/workstations.yml`.

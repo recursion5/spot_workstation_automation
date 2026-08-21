@@ -26,3 +26,4 @@ Template:
 | [0008](0008-internal-notice.md) | Internal NOTICE, no public license | accepted |
 | [0009](0009-rds-not-citrix.md) | Replacement launch is SPOTLauncher RDS, not Citrix | accepted |
 | [0010](0010-usb-store-then-workstation.md) | Replacement USB: boot, pick store, pick workstation | accepted |
+| [0011](0011-replacement-policy-notes.md) | UPS, RustDesk, wallpaper, accounts, NAS secrets, skip OOBE | accepted |

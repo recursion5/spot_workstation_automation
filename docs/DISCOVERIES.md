@@ -121,7 +121,9 @@ Live state after the **second** Windows reboot `2026-08-21T19:56:06Z` (2:56 p.m.
 - SPOT RDS: `mstsc -Embedding` to `rds.mydrycleaner.com`. `ClientName` / RDP user `VGCTX03COUNTER1`. `redirectprinters:i:0`; `/rdsvirtualchannel`; loaded `SBSRDPAddin_x64.dll` + ScrewDrivers `sdrdp64.dll`.
 - **Re-check 20:28Z after close/reopen and in-app logoff:** still the **same** `mstsc` pid 9836 created **19:56:55Z** (boot). TCP still to `68.220.19.78:443`. Close/reopen did not start a new client process.
 
-**Hypothesis:** Windows and the physical printers are fine. WS3 proves the hosted farm can print. Front Counter uses RDS user `VGCTX03COUNTER1`; in-app SPOT logoff is the cashier login, not a Windows/RDS logoff of that user. A PC reboot only drops the local client; the **server session can stay disconnected and be reattached**, which matches “reboot usually works” (session already gone) vs this time (session still there, print virtual channel stuck). Next real reset is logging off or resetting **`VGCTX03COUNTER1` on the RDS host**, which we cannot do from this PC. Alternative still open: hosted workstation printer map for COUNTER1 only.
+**Hypothesis:** Windows and the physical printers are fine. WS3 proves the hosted farm can print. Front Counter uses RDS user `VGCTX03COUNTER1`; **Exit** disconnects and leaves that session; **Logoff** ends it. A PC reboot only drops the local client; the server session can stay disconnected and be reattached.
+
+**Resolution (operator):** SPOT **Logoff** (not Exit), then relaunch. Printing worked. New `mstsc` pid **736** at **20:33:42Z** (old pid 9836 from 19:56:55Z is gone). Why the earlier logoff attempt did not drop `mstsc` is **unknown** (may have been Exit, a cashier-only logoff, or the session did not finish ending before relaunch).
 
 ### UPS, RustDesk, wallpaper (read 2026-08-21, no changes)
 

@@ -119,7 +119,17 @@ systemctl --user restart spot-morning-observe.timer
 systemctl --user list-timers --all
 ```
 
-## 9. Secrets
+## 9. SPOT print stuck (RDS stations)
+
+Observed on Zenith Front Counter (`VGCTX03COUNTER1`, 2026-08-21). Local Windows test pages can succeed while SPOT invoices/reports do not. WS3 can still print.
+
+- **Exit** disconnects RemoteApp and **leaves** the hosted session (`VGCTX03COUNTERn`). Relaunch often reattaches to the same session. A PC reboot does the same if the host has not logged that user off.
+- **Logoff** in SPOT ends that hosted session. Relaunch starts a new one. That recovered printing here.
+- A local reboot is what staff try first; it only helps if the hosted session is already gone.
+
+Do not reset printers or the spooler for this pattern unless a Windows test page also fails.
+
+## 10. Secrets
 
 | Secret | Where it may live | Where it must not |
 | --- | --- | --- |

@@ -10,7 +10,7 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | Q-002 | Which VLAN/subnet are POS PCs on, and does OPNsense allow 5985 from `10.0.253.225`? | **Answered for this PC:** same subnet `10.0.253.0/24`; no extra firewall rule needed. | No |
 | Q-003 | Local admin account name for remoting (workgroup vs domain)? | **Answered:** workgroup; remoting user `ZenithAdmin`. `ZenithUser` is also an administrator. | No |
 | Q-004 | Is the auto-logon standard user already logged on during business hours? | **Answered:** `ZenithUser` was logged on during collection. | No |
-| Q-005 | Winlogon `AutoAdminLogon` is `0` and no DefaultPassword is present. How does the desktop return after reboot? | **Partly answered:** after a real reboot, `ZenithUser` was logged on automatically. Mechanism still unknown (not classic AutoAdminLogon=1). | For replacement we must reproduce auto-logon |
+| Q-005 | Winlogon `AutoAdminLogon` is `0` and no DefaultPassword is present. How does the desktop return after reboot? | **Closed as a research item.** Operator: reproduce **behavior** only (shop-floor desktop after reboot, no password). Implementation on new builds is our choice. | No |
 
 ## Application architecture
 

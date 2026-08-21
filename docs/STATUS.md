@@ -26,19 +26,18 @@
 
 ## In progress
 
-- Launch path is **station-dependent**. WS1 and WS3: desktop shortcut → SPOTLauncher `ConnectionMode` 1 → **`mstsc`** (RDS RemoteApp). WS2: shortcut → SPOTLauncher `ConnectionMode` 0 → Citrix ICA **`wfica32`** published app `SPOT - Auto Login`. Citrix Workspace still autostarts at logon on WS2 (and Receiver on WS3) even when SPOT itself is RDS.
+- Launch path is **station-dependent today**. WS1 and WS3: SPOTLauncher `ConnectionMode` 1 → **`mstsc`** (RDS RemoteApp). WS2: `ConnectionMode` 0 → Citrix ICA **`wfica32`** (`SPOT - Auto Login`). **Decision (ADR-0009):** replacements use the RDS path, not Citrix. Operator: they are moving off Citrix; stations are not all converted yet.
 - Operator workflow 2026-08-20: tag print failed (not repaired). Invoice/scan/relaunch were attempted. Details in DISCOVERIES.
 - Printer/PnP correlation (logical names captured; USB mapping still partly hypothesis).
 - Reboot test: `ZenithUser` auto-signed in; WinRM still works. Auto-logon mechanism still not the classic registry switch.
 
 ## Morning observation
 
-- systemd timer `spot-morning-observe.timer` fires **06:00 America/Chicago** (11:00 UTC).
+- systemd timer `spot-morning-observe.timer` fires at store open in `America/Chicago`: **weekdays 06:00**, **Saturday 08:00**. No Sunday fire until hours are known. Next: Saturday 2026-08-22 08:00 CDT (13:00 UTC).
 - Targets: **WS1, WS2, and WS3**. Low-overhead process snapshots every 2 minutes plus process-start events for SPOT/RDP/Citrix/print. No Procmon all day.
-- 2026-08-21 06:00 CDT job succeeded on WS1/WS2/WS3; watchers still alive at 09:20 with hundreds of snapshots. See DISCOVERIES morning-open section.
+- 2026-08-21 06:00 CDT (Friday) job succeeded on WS1/WS2/WS3. See DISCOVERIES morning-open section.
 - Coordinated reboot: **all three done**. WS3 two clicks + `mstsc`; WS1 one click + `mstsc` (no Citrix); WS2 SPOT launched as Citrix ICA (`wfica32`), no `mstsc`.
-- Cash-drawer check-in on WS1 can be observed after open (operator: not until morning).
-- Operator: SPOT is not left running overnight; the remote session also disconnects when idle. Expect launch activity at open, not leftover `mstsc` from the previous day.
+- Operator: SPOT is not left running overnight; the remote session also disconnects when idle. Expect launch activity at open.
 
 ## Not running
 
@@ -53,7 +52,7 @@
 
 ## Next (when operator returns)
 
-1. Coordinated reboot is complete on WS1/WS2/WS3. No further reboot needed unless something looks wrong on the floor.
-2. Optional later: a real sale on WS1 if we should capture the cash-drawer **kick** (check-in will not show in Windows).
-3. Decide store/register codes (Q-040).
-4. Phase 1 write-up `docs/DISCOVERY-REPORT.md` can be drafted from current evidence; replacement playbooks stay Phase 2.
+1. Saturday 2026-08-22 open is **08:00** CDT (watchers start then). Weekdays remain 06:00.
+2. Optional later: a real sale on WS1 if we should capture the cash-drawer **kick**.
+3. Decide store/register codes (Q-040). Sunday hours still unknown (Q-051).
+4. Phase 1 write-up `docs/DISCOVERY-REPORT.md` can be drafted; replacement playbooks stay Phase 2 and must follow ADR-0009 (RDS, not Citrix).

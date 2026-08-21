@@ -1,0 +1,8 @@
+[Unit]
+Description=Start low-overhead SPOT observation on Zenith WS1, WS2, and WS3
+After=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/home/grok-agent/projects/spot_workstation_automation
+ExecStart=/home/grok-agent/.local/bin/spot-morning-observe.sh

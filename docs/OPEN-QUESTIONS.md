@@ -16,8 +16,9 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 
 | ID | Question | Why it matters |
 | --- | --- | --- |
-| Q-010 | Is this specimen on Citrix + SPOTLauncher, SPOTWeb + ConnectLink, or both? | **Answered:** Citrix Receiver 4.9 LTSR + SPOTLauncher 1.1.169.3. No ConnectLink observed. |
-| Q-011 | Exact Citrix product/version, StoreFront/gateway URL, ICA vs HDX? | **Partly answered 2026-08-21.** WS3: Receiver 4.9 LTSR installed; SPOT shortcut still launches **RDS `mstsc`**. WS2: Citrix **Workspace 26.3.10.69**; after SPOT launch the live session is ICA **`wfica32`** published app `SPOT - Auto Login` (`MDCDDC.SPOT - Auto Login.ica`, `ClientName=VGCTX03COUNTER2`). WS1: no Citrix after reboot; `mstsc` only. Gateway still `rds.mydrycleaner.com`. |
+| Q-010 | Is this specimen on Citrix + SPOTLauncher, SPOTWeb + ConnectLink, or both? | **Answered, then refined 2026-08-21.** All three have SPOTLauncher 1.1.169.3. No ConnectLink. **Live mix:** WS1/WS3 launch SPOT via RDS `mstsc`; WS2 via Citrix ICA. Leftover Citrix autostart on WS2/WS3. **Replacement target (ADR-0009):** RDS, not Citrix. |
+| Q-011 | Exact Citrix product/version, StoreFront/gateway URL, ICA vs HDX? | **Answered for current PCs.** WS3: Receiver 4.9 LTSR installed, but SPOT is **RDS `mstsc`**. WS2: Workspace **26.3.10.69**, live SPOT is ICA **`wfica32`** / `SPOT - Auto Login`. WS1: `mstsc` only after reboot. Gateway `rds.mydrycleaner.com`. Citrix is leftover on some PCs, not the replacement method. |
+| Q-014 | Must existing WS2 be converted from Citrix to RDS before it is replaced, or only new PCs? | Not blocking replacement of WS1. Do not change WS2 in production to experiment. |
 | Q-012 | Where is workstation identity stored locally? | Shortcut name `SPOT (VGCTX03COUNTER3)`; launcher under `ZenithAdmin` AppData; args `"/launch:SPOT"`. Still need config files inside SPOTLauncher. |
 | Q-013 | Account Key / store / workstation names as used in SPOT | Local hint `VGCTX03COUNTER3`. Hosted Account Key unknown. |
 
@@ -45,3 +46,10 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | ID | Question | Why it matters |
 | --- | --- | --- |
 | Q-040 | Operator-facing store id and register id for this specimen? | **Answered for this PC:** SPOT license name `VGCTX03COUNTER3`. Store still `unassigned` until a store code is chosen. |
+
+## Store hours
+
+| ID | Question | Why it matters |
+| --- | --- | --- |
+| Q-050 | Weekday and Saturday opening times? | **Answered 2026-08-21.** Weekdays **06:00**, Saturday **08:00** America/Chicago. Morning observe timer follows this. |
+| Q-051 | Sunday hours (open time, or closed)? | Timer currently does **not** fire Sunday. |

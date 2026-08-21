@@ -24,3 +24,4 @@ Template:
 | [0006](0006-specimen-identity.md) | Placeholder store/register until operator supplies codes | accepted |
 | [0007](0007-sysmon-deferred.md) | Do not install Sysmon until approved | accepted |
 | [0008](0008-internal-notice.md) | Internal NOTICE, no public license | accepted |
+| [0009](0009-rds-not-citrix.md) | Replacement launch is SPOTLauncher RDS, not Citrix | accepted |

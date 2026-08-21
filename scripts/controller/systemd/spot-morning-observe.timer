@@ -1,0 +1,13 @@
+[Unit]
+Description=SPOT observation at store open (weekdays 06:00, Saturday 08:00 America/Chicago)
+
+[Timer]
+# Host clock is UTC. America/Chicago handles CDT/CST.
+# Weekdays 06:00, Saturday 08:00. No Sunday fire until hours are known.
+OnCalendar=Mon..Fri *-*-* 06:00:00 America/Chicago
+OnCalendar=Sat *-*-* 08:00:00 America/Chicago
+Persistent=true
+Unit=spot-morning-observe.service
+
+[Install]
+WantedBy=timers.target

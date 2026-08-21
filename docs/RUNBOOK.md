@@ -103,7 +103,23 @@ Not enabled by default.
 
 Do not disable WinRM after leaving the site unless collection is finished; the controller needs it.
 
-## 8. Secrets
+## 8. Morning observation (controller)
+
+User systemd timer `~/.config/systemd/user/spot-morning-observe.timer` (linger enabled for `grok-agent`). Source copies: `scripts/controller/systemd/`.
+
+- Weekdays: **06:00 America/Chicago**
+- Saturday: **08:00 America/Chicago**
+- Sunday: does not fire (hours unknown)
+
+The service copies collectors and starts `Start-MorningObserve.ps1` on WS1, WS2, and WS3. After editing the timer:
+
+```bash
+systemctl --user daemon-reload
+systemctl --user restart spot-morning-observe.timer
+systemctl --user list-timers --all
+```
+
+## 9. Secrets
 
 | Secret | Where it may live | Where it must not |
 | --- | --- | --- |

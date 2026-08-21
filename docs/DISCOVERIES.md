@@ -58,9 +58,11 @@ Same gateway `https://rds.mydrycleaner.com` and API `https://api.mydrycleaner.co
 | WS2 | VGCTX03COUNTER2 | **0** | 1 | Win11; Citrix Workspace present |
 | WS3 | VGCTX03COUNTER3 | 1 | 1 | Win11 |
 
-**Hypothesis, now strongly supported by the WS2 reboot:** `ConnectionMode` 0 launches Citrix ICA; `ConnectionMode` 1 launches RDS (`mstsc`). Count 2 on WS1 may reflect Epson + cash-drawer printer pair.
+**Discovery:** `ConnectionMode` 0 launches Citrix ICA; `ConnectionMode` 1 launches RDS (`mstsc`). Count 2 on WS1 may reflect Epson + cash-drawer printer pair.
 
-Watchers are running on **all three** PCs overnight; 6:00 a.m. job now includes WS3.
+**Operator (2026-08-21):** stations are configured differently on purpose of incomplete migration — they are **moving away from Citrix** and have not converted every PC. **Decision (ADR-0009):** automated replacements use the RDS / `ConnectionMode` 1 path (WS1 and WS3), not WS2’s Citrix ICA path. Do not install Receiver/Workspace on new builds. SPOTWeb + ConnectLink is still not observed and is not the target.
+
+Watchers are running on **all three** PCs. Open times (**operator**): weekdays **06:00**, Saturday **08:00** America/Chicago. Sunday hours unknown. The systemd timer follows those weekday/Saturday times and does not fire Sunday.
 
 ### Morning open 2026-08-21 (observer files + live check ~09:20 CDT)
 

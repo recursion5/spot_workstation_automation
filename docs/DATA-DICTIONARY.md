@@ -5,9 +5,10 @@
 | Field | Meaning |
 | --- | --- |
 | `run_id` | `YYYYMMDDTHHMMSSZ-<short>` UTC. Unique per collection. |
-| `store` | Business store identifier. Placeholder `unassigned` until operator supplies one. |
-| `register` | Workstation/register identifier. Placeholder `specimen-01`. |
-| `role` | Optional. Examples: `back-office`, `customer-facing`. Specimen expected `back-office`. |
+| `store` | Business store id: `vogue-krum`, `vogue-denton`, `zenith`. Menu labels are separate (`Vogue Krum`, …). |
+| `register` | Workstation id within a store: `front-counter`, `mark-in`, `mark-in-1`, `mark-in-2`. |
+| `role` | `front-counter`, `mark-in`, `mark-in-front`, `mark-in-back`. |
+| `spot_client_name` | Hosted SPOT `ClientName` when known (`VGCTX03COUNTERn` on Zenith). |
 | `target_hostname` | Windows computer name as observed. |
 | `collector` | Collector id (`printer_inventory`, `system_identity`, …). |
 | `status` | `success`, `failed`, `skipped`, `partial`. |

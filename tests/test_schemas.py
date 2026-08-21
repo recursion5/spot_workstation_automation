@@ -27,8 +27,8 @@ def test_run_manifest_fixture_validates():
         "run_id": "example",
         "schema": "run-manifest/v1",
         "status": "success",
-        "store": "unassigned",
-        "register": "specimen-01",
+        "store": "zenith",
+        "register": "mark-in-2",
     }
     jsonschema.validate(sample, schema)
 

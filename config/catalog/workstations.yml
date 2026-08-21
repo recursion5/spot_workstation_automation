@@ -1,0 +1,45 @@
+# USB replacement menus. Operator labels are requirements.
+# Zenith spot_client_name values are discoveries from the live PCs.
+# Vogue ClientNames are unknown — do not invent them.
+schema: workstation-catalog/v1
+stores:
+  - id: vogue-krum
+    number: 1
+    menu: Vogue Krum
+    workstations:
+      - id: front-counter
+        menu: Front Counter (cash drawer)
+        role: front-counter
+        spot_client_name: null
+      - id: mark-in
+        menu: Mark-In
+        role: mark-in
+        spot_client_name: null
+  - id: vogue-denton
+    number: 2
+    menu: Vogue Denton
+    workstations:
+      - id: front-counter
+        menu: Front Counter (cash drawer)
+        role: front-counter
+        spot_client_name: null
+      - id: mark-in
+        menu: Mark-In
+        role: mark-in
+        spot_client_name: null
+  - id: zenith
+    number: 3
+    menu: Zenith
+    workstations:
+      - id: front-counter
+        menu: Front Counter (cash drawer)
+        role: front-counter
+        spot_client_name: VGCTX03COUNTER1
+      - id: mark-in-1
+        menu: Mark-In 1 (front mark-in)
+        role: mark-in-front
+        spot_client_name: VGCTX03COUNTER2
+      - id: mark-in-2
+        menu: Mark-In 2 (back mark-in)
+        role: mark-in-back
+        spot_client_name: VGCTX03COUNTER3

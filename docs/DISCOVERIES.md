@@ -108,6 +108,22 @@ Watchers are running on **all three** PCs. Open times (**operator**): weekdays *
 - Prefetch `SPOTLAUNCHER.EXE` updated **17:23:25Z** — launcher ran and exited (not still in the process list). Matches operator “SPOT launched” plus `ConnectionMode` 0.
 - Observer started as `ZENITH-WS2$` at 17:22:47Z (boot task 12:22:23, logon task 12:22:29, last result 0). First post-reboot snapshot at 17:24:49 listed Receiver/wfcrun32 but **not** `wfica32` because the snapshot regex omitted it.
 
+### Store and workstation catalog (operator 2026-08-21)
+
+**Class: Requirement (labels) + Discovery (Zenith ClientName map).** Source: `config/catalog/workstations.yml`.
+
+| Store # | Store menu | Workstation menu | Live PC (Discovery) | `ClientName` |
+| --- | --- | --- | --- | --- |
+| 1 | Vogue Krum | Front Counter (cash drawer) | not inventoried | unknown |
+| 1 | Vogue Krum | Mark-In | not inventoried | unknown |
+| 2 | Vogue Denton | Front Counter (cash drawer) | not inventoried | unknown |
+| 2 | Vogue Denton | Mark-In | not inventoried | unknown |
+| 3 | Zenith | Front Counter (cash drawer) | ZENITH-WS1 | `VGCTX03COUNTER1` |
+| 3 | Zenith | Mark-In 1 (front mark-in) | ZENITH-WS2 | `VGCTX03COUNTER2` |
+| 3 | Zenith | Mark-In 2 (back mark-in) | ZENITH-WS3 | `VGCTX03COUNTER3` |
+
+Zenith mapping is operator 1/2/3 plus peripherals: only WS1 has `CashDrawer` and no `Tag`; WS2/WS3 have `Tag` and no cash drawer; WS3 was the non-customer-facing specimen (back mark-in). **Hypothesis (not in catalog):** Vogue license names might follow `VGCTX01` / `VGCTX02`; do not use that until a Vogue PC is read.
+
 ### Coordinated reboot comparison (2026-08-21)
 
 | PC | Boot (UTC) | Auto-logon | Citrix at logon | SPOT session | Operator |
@@ -118,8 +134,8 @@ Watchers are running on **all three** PCs. Open times (**operator**): weekdays *
 
 ## Other Zenith PCs (access in progress)
 
-- **ZENITH-WS2** `10.0.253.205`: WinRM works as `ZenithAdmin`. Windows 11 Pro, same MINIX NEO Z100-0dB. Shortcut `SPOT (VGCTX03COUNTER2).lnk`. Printers `Tag` (USB002), `EPSON` TM-T88V, Brother. No `Cash Drawer` printer. Citrix **Workspace 26.3.10.69** (WS3 has Receiver 4.9 LTSR). Post-reboot SPOT is ICA `wfica32` / published app `SPOT - Auto Login`, not `mstsc`. `ZenithUser` is logged on and is an administrator.
-- **ZENITH-WS1** `10.0.253.212`: WinRM works as **`Zenith Admin`** (space in the name; same password as the other Zenith PCs). Windows **10 Pro** build **17763** (version 1809). Hardware **MINIX N42C-4** (older than the NEO Z100 boxes). Shortcut `SPOT (VGCTX03COUNTER1).lnk`. Printers: `EPSON` TM-T88V, **`CashDrawer`** on the same Epson port, Brother. **No `Tag` printer.** SPOTLauncher 1.1.169.3 under `Zenith User` AppData. Citrix folder present. Shop-floor account `Zenith User` (space) is an administrator. **Best first replacement candidate** (old OS + old hardware + customer-facing cash drawer).
+- **ZENITH-WS2** (USB: **Mark-In 1 (front mark-in)**) `10.0.253.205`: WinRM works as `ZenithAdmin`. Windows 11 Pro, same MINIX NEO Z100-0dB. Shortcut `SPOT (VGCTX03COUNTER2).lnk`. Printers `Tag` (USB002), `EPSON` TM-T88V, Brother. No `Cash Drawer` printer. Citrix **Workspace 26.3.10.69** (WS3 has Receiver 4.9 LTSR). Post-reboot SPOT is ICA `wfica32` / published app `SPOT - Auto Login`, not `mstsc`. `ZenithUser` is logged on and is an administrator.
+- **ZENITH-WS1** (USB: **Front Counter (cash drawer)**) `10.0.253.212`: WinRM works as **`Zenith Admin`** (space in the name; same password as the other Zenith PCs). Windows **10 Pro** build **17763** (version 1809). Hardware **MINIX N42C-4** (older than the NEO Z100 boxes). Shortcut `SPOT (VGCTX03COUNTER1).lnk`. Printers: `EPSON` TM-T88V, **`CashDrawer`** on the same Epson port, Brother. **No `Tag` printer.** SPOTLauncher 1.1.169.3 under `Zenith User` AppData. Citrix folder present. Shop-floor account `Zenith User` (space) is an administrator. **Best first replacement candidate** (old OS + old hardware + cash drawer).
 
 ## Specimen ZENITH-WS3 (observed 2026-08-19, run `20260819T203635Z-43b3934a`)
 

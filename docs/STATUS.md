@@ -3,9 +3,9 @@
 **Phase:** 1 — discovery (remote access working)  
 **Date:** 2026-08-21  
 **Specimen:** `ZENITH-WS3` at `10.0.253.204`  
-**Store:** Zenith (operator: two Vogue stores exist separately; this site is Zenith)  
-**SPOT license name (this PC):** `VGCTX03COUNTER3`  
-**Identity placeholders:** `store=unassigned`, `register=VGCTX03COUNTER3`, `role=back-office`  
+**Store:** Store 3 **Zenith** (`store=zenith`)  
+**This PC:** Mark-In 2 (back mark-in) — `VGCTX03COUNTER3`  
+**Identity:** `store=zenith`, `register=mark-in-2`, `role=mark-in-back`  
 **Provisioning:** not started
 
 ## Done
@@ -18,11 +18,11 @@
 
 ## Workstations
 
-| Windows name | IP | SPOT name | OS | Remote | Notes |
+| USB menu | Windows name | IP | SPOT name | OS | Notes |
 | --- | --- | --- | --- | --- | --- |
-| ZENITH-WS3 | 10.0.253.204 | VGCTX03COUNTER3 | Win11 | yes (`ZenithAdmin`) | First specimen |
-| ZENITH-WS2 | 10.0.253.205 | VGCTX03COUNTER2 | Win11 | yes (`ZenithAdmin`) | Tag on USB002; Citrix **Workspace** shortcut |
-| ZENITH-WS1 | 10.0.253.212 | VGCTX03COUNTER1 | **Win10 Pro 1809** (17763) | yes (`Zenith Admin`) | MINIX N42C-4. Has **CashDrawer**. Replacement candidate. |
+| Mark-In 2 (back mark-in) | ZENITH-WS3 | 10.0.253.204 | VGCTX03COUNTER3 | Win11 | First specimen |
+| Mark-In 1 (front mark-in) | ZENITH-WS2 | 10.0.253.205 | VGCTX03COUNTER2 | Win11 | Tag on USB002; Citrix leftover |
+| Front Counter (cash drawer) | ZENITH-WS1 | 10.0.253.212 | VGCTX03COUNTER1 | **Win10 Pro 1809** | CashDrawer. Replacement candidate. |
 
 ## In progress
 
@@ -54,5 +54,5 @@
 
 1. Saturday 2026-08-22 open is **08:00** CDT (watchers start then). Weekdays remain 06:00.
 2. Optional later: a real sale on WS1 if we should capture the cash-drawer **kick**.
-3. Decide store/register **menu labels** for the USB installer (Q-040, Q-060, Q-061). Sunday hours still unknown (Q-051).
-4. Phase 1 write-up `docs/DISCOVERY-REPORT.md` can be drafted. Replacement **implementation** stays later phases: ADR-0009 (RDS, not Citrix) + ADR-0010 (USB → store → workstation).
+3. USB menus are recorded (ADR-0010 catalog). Vogue SPOT license names still unknown (Q-063). Sunday hours unknown (Q-051).
+4. Phase 1 write-up `docs/DISCOVERY-REPORT.md` can be drafted. Replacement **implementation** stays later phases.

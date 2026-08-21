@@ -45,10 +45,11 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 
 | ID | Question | Why it matters |
 | --- | --- | --- |
-| Q-040 | Operator-facing store id and register id for this specimen? | **Answered for this PC:** SPOT license name `VGCTX03COUNTER3`. Store still `unassigned` until a store code is chosen. USB store menu needs the official **store label** (Q-060). |
-| Q-060 | What labels should the USB **store** menu show (Zenith, Vogue …)? | Needed for ADR-0010. Technical `ClientName` can stay `VGCTX03COUNTERn`. |
-| Q-061 | Per-store **workstation** menu: names, roles (cash drawer vs tag vs back-office), and which SPOT `ClientName` each row maps to? | Zenith draft: Counter1=`VGCTX03COUNTER1` cash-drawer; Counter2=`VGCTX03COUNTER2` tag; Counter3=`VGCTX03COUNTER3` back-office. Confirm labels. Vogue unknown. |
+| Q-040 | Operator-facing store id and register id for this specimen? | **Answered 2026-08-21.** Store 3 **Zenith**, workstation **Mark-In 2 (back mark-in)**. Machine ids `store=zenith`, `register=mark-in-2`. SPOT `VGCTX03COUNTER3`. |
+| Q-060 | What labels should the USB **store** menu show? | **Answered.** Store 1 Vogue Krum; Store 2 Vogue Denton; Store 3 Zenith. |
+| Q-061 | Per-store **workstation** menu labels and Zenith `ClientName` map? | **Answered for labels.** Zenith: Front Counter → `VGCTX03COUNTER1`; Mark-In 1 → `VGCTX03COUNTER2`; Mark-In 2 → `VGCTX03COUNTER3`. Vogue: Front Counter (cash drawer), Mark-In. Catalog: `config/catalog/workstations.yml`. |
 | Q-062 | After the USB choice, is Windows setup fully offline on the stick, or does it pull the rest from the NAS (`zenith-dsm`) once on the LAN? | Affects USB size, secret handling, and whether a store can rebuild if the NAS is down. |
+| Q-063 | SPOT `ClientName` / license names for Vogue Krum and Vogue Denton workstations? | Not observed. Do not assume `VGCTX01…` / `VGCTX02…` without a specimen. |
 
 ## Store hours
 

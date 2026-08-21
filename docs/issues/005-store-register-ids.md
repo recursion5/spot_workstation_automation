@@ -1,12 +1,10 @@
 # 005 — Store and register identifiers for specimen-01
 
 **Class:** Open question  
-**Status:** open
+**Status:** answered for Zenith menus (2026-08-21); Vogue SPOT names still open
 
-Placeholder: `store=unassigned`, `register=specimen-01`, `role=back-office` (ADR-0006).
+Specimen: `store=zenith`, `register=mark-in-2`, `role=mark-in-back`, `VGCTX03COUNTER3`.
 
-Need operator-facing store/register codes. Redact unique provider Account Key values in git-safe output.
+USB menus: issue 006 / `config/catalog/workstations.yml`. Vogue `ClientName` is Q-063. Redact unique provider Account Key values in git-safe output.
 
-USB replacement menus (ADR-0010) will use these as labels. See issue 006 and Q-060/Q-061.
-
-Refs: Q-040.
+Refs: Q-040, ADR-0006.

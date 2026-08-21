@@ -1,13 +1,13 @@
 ---
 # No real credentials. Copy ideas into ansible/inventory/local/hosts.yml.
 specimen:
-  store: unassigned
-  register: specimen-01
-  role: back-office
+  store: zenith
+  register: mark-in-2
+  role: mark-in-back
   ansible_host: 192.0.2.10
   ansible_user: Administrator
   notes:
-    - not customer-facing
+    - USB menu: Zenith / Mark-In 2 (back mark-in)
     - expected peripherals: USB tag printer, invoice printer, barcode scanner
     - cash drawer not expected
     - payments not handled on this PC

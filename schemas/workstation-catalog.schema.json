@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://local.spot-discovery/schemas/workstation-catalog.json",
+  "title": "USB store and workstation catalog",
+  "type": "object",
+  "required": ["schema", "stores"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "workstation-catalog/v1"
+    },
+    "stores": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "number", "menu", "workstations"],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9-]+$"
+          },
+          "number": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "menu": { "type": "string", "minLength": 1 },
+          "workstations": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "required": ["id", "menu", "role", "spot_client_name"],
+              "additionalProperties": false,
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[a-z0-9-]+$"
+                },
+                "menu": { "type": "string", "minLength": 1 },
+                "role": { "type": "string", "minLength": 1 },
+                "spot_client_name": {
+                  "type": ["string", "null"]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

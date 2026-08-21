@@ -80,6 +80,14 @@ Directly observed facts, or facts taken from named vendor documentation. Interpr
 - Console session after boot: **`ZenithUser`**. Local accounts are `ZenithUser` and `ZenithAdmin` (plus disabled built-ins). No `VogueUser` on this PC.
 - **Operator correction:** “Vogue” is a **different store** (two Vogue locations and one Zenith). This specimen is the Zenith store. Shop-floor account here is `ZenithUser`.
 - **Operator-reported operations:** SPOT is **not** left running overnight on any Zenith workstation. The hosted session also **auto-disconnects after idle**. Morning activity (especially WS1/WS2) starts when staff launch SPOT again, not from a leftover overnight session. Idle timeout length is not yet measured.
+
+### Live check 2026-08-20 ~20:12 CDT (observer file log failed)
+
+The 06:00 CDT systemd job **did start** watchers on WS1/WS2, but they did not write snapshot files (tooling bug). A live process check later the same day still showed:
+
+- **WS1** `Zenith User` logged on. Two `mstsc.exe` since **06:07 CDT** (11:07 UTC). No Citrix processes. Epson `PCSVC` + spooler from last boot (2026-08-13). Matches RDS launch at open on the cash-drawer station.
+- **WS2** `ZenithUser` logged on. No `mstsc` at 20:12 CDT (SPOT likely closed / idle-disconnected). Citrix Receiver stack running since boot 2026-08-13.
+- **WS3** `ZenithUser` logged on. `mstsc` since **09:59 CDT**. Citrix stack since last night’s reboot.
 - Winlogon still `AutoAdminLogon=0` and no `DefaultPassword` registry value. `DisableCAD=1` (no Ctrl+Alt+Del). Auto-logon happened anyway.
 - **Hypothesis:** automatic sign-in is stored somewhere other than the classic `AutoAdminLogon=1` + visible DefaultPassword (for example LSA secrets / netplwiz). Not proven.
 - Remote access as `ZenithAdmin` came back after the reboot without re-running the setup script. (WinRM took about a minute to accept connections.)

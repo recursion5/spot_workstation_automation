@@ -29,7 +29,7 @@ Hostname stays in the run manifest as observed. GitHub issues should prefer the 
 
 This specimen (ZENITH-WS3) is **store `zenith`**, register **`mark-in-2`**, role **`mark-in-back`**, SPOT `ClientName` **`VGCTX03COUNTER3`**. Catalog: `config/catalog/workstations.yml`.
 
-Zenith `ClientName` mapping to COUNTER1/2/3 follows operator 1/2/3 plus observed peripherals (cash drawer only on COUNTER1; tag printers on COUNTER2/3). Vogue `ClientName` values are still unknown.
+**Update 2026-08-21 (license names):** Operator: SPOT license names are `VGCTXCOUNTERx`. Live Zenith files use the store number in the string (`VGCTX03COUNTERn`). Catalog form is **`VGCTXssCOUNTERn`** with `ss` = store 01/02/03 and `n` = workstation order (Front Counter = 1).
 
 ## Alternatives considered
 
@@ -37,4 +37,4 @@ Zenith `ClientName` mapping to COUNTER1/2/3 follows operator 1/2/3 plus observed
 
 ## Consequences
 
-New collection runs should use `store=zenith` rather than `unassigned`. USB menus use the `menu` strings exactly. Do not invent Vogue SPOT license names.
+New collection runs should use `store=zenith` rather than `unassigned`. USB menus use the `menu` strings exactly. SPOT `ClientName` is `VGCTXssCOUNTERn`.

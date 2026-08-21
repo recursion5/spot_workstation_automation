@@ -39,15 +39,23 @@ def test_catalog_matches_operator_menus():
     ]
 
 
-def test_zenith_client_names_known_vogue_unknown():
+def test_spot_client_names_follow_store_and_counter():
     data = _load()
-    by_id = {s["id"]: s for s in data["stores"]}
-    zenith = {w["id"]: w["spot_client_name"] for w in by_id["zenith"]["workstations"]}
-    assert zenith == {
-        "front-counter": "VGCTX03COUNTER1",
-        "mark-in-1": "VGCTX03COUNTER2",
-        "mark-in-2": "VGCTX03COUNTER3",
+    expected = {
+        ("vogue-krum", "front-counter"): "VGCTX01COUNTER1",
+        ("vogue-krum", "mark-in"): "VGCTX01COUNTER2",
+        ("vogue-denton", "front-counter"): "VGCTX02COUNTER1",
+        ("vogue-denton", "mark-in"): "VGCTX02COUNTER2",
+        ("zenith", "front-counter"): "VGCTX03COUNTER1",
+        ("zenith", "mark-in-1"): "VGCTX03COUNTER2",
+        ("zenith", "mark-in-2"): "VGCTX03COUNTER3",
     }
-    for store_id in ("vogue-krum", "vogue-denton"):
-        for w in by_id[store_id]["workstations"]:
-            assert w["spot_client_name"] is None
+    got = {
+        (s["id"], w["id"]): w["spot_client_name"]
+        for s in data["stores"]
+        for w in s["workstations"]
+    }
+    assert got == expected
+    for store in data["stores"]:
+        for i, w in enumerate(store["workstations"], start=1):
+            assert w["spot_client_name"] == f"VGCTX{store['number']:02d}COUNTER{i}"

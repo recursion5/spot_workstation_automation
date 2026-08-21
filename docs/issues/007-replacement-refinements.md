@@ -14,6 +14,7 @@ Locked enough to design toward:
 | Admin + SPOT on a standard user | Yes (intent) | Account **names** for new builds (`ZenithAdmin`/`ZenithUser` vs generic). Password policy. Do not change live PCs. |
 | Secrets on NAS; SPOT secrets in the build | Yes | Share path, who can read, how the USB authenticates to the NAS, which files (launcher settings, RDS, printer). Q-062/Q-074. |
 | Skip retail Windows 11 Pro OOBE | Yes | Product key source (COA / digital license / unattend). Language/region/privacy screens. Local account creation during unattend. |
-| USB store → workstation menus | Yes (ADR-0010) | Vogue `ClientName` values (Q-063). |
+| USB store → workstation menus | Yes (ADR-0010) | Vogue printers still by analogy until a Vogue PC is read. |
+| SPOT license / `ClientName` | Yes — `VGCTXssCOUNTERn` | Wallpaper whether to show this string or the menu name (Q-072). |
 
 Refs: ADR-0011, Q-070–Q-075, Q-032, Q-062.

@@ -20,7 +20,7 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | Q-011 | Exact Citrix product/version, StoreFront/gateway URL, ICA vs HDX? | **Answered for current PCs.** WS3: Receiver 4.9 LTSR installed, but SPOT is **RDS `mstsc`**. WS2: Workspace **26.3.10.69**, live SPOT is ICA **`wfica32`** / `SPOT - Auto Login`. WS1: `mstsc` only after reboot. Gateway `rds.mydrycleaner.com`. Citrix is leftover on some PCs, not the replacement method. |
 | Q-014 | Must existing WS2 be converted from Citrix to RDS before it is replaced, or only new PCs? | Not blocking replacement of WS1. Do not change WS2 in production to experiment. |
 | Q-012 | Where is workstation identity stored locally? | Shortcut name `SPOT (VGCTX03COUNTER3)`; launcher under `ZenithAdmin` AppData; args `"/launch:SPOT"`. Still need config files inside SPOTLauncher. |
-| Q-013 | Account Key / store / workstation names as used in SPOT | Local hint `VGCTX03COUNTER3`. Hosted Account Key unknown. |
+| Q-013 | Account Key / store / workstation names as used in SPOT | Workstation/`ClientName`: `VGCTXssCOUNTERn`. Hosted Account Key unknown. |
 
 ## Peripherals
 
@@ -47,9 +47,9 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | --- | --- | --- |
 | Q-040 | Operator-facing store id and register id for this specimen? | **Answered 2026-08-21.** Store 3 **Zenith**, workstation **Mark-In 2 (back mark-in)**. Machine ids `store=zenith`, `register=mark-in-2`. SPOT `VGCTX03COUNTER3`. |
 | Q-060 | What labels should the USB **store** menu show? | **Answered.** Store 1 Vogue Krum; Store 2 Vogue Denton; Store 3 Zenith. |
-| Q-061 | Per-store **workstation** menu labels and Zenith `ClientName` map? | **Answered for labels.** Zenith: Front Counter → `VGCTX03COUNTER1`; Mark-In 1 → `VGCTX03COUNTER2`; Mark-In 2 → `VGCTX03COUNTER3`. Vogue: Front Counter (cash drawer), Mark-In. Catalog: `config/catalog/workstations.yml`. |
+| Q-061 | Per-store **workstation** menu labels and `ClientName` map? | **Answered.** Pattern `VGCTXssCOUNTERn` (operator: `VGCTXCOUNTERx`; live Zenith files include store `03`). Catalog: `config/catalog/workstations.yml`. |
 | Q-062 | After the USB choice, is Windows setup fully offline on the stick, or does it pull the rest from the NAS once on the LAN? | **Leaning pull-from-NAS** (secrets must come from there). Still open: what stays on the USB if the NAS is down. |
-| Q-063 | SPOT `ClientName` / license names for Vogue Krum and Vogue Denton workstations? | Not observed. Do not assume `VGCTX01…` / `VGCTX02…` without a specimen. |
+| Q-063 | SPOT `ClientName` / license names for Vogue Krum and Vogue Denton workstations? | **Answered 2026-08-21.** Same pattern: Krum `VGCTX01COUNTER1/2`, Denton `VGCTX02COUNTER1/2`. Zenith on disk: `VGCTX03COUNTER1/2/3`. |
 | Q-070 | Windows **computer name** pattern on replacements (keep `ZENITH-WS1` style, or derive from store + role)? | Wallpaper and inventory both need a rule. |
 | Q-071 | Retail Windows 11 Pro **product key** on new boxes (COA sticker, OEM digital entitlement, or unattend key)? | Skip-OOBE still has to activate. |
 | Q-072 | Wallpaper **exact strings** and layout: store menu name vs id; SPOT ID = `VGCTX03COUNTER3` or “Mark-In 2 (back mark-in)”; font/size/position? | Operator: design still to refine. |

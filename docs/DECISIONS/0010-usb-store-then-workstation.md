@@ -18,10 +18,10 @@ Official menus (**Requirement**, operator 2026-08-21), in `config/catalog/workst
 
 | Store menu | Workstation menu | `spot_client_name` |
 | --- | --- | --- |
-| Vogue Krum | Front Counter (cash drawer) | unknown |
-| Vogue Krum | Mark-In | unknown |
-| Vogue Denton | Front Counter (cash drawer) | unknown |
-| Vogue Denton | Mark-In | unknown |
+| Vogue Krum | Front Counter (cash drawer) | `VGCTX01COUNTER1` |
+| Vogue Krum | Mark-In | `VGCTX01COUNTER2` |
+| Vogue Denton | Front Counter (cash drawer) | `VGCTX02COUNTER1` |
+| Vogue Denton | Mark-In | `VGCTX02COUNTER2` |
 | Zenith | Front Counter (cash drawer) | `VGCTX03COUNTER1` |
 | Zenith | Mark-In 1 (front mark-in) | `VGCTX03COUNTER2` |
 | Zenith | Mark-In 2 (back mark-in) | `VGCTX03COUNTER3` |
@@ -47,6 +47,6 @@ The replacement process is **USB boot → store menu → workstation menu → ap
 
 ## Consequences
 
-- Catalog labels are locked. Phase 3 still must not start until desired-state per row is evidence-based (Zenith yes; Vogue ClientNames/peripherals still open).
+- Catalog labels and `VGCTXssCOUNTERn` license names are locked. Vogue **peripherals** are still by analogy until a Vogue PC is read.
 - First replacement candidate is Zenith **Front Counter (cash drawer)** (current ZENITH-WS1, Win10).
-- Open questions: Vogue SPOT `ClientName` values (Q-063), Q-062 (offline USB vs NAS pull), UEFI USB boot on replacement hardware (Assumption: yes on MINIX/NUC-class boxes).
+- Open questions: Q-062 (offline USB vs NAS pull), UEFI USB boot on replacement hardware (Assumption: yes on MINIX/NUC-class boxes).

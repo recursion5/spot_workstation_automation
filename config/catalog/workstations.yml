@@ -1,6 +1,7 @@
 # USB replacement menus. Operator labels are requirements.
-# Zenith spot_client_name values are discoveries from the live PCs.
-# Vogue ClientNames are unknown — do not invent them.
+# License pattern VGCTXssCOUNTERn (operator: VGCTXCOUNTERx).
+# ss = store number 01/02/03. n = workstation 1/2/3.
+# Zenith (03) values are also on the live PCs.
 schema: workstation-catalog/v1
 stores:
   - id: vogue-krum
@@ -10,11 +11,11 @@ stores:
       - id: front-counter
         menu: Front Counter (cash drawer)
         role: front-counter
-        spot_client_name: null
+        spot_client_name: VGCTX01COUNTER1
       - id: mark-in
         menu: Mark-In
         role: mark-in
-        spot_client_name: null
+        spot_client_name: VGCTX01COUNTER2
   - id: vogue-denton
     number: 2
     menu: Vogue Denton
@@ -22,11 +23,11 @@ stores:
       - id: front-counter
         menu: Front Counter (cash drawer)
         role: front-counter
-        spot_client_name: null
+        spot_client_name: VGCTX02COUNTER1
       - id: mark-in
         menu: Mark-In
         role: mark-in
-        spot_client_name: null
+        spot_client_name: VGCTX02COUNTER2
   - id: zenith
     number: 3
     menu: Zenith

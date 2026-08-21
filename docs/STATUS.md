@@ -55,6 +55,6 @@
 
 1. Saturday 2026-08-22 open is **08:00** CDT (watchers start then). Weekdays remain 06:00.
 2. Optional later: a real sale on WS1 if we should capture the cash-drawer **kick**.
-3. USB menus are recorded. Vogue SPOT license names still unknown (Q-063). Sunday hours unknown (Q-051).
+3. USB menus and `VGCTXssCOUNTERn` license names are recorded (Q-063 closed). Sunday hours unknown (Q-051).
 4. Replacement **implementation** stays later phases. Open refinements: wallpaper design, NAS share path, account names, UPS percent (issue 007).
 5. Phase 1 write-up `docs/DISCOVERY-REPORT.md` can be drafted.

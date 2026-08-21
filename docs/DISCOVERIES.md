@@ -126,15 +126,15 @@ RustDesk is installed under `C:\Program Files\RustDesk\` with a service and Star
 
 | Store # | Store menu | Workstation menu | Live PC (Discovery) | `ClientName` |
 | --- | --- | --- | --- | --- |
-| 1 | Vogue Krum | Front Counter (cash drawer) | not inventoried | unknown |
-| 1 | Vogue Krum | Mark-In | not inventoried | unknown |
-| 2 | Vogue Denton | Front Counter (cash drawer) | not inventoried | unknown |
-| 2 | Vogue Denton | Mark-In | not inventoried | unknown |
+| 1 | Vogue Krum | Front Counter (cash drawer) | not inventoried | `VGCTX01COUNTER1` |
+| 1 | Vogue Krum | Mark-In | not inventoried | `VGCTX01COUNTER2` |
+| 2 | Vogue Denton | Front Counter (cash drawer) | not inventoried | `VGCTX02COUNTER1` |
+| 2 | Vogue Denton | Mark-In | not inventoried | `VGCTX02COUNTER2` |
 | 3 | Zenith | Front Counter (cash drawer) | ZENITH-WS1 | `VGCTX03COUNTER1` |
 | 3 | Zenith | Mark-In 1 (front mark-in) | ZENITH-WS2 | `VGCTX03COUNTER2` |
 | 3 | Zenith | Mark-In 2 (back mark-in) | ZENITH-WS3 | `VGCTX03COUNTER3` |
 
-Zenith mapping is operator 1/2/3 plus peripherals: only WS1 has `CashDrawer` and no `Tag`; WS2/WS3 have `Tag` and no cash drawer; WS3 was the non-customer-facing specimen (back mark-in). **Hypothesis (not in catalog):** Vogue license names might follow `VGCTX01` / `VGCTX02`; do not use that until a Vogue PC is read.
+Zenith mapping is operator 1/2/3 plus peripherals: only WS1 has `CashDrawer` and no `Tag`; WS2/WS3 have `Tag` and no cash drawer; WS3 was the non-customer-facing specimen (back mark-in). **Decision:** license names are `VGCTXssCOUNTERn` (operator shorthand `VGCTXCOUNTERx`). The `03` in the live Zenith `ClientName` is store 3. Vogue rows use `01` and `02`; those two stores have not been read on disk yet.
 
 ### Coordinated reboot comparison (2026-08-21)
 

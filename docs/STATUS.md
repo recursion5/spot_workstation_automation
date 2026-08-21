@@ -31,7 +31,7 @@
 - Printer/PnP correlation (logical names captured; USB mapping still partly hypothesis).
 - Reboot test: `ZenithUser` auto-signed in; WinRM still works. Auto-logon mechanism still not the classic registry switch.
 - Replacement policy notes recorded (ADR-0011): UPS, RustDesk `dsm.vogueclean.int`, identity wallpaper, admin + standard SPOT user, secrets on NAS, skip retail OOBE. Refinement list: [issue 007](issues/007-replacement-refinements.md).
-- **WS1 print outage:** invoices + Brother reports; queues empty. Local printers look healthy; likely SPOT RDS virtual-channel / hosted printer map. See DISCOVERIES.
+- **WS1 print outage:** Windows test pages work; WS3 SPOT invoice works. Close/reopen and in-app logoff did **not** start a new `mstsc` (same pid since 2:56 p.m. reboot). Likely sticky RDS session for `VGCTX03COUNTER1`. See DISCOVERIES.
 
 ## Morning observation
 

@@ -110,18 +110,18 @@ Watchers are running on **all three** PCs. Open times (**operator**): weekdays *
 
 ### WS1 print outage (operator 2026-08-21, invoices + Brother reports)
 
-**Class: Discovery** (read-only WinRM ~20:10Z). **Hypothesis** on cause.
+**Class: Discovery.** Cause still a **hypothesis**, narrowed by operator tests.
 
-Operator: ZENITH-WS1 (Front Counter) cannot print invoices (Epson thermal) or reports (Brother). Jobs never appear in Windows queues.
+Operator: ZENITH-WS1 (Front Counter) cannot print invoices (Epson) or reports (Brother) from SPOT. Jobs never appear in Windows queues. **Windows test pages to both printers succeeded.** **SPOT invoice print from WS3 succeeded.** Usual floor fix is a local reboot (often works); they already rebooted, closed/reopened SPOT, and logged off **inside** SPOT, then relaunched. Problem remained.
 
-Live state after a **second** reboot `2026-08-21T19:56:06Z` (2:56 p.m. CDT; first coordinated reboot was 12:17):
+Live state after the **second** Windows reboot `2026-08-21T19:56:06Z` (2:56 p.m. CDT):
 
-- Spooler running. Epson `PCSVC` running. Printers `EPSON` (`ESDPRT001`, USB TM-T88V), `CashDrawer` (same port), and `Brother HL-L2380DW` (WSD) all `Normal`, `WorkOffline=False`, **0 jobs**.
-- USB Epson controller `VID_04B8&PID_0202` OK. Brother WSD/IPP device OK.
-- PrintService Operational and Admin: **no events** in the last 8 hours (same empty log we saw even on successful tag prints elsewhere).
-- SPOT RDS is up: `mstsc -Embedding` to `rds.mydrycleaner.com` (`68.220.19.78:443`). `ClientName` still `VGCTX03COUNTER1`. `redirectprinters:i:0`. Command line includes `/rdsvirtualchannel`. Loaded: `SBSRDPAddin_x64.dll` and Tricerat ScrewDrivers `sdrdp64.dll`.
+- Local printers `EPSON`, `CashDrawer`, Brother all `Normal`, 0 jobs. Spooler + Epson `PCSVC` running. USB Epson and Brother WSD present.
+- PrintService Operational/Admin empty (jobs from SPOT often never show here even when printing works).
+- SPOT RDS: `mstsc -Embedding` to `rds.mydrycleaner.com`. `ClientName` / RDP user `VGCTX03COUNTER1`. `redirectprinters:i:0`; `/rdsvirtualchannel`; loaded `SBSRDPAddin_x64.dll` + ScrewDrivers `sdrdp64.dll`.
+- **Re-check 20:28Z after close/reopen and in-app logoff:** still the **same** `mstsc` pid 9836 created **19:56:55Z** (boot). TCP still to `68.220.19.78:443`. Close/reopen did not start a new client process.
 
-**Hypothesis:** this is not two independent local printer failures (USB thermal and network laser died together, both queues look healthy). SPOT is supposed to print through the **RDS virtual channel** (SBS add-in / ScrewDrivers), not native RDP printer redirection. If that channel or the **hosted workstation printer map** for `VGCTX03COUNTER1` is empty/wrong, jobs never hit Windows and nothing comes out. A Windows test page to `EPSON` and Brother would confirm the local stack; not sent (would waste paper).
+**Hypothesis:** Windows and the physical printers are fine. WS3 proves the hosted farm can print. Front Counter uses RDS user `VGCTX03COUNTER1`; in-app SPOT logoff is the cashier login, not a Windows/RDS logoff of that user. A PC reboot only drops the local client; the **server session can stay disconnected and be reattached**, which matches “reboot usually works” (session already gone) vs this time (session still there, print virtual channel stuck). Next real reset is logging off or resetting **`VGCTX03COUNTER1` on the RDS host**, which we cannot do from this PC. Alternative still open: hosted workstation printer map for COUNTER1 only.
 
 ### UPS, RustDesk, wallpaper (read 2026-08-21, no changes)
 

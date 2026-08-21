@@ -30,7 +30,8 @@ try {
         $n = [string]$e.ProcessName
         if ($n -match "SPOT|mstsc|Citrix|Receiver|wfcrun|SelfService|spool|EPSON|Star|PCSVC|redirector|SPOTLauncher") {
             $line = (@{ t=[DateTime]::UtcNow.ToString("o"); event="start"; process=$n; pid=$e.ProcessId; parent=$e.ParentProcessId } | ConvertTo-Json -Compress)
-            Add-Content -Path $using:out -Value $line -Encoding UTF8
+            $log = Join-Path $env:ProgramData ("spot-discovery\observe\" + [DateTime]::UtcNow.ToString("yyyyMMdd") + "\process-events.jsonl")
+            Add-Content -Path $log -Value $line -Encoding UTF8
         }
     } | Out-Null
 } catch {}
@@ -49,7 +50,14 @@ New-Item -ItemType Directory -Path (Split-Path $loopPath) -Force | Out-Null
 $utf8 = New-Object System.Text.UTF8Encoding $false
 [IO.File]::WriteAllText($loopPath, $loop, $utf8)
 
+$errLog = Join-Path $dir 'observer-stderr.txt'
+$outLog = Join-Path $dir 'observer-stdout.txt'
 $p = Start-Process -FilePath "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" `
     -ArgumentList @('-NoProfile', '-ExecutionPolicy', 'Bypass', '-File', $loopPath) `
-    -WindowStyle Hidden -PassThru
-"MORNING_OBSERVE_STARTED computer=$env:COMPUTERNAME pid=$($p.Id) dir=$dir"
+    -WindowStyle Hidden -RedirectStandardError $errLog -RedirectStandardOutput $outLog -PassThru
+Start-Sleep -Seconds 2
+$alive = Get-Process -Id $p.Id -ErrorAction SilentlyContinue
+"MORNING_OBSERVE_STARTED computer=$env:COMPUTERNAME pid=$($p.Id) dir=$dir alive=$([bool]$alive)"
+if (-not $alive -and (Test-Path $errLog)) {
+    Get-Content $errLog
+}

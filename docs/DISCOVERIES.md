@@ -139,14 +139,26 @@ RustDesk is installed under `C:\Program Files\RustDesk\` with a service and Star
 
 ### Zenith non-SPOT PCs (operator 2026-08-22)
 
-**Class: Requirement** until WinRM. Both at Zenith, currently Windows 10 Pro; replacements Windows 11 Pro. No SPOT.
+**Class: Requirement** (rebuild) + **Discovery** (video wall live). Both at Zenith. Replacements Windows 11 Pro. No SPOT.
 
-| USB menu | Purpose |
-| --- | --- |
-| Management desk | Management/office |
-| Video wall | Synology Surveillance Station Client, camera feeds |
+| USB menu | Purpose | Live PC |
+| --- | --- | --- |
+| Management desk | Management/office | WinRM not yet |
+| Video wall | Synology Surveillance Station Client | **Z-SSTATION** `10.0.253.164` |
 
-Catalog ids: `management-desk`, `video-wall`. Hostnames/IPs unknown until WinRM.
+#### Video wall Z-SSTATION (WinRM 2026-08-22)
+
+**Class: Discovery.**
+
+- Windows **10 Pro** build **19044**. Ethernet `10.0.253.164/24`. DNS `Z-SSTATION.vogueclean.int`.
+- Remoting user **`Zenith Admin`** (space), same pattern as WS1. Shop-floor **`Zenith User` is not an administrator** (unlike the POS PCs).
+- Console: `Zenith User` logged on. Winlogon **`AutoAdminLogon=1`**, `DefaultUserName=Zenith User`, `DisableCAD=1` (classic auto-logon; POS PCs had AutoAdminLogon=0).
+- **Synology Surveillance Station Client 2.2.1.2565** at `C:\Program Files\Synology\SynologySurveillanceStationClient`, running, in Zenith User Startup.
+- RustDesk 1.4.9 installed and running; config still `10.0.253.110` (not `dsm.vogueclean.int`).
+- HID UPS battery present. BIOS American Megatrends 5.13; board strings empty (“Default string”).
+- No SPOT / Citrix / mstsc.
+
+**Hypothesis:** video-wall replacements should auto-logon a standard user and start Surveillance Station Client. Management desk still unknown.
 
 ### Store and workstation catalog (operator 2026-08-21)
 

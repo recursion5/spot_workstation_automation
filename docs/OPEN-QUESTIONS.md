@@ -53,11 +53,11 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | Q-070 | Windows **computer name** pattern on replacements (keep `ZENITH-WS1` style, or derive from store + role)? | Wallpaper and inventory both need a rule. |
 | Q-071 | Retail Windows 11 Pro **product key** on new boxes (COA sticker, OEM digital entitlement, or unattend key)? | Skip-OOBE still has to activate. |
 | Q-072 | Wallpaper **exact strings** and layout: store menu name vs id; SPOT ID = `VGCTX03COUNTER3` or “Mark-In 2 (back mark-in)”; font/size/position? | Operator: design still to refine. |
-| Q-073 | Replacement **account names** (reuse `ZenithAdmin`/`ZenithUser`, store-prefixed, or generic)? | Standard user must auto-logon; admin is for WinRM/RustDesk. |
+| Q-073 | Replacement **account names** (reuse `ZenithAdmin`/`ZenithUser`, store-prefixed, or generic)? | Live mix: POS WS2/WS3 `ZenithAdmin`/`ZenithUser`; WS1 and video wall `Zenith Admin`/`Zenith User` (space). Video wall shop-floor user is **not** admin. |
 | Q-074 | NAS **share path** and how the USB authenticates to read secrets? | `dsm.vogueclean.int` is the host; folder and ACL unknown. Same box as `10.0.253.110` / `zenith-dsm.vogueclean.int`? |
 | Q-075 | UPS **critical percent** and action (shut down vs hibernate); vendor software vs Windows HID; sleep-on-battery allowed? | Today: low 10% do nothing, critical 5% **hibernate** on all three; WS1 cannot hibernate. |
-| Q-080 | The two extra **non-SPOT** Windows rebuilds: which store, USB menu label, role/purpose, current hostname/IP? | **Answered for identity.** Zenith **Management desk** and **Video wall**. Both Win10 Pro today; replacements Win11 Pro. Hostnames/IPs pending WinRM. |
-| Q-081 | Desired state for non-SPOT PCs besides shared ADR-0011 (apps, printers, auto-logon)? | Video wall: Surveillance Station Client (camera feeds). Management desk apps unknown. Auto-logon on video wall likely (kiosk); management desk unknown. |
+| Q-080 | The two extra **non-SPOT** Windows rebuilds: which store, USB menu label, role/purpose, current hostname/IP? | **Answered for video wall:** `Z-SSTATION` / `10.0.253.164`. Management desk hostname still pending WinRM. |
+| Q-081 | Desired state for non-SPOT PCs besides shared ADR-0011 (apps, printers, auto-logon)? | Video wall: Surveillance Station Client 2.2.x, auto-logon `Zenith User` (already `AutoAdminLogon=1`, user is not admin). Management desk apps unknown. |
 | Q-082 | Video wall: auto-start Surveillance Station Client, which NAS/cameras, display layout? | Needed for a replacement to come up showing cameras without hand-building. |
 
 ## Store hours

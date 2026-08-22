@@ -57,7 +57,7 @@
 ## Next (when operator returns)
 
 1. Saturday 2026-08-22 open is **08:00** CDT (watchers start then). Weekdays remain 06:00.
-2. Optional later: a real sale on WS1 if we should capture the cash-drawer **kick**.
+2. Cash-drawer kick and scanners: **no further POS collection.** Kick is standard Epson pulse; scanners match WS3 HID.
 3. USB menus and `VGCTXssCOUNTERn` license names are recorded (operator confirmed the store number). Sunday hours unknown (Q-051).
 4. Replacement **implementation** stays later phases. Open refinements: wallpaper design, NAS share path, account names, UPS percent (issue 007).
 5. Zenith **Video wall** (`Z-SSTATION` / `10.0.253.164`) and **Management desk** (`ZENITH-WORKDESK` / `10.0.253.162`) both have WinRM.

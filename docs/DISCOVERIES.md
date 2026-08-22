@@ -223,7 +223,7 @@ Zenith mapping is operator 1/2/3 plus peripherals: only WS1 has `CashDrawer` and
 - Winlogon: `DefaultUserName=ZenithUser`, `AutoAdminLogon=0`, no `DefaultPassword` value present.
 - **Open question:** operator described auto-logon after reboot. The registry currently does not enable classic Winlogon auto-logon. The desktop may simply stay logged on, or another mechanism exists.
 - **Operator decision (2026-08-21):** do **not** reverse-engineer the old auto-logon implementation. New builds only need the **behavior**: shop-floor user at the desktop after reboot with no password typed. Mechanism on new PCs is our choice.
-- **Operator on cash drawer:** drawer **check-in** (counting money, closing the drawer) will not show up in Windows print logs. The thermal printer **kick** only happens when a customer transaction needs the drawer open. Do not treat missing check-in telemetry as a gap.
+- **Operator on cash drawer:** drawer **check-in** (counting money, closing the drawer) will not show up in Windows print logs. The thermal printer **kick** only happens when a customer transaction needs the drawer open (standard Epson POS pulse on WS1 `CashDrawer` / `ESDPRT001`). **2026-08-22:** do **not** capture a live sale for this; it would not change the replacement design. Scanners at all stations are the same HID wedge as WS3.
 
 ### Reboot test (2026-08-20 ~00:53Z)
 

@@ -30,8 +30,8 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | Q-021 | Tag printer USB vs parallel, and whether `net use LPT1` / `Tag Fix.bat` exists | USB (`USB001` Generic/Text). **No** share, **no** `net use`, **no** `Tag Fix.bat`. Tag print failed during trace; after operator power-cycled the printer, tags came out. Windows queue still showed 0 jobs. |
 | Q-025 | After an internet blip, where are unprinted tags held (RDS session, printer buffer, USB stack)? | Operator hypothesis. Needs a future controlled experiment, not a production fix now. |
 | Q-022 | Invoice printer model | **Answered:** Epson TM-T88V, Windows name `EPSON`, port `ESDPRT001`. |
-| Q-023 | Are barcode scanners HID keyboard-wedge, USB COM, or vendor middleware? | USB HID present (`VID_0536` and others). Confirm with a scan during a trace. |
-| Q-024 | This specimen has no cash drawer (operator). Confirm no `Cash Drawer` printer object. | **Answered:** none. |
+| Q-023 | Are barcode scanners HID keyboard-wedge, USB COM, or vendor middleware? | **Answered 2026-08-22.** Operator: all scanners are like ZENITH-WS3 (USB HID keyboard-wedge, `VID_0536`). No extra scan trace. |
+| Q-024 | This specimen has no cash drawer (operator). Confirm no `Cash Drawer` printer object. | **Answered:** none on WS3. WS1 has `CashDrawer` on the Epson port. Operator: drawer **kick** is standard Epson POS pulse, not a separate Windows mystery. Do not capture a live sale. |
 
 ## Security / collection policy
 

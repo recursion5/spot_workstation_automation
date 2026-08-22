@@ -14,4 +14,4 @@ employee desktop shortcut
 
 SPOTWeb + ConnectLink is a documented alternate path. Confirm which path this specimen uses before drawing a second graph.
 
-Replace this sketch with `docs/DISCOVERY-REPORT.md` diagrams after the first evidence bundle.
+Launch-path table and RDS dependency sketch: [DISCOVERY-REPORT.md](../DISCOVERY-REPORT.md).

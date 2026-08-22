@@ -2,9 +2,9 @@
 
 Make a Windows 11 Pro Xplor Spot POS workstation **reproducible** from evidence, not from a cloned disk image.
 
-This repository is in **Phase 1: bootstrap and discovery**. It does not yet provision replacement PCs.
+This repository has finished **Phase 1 discovery for Zenith**. It does not yet provision replacement PCs.
 
-Canonical intent: [project-spec.md](project-spec.md). Agent rules: [AGENTS.md](AGENTS.md). Current state: [docs/STATUS.md](docs/STATUS.md).
+Canonical intent: [project-spec.md](project-spec.md). Agent rules: [AGENTS.md](AGENTS.md). Handoff: [docs/DISCOVERY-REPORT.md](docs/DISCOVERY-REPORT.md). Current state: [docs/STATUS.md](docs/STATUS.md).
 
 ## What Phase 1 is
 

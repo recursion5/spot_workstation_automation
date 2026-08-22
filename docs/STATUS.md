@@ -1,7 +1,8 @@
 # Project status
 
-**Phase:** 1 — discovery (remote access working)  
-**Date:** 2026-08-21  
+**Phase:** 1 complete (Zenith evidence + report). Phase 2 not started.  
+**Date:** 2026-08-22  
+**Handoff:** [DISCOVERY-REPORT.md](DISCOVERY-REPORT.md)  
 **Specimen:** `ZENITH-WS3` at `10.0.253.204`  
 **Store:** Store 3 **Zenith** (`store=zenith`)  
 **This PC:** Mark-In 2 (back mark-in) — `VGCTX03COUNTER3`  
@@ -25,6 +26,12 @@
 | Front Counter (cash drawer) | ZENITH-WS1 | 10.0.253.212 | VGCTX03COUNTER1 | **Win10 Pro 1809** | CashDrawer. Replacement candidate. |
 | Management desk | **ZENITH-WORKDESK** | 10.0.253.162 | — | **Win10 Pro 19045** | MSI Cubi2. Gayla (not Yevhen). OneLaunch/Chrome hijack cleaned; operator confirmed. |
 | Video wall | **Z-SSTATION** | 10.0.253.164 | — | **Win10 Pro 19044** | Surveillance Station Client. WinRM as `Zenith Admin`. Replacement Win11 Pro. |
+
+## Handoff notes
+
+- 12-hour Grok loop **off**. Store-open watchers **on** (files on the PCs only; no token use until pulled).
+- No more SPOT-PC collection unless asked.
+- Do not implement the USB installer in this phase.
 
 ## In progress
 
@@ -54,11 +61,8 @@
 - Pointer: [evidence/20260819T203635Z-43b3934a.pointer.md](../evidence/20260819T203635Z-43b3934a.pointer.md)
 - Do not commit the zip or JSON bodies (may contain host identifiers; keep out of git except the pointer).
 
-## Next (when operator returns)
+## Next
 
-1. Saturday 2026-08-22 open is **08:00** CDT (watchers start then). Weekdays remain 06:00.
-2. Cash-drawer kick and scanners: **no further POS collection.** Kick is standard Epson pulse; scanners match WS3 HID.
-3. USB menus and `VGCTXssCOUNTERn` license names are recorded (operator confirmed the store number). Sunday hours unknown (Q-051).
-4. Replacement **implementation** stays later phases. Open refinements: wallpaper design, NAS share path, account names, UPS percent (issue 007).
-5. Zenith **Video wall** (`Z-SSTATION` / `10.0.253.164`) and **Management desk** (`ZENITH-WORKDESK` / `10.0.253.162`) both have WinRM.
-6. Phase 1 write-up `docs/DISCOVERY-REPORT.md` can be drafted.
+1. Phase 2: desired-state per catalog row; **Zenith Front Counter** first.
+2. Operator decisions still needed: wallpaper layout, NAS share path, account names, computer names (issue 007).
+3. Watchers: weekday 06:00 / Saturday 08:00; pull from the PCs only when tasked.

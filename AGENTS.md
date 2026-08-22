@@ -6,19 +6,20 @@ This file is binding for any agent working in this repository.
 
 1. [project-spec.md](project-spec.md)
 2. [README.md](README.md)
-3. [docs/STATUS.md](docs/STATUS.md)
-4. [docs/OPEN-QUESTIONS.md](docs/OPEN-QUESTIONS.md)
-5. [docs/DECISIONS/README.md](docs/DECISIONS/README.md) and any ADRs it lists as accepted
-6. Current GitHub issues, or `docs/issues/` if GitHub Issues is not writable
-7. The most recent discovery run manifest, if any (`evidence/` pointers or `SPOT_EVIDENCE_ROOT`)
+3. [docs/DISCOVERY-REPORT.md](docs/DISCOVERY-REPORT.md)
+4. [docs/STATUS.md](docs/STATUS.md)
+5. [docs/OPEN-QUESTIONS.md](docs/OPEN-QUESTIONS.md)
+6. [docs/DECISIONS/README.md](docs/DECISIONS/README.md) and any ADRs it lists as accepted
+7. Current GitHub issues, or `docs/issues/` if GitHub Issues is not writable
+8. The most recent discovery run manifest, if any (`evidence/` pointers or `SPOT_EVIDENCE_ROOT`)
 
 Then inspect git status, repair missing scaffold required by the spec, and continue the current phase only.
 
 ## Current phase
 
-Phase 1 — project infrastructure and evidence collection from one specimen workstation.
+Phase 1 evidence for Zenith is in [docs/DISCOVERY-REPORT.md](docs/DISCOVERY-REPORT.md). Next work is **Phase 2 analysis** (desired-state model), not USB/OOBE coding unless the operator asks.
 
-Do **not** implement replacement provisioning, OOBE automation, kiosk lockdown, or a final desired-state playbook. Record candidate directions in docs and ADRs only.
+Do **not** implement replacement provisioning, OOBE automation, kiosk lockdown, or a final desired-state playbook until that analysis exists. Record candidate directions in docs and ADRs only. Do not collect more from SPOT PCs unless asked.
 
 ## Classification
 
@@ -53,4 +54,4 @@ Do not silently convert assumptions into facts. If vendor documentation disagree
 
 ## First remaining milestone
 
-A later agent can clone this repo, reach the designated Windows 11 Pro POS PC with documented admin access, run approved discovery, package a checksummed evidence bundle while ordinary SPOT use continues, and write `docs/DISCOVERY-REPORT.md` without this chat.
+A later agent can clone this repo, read `docs/DISCOVERY-REPORT.md`, reach the Zenith PCs with documented WinRM, and begin Phase 2 analysis (Front Counter desired state first) without this chat. Watchers on WS1/WS2/WS3 may have new files under `C:\ProgramData\spot-discovery\observe\`; pull only if needed. The 12-hour Grok loop is off.

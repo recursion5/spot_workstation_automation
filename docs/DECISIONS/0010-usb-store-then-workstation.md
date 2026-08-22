@@ -25,6 +25,8 @@ Official menus (**Requirement**, operator 2026-08-21), in `config/catalog/workst
 | Zenith | Front Counter (cash drawer) | `VGCTX03COUNTER1` |
 | Zenith | Mark-In 1 (front mark-in) | `VGCTX03COUNTER2` |
 | Zenith | Mark-In 2 (back mark-in) | `VGCTX03COUNTER3` |
+| Zenith | Management desk | — (no SPOT) |
+| Zenith | Video wall | — (no SPOT) |
 
 ## Decision
 
@@ -34,7 +36,7 @@ The replacement process is **USB boot → store menu → workstation menu → ap
 
 - One catalog drives both menus. Choosing a workstation selects the whole desired state for that row.
 - **SPOT rows** (`runs_spot: true`): SPOTLauncher RDS (`ConnectionMode` 1, ADR-0009), `ClientName`, printer/peripheral role, shortcuts.
-- **Non-SPOT rows** (`runs_spot: false`): same USB, same store menu, **no** SPOTLauncher or `VGCTX` license. Shared policy still applies (UPS, RustDesk, wallpaper without a SPOT id, admin + standard user, skip OOBE — ADR-0011). Operator 2026-08-22: two additional Windows PCs will be added; they do not run SPOT. Names not yet in the catalog.
+- **Non-SPOT rows** (`runs_spot: false`): same USB, same store menu, **no** SPOTLauncher or `VGCTX` license. Shared policy still applies (UPS, RustDesk, wallpaper without a SPOT id, admin + standard user, skip OOBE — ADR-0011). Operator 2026-08-22: Zenith **Management desk** and **Video wall** (both currently Windows 10 Pro; replacements Windows 11 Pro). Video wall runs Synology Surveillance Station Client.
 - Do not clone the old disk. Do not make the operator type `VGCTX03COUNTER3` if a menu can offer “Mark-In 2 (back mark-in)”.
 - One USB serves all three stores. A separate USB per store is an implementation fallback, not the goal.
 - Secrets live on the **NAS** and are applied during the build (ADR-0011). They do not live in git or as plaintext on a stick that can leave the building.

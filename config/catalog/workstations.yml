@@ -51,3 +51,13 @@ stores:
         role: mark-in-back
         spot_client_name: VGCTX03COUNTER3
         runs_spot: true
+      - id: management-desk
+        menu: Management desk
+        role: management-desk
+        spot_client_name: null
+        runs_spot: false
+      - id: video-wall
+        menu: Video wall
+        role: video-wall
+        spot_client_name: null
+        runs_spot: false

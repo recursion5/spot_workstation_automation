@@ -137,6 +137,17 @@ Live state after the **second** Windows reboot `2026-08-21T19:56:06Z` (2:56 p.m.
 
 RustDesk is installed under `C:\Program Files\RustDesk\` with a service and Startup tray on the inventoried PCs. Desired replacement value is hostname **`dsm.vogueclean.int`** (ADR-0011). Shop-floor wallpaper was not read in this pass.
 
+### Zenith non-SPOT PCs (operator 2026-08-22)
+
+**Class: Requirement** until WinRM. Both at Zenith, currently Windows 10 Pro; replacements Windows 11 Pro. No SPOT.
+
+| USB menu | Purpose |
+| --- | --- |
+| Management desk | Management/office |
+| Video wall | Synology Surveillance Station Client, camera feeds |
+
+Catalog ids: `management-desk`, `video-wall`. Hostnames/IPs unknown until WinRM.
+
 ### Store and workstation catalog (operator 2026-08-21)
 
 **Class: Requirement (labels) + Discovery (Zenith ClientName map).** Source: `config/catalog/workstations.yml`.

@@ -1,19 +1,17 @@
 # 008 — Two non-SPOT Windows PCs on the USB rebuild list
 
 **Class:** Requirement  
-**Status:** open (in scope; catalog rows not named)
+**Status:** named; WinRM not yet connected
 
-Operator 2026-08-22: add two more Windows workstations to the automated rebuild USB. Neither runs SPOT.
+Operator 2026-08-22:
 
-Until named, do not invent menu labels or hostnames. Same stick and store picker as POS rows; `runs_spot: false`; no `VGCTX` `ClientName`; no SPOTLauncher.
+| USB menu | Store | Current OS | Replacement OS | Notes |
+| --- | --- | --- | --- | --- |
+| Management desk | Zenith | Windows 10 Pro | Windows 11 Pro | Office/management PC |
+| Video wall | Zenith | Windows 10 Pro | Windows 11 Pro | Synology Surveillance Station Client, camera feeds |
 
-Shared policy still intended (ADR-0011): UPS, RustDesk `dsm.vogueclean.int`, black wallpaper (store + computer name only), admin + standard auto-logon user, secrets on NAS, skip retail OOBE.
+Same USB as POS; `runs_spot: false`. Shared policy: UPS, RustDesk, wallpaper (no SPOT id), admin + standard user, skip OOBE, bloat removal as decided.
 
-Need from operator (Q-080 / Q-081):
+WinRM: same `Bootstrap-WinRM.ps1` as POS. Hostnames/IPs after connection cards.
 
-- Store (Vogue Krum / Vogue Denton / Zenith)
-- USB workstation menu text
-- What the PC is for
-- Current Windows name / IP if we should inventory it in Phase 1
-
-Refs: ADR-0010, Q-080, Q-081.
+Refs: ADR-0010, Q-080–Q-082.

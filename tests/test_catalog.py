@@ -36,6 +36,8 @@ def test_catalog_matches_operator_menus():
         "Front Counter (cash drawer)",
         "Mark-In 1 (front mark-in)",
         "Mark-In 2 (back mark-in)",
+        "Management desk",
+        "Video wall",
     ]
 
 
@@ -54,9 +56,14 @@ def test_spot_client_names_follow_store_and_counter():
         (s["id"], w["id"]): w["spot_client_name"]
         for s in data["stores"]
         for w in s["workstations"]
+        if w["runs_spot"]
     }
     assert got == expected
     for store in data["stores"]:
-        for i, w in enumerate(store["workstations"], start=1):
+        spot_rows = [w for w in store["workstations"] if w["runs_spot"]]
+        other = [w for w in store["workstations"] if not w["runs_spot"]]
+        for i, w in enumerate(spot_rows, start=1):
             assert w["spot_client_name"] == f"VGCTX{store['number']:02d}COUNTER{i}"
-            assert w["runs_spot"] is True
+        for w in other:
+            assert w["spot_client_name"] is None
+            assert w["runs_spot"] is False

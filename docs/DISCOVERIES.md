@@ -143,8 +143,22 @@ RustDesk is installed under `C:\Program Files\RustDesk\` with a service and Star
 
 | USB menu | Purpose | Live PC |
 | --- | --- | --- |
-| Management desk | Management/office | WinRM not yet |
+| Management desk | Management/office | **ZENITH-WORKDESK** `10.0.253.162` |
 | Video wall | Synology Surveillance Station Client | **Z-SSTATION** `10.0.253.164` |
+
+#### Management desk ZENITH-WORKDESK (WinRM 2026-08-22)
+
+**Class: Discovery.**
+
+- Windows **10 Pro** build **19045**. Ethernet `10.0.253.162/24`. DNS `ZENITH-WORKDESK.vogueclean.int`.
+- Hardware: Micro-Star **KBL-U Pro Cubi2 (MS-B142)**, AMI BIOS 8.60.
+- Remoting user **`Zenith Admin`**. Enabled local users also **Gayla** and **Yevhen** (neither is an administrator).
+- Console: **Gayla** logged on (session since 2026-08-04). **No** Winlogon `AutoAdminLogon` / `DefaultUserName` (people sign in). `DisableCAD=1`.
+- RustDesk 1.4.9 running; config `10.0.253.110` (not the DNS name). Chrome, Adobe Acrobat, Edge. **3CX Phone** in Public Startup.
+- Synology Surveillance Station Client **is installed** (same 2.2.1 package as the video wall) but **not running** and not in Gayla’s Startup.
+- No HID UPS visible to Windows. No SPOT / Citrix / mstsc.
+
+**Hypothesis:** management-desk replacements should keep named standard users (or a generic standard user) with **interactive** logon, not auto-logon. Do not auto-start Surveillance Station Client here unless the operator wants that.
 
 #### Video wall Z-SSTATION (WinRM 2026-08-22)
 

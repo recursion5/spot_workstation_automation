@@ -23,7 +23,7 @@
 | Mark-In 2 (back mark-in) | ZENITH-WS3 | 10.0.253.204 | VGCTX03COUNTER3 | Win11 | First specimen |
 | Mark-In 1 (front mark-in) | ZENITH-WS2 | 10.0.253.205 | VGCTX03COUNTER2 | Win11 | Tag on USB002; Citrix leftover |
 | Front Counter (cash drawer) | ZENITH-WS1 | 10.0.253.212 | VGCTX03COUNTER1 | **Win10 Pro 1809** | CashDrawer. Replacement candidate. |
-| Management desk | (pending WinRM) | — | — | **Win10 Pro** | No SPOT. Replacement Win11 Pro. |
+| Management desk | **ZENITH-WORKDESK** | 10.0.253.162 | — | **Win10 Pro 19045** | MSI Cubi2. WinRM as `Zenith Admin`. Named users Gayla/Yevhen. |
 | Video wall | **Z-SSTATION** | 10.0.253.164 | — | **Win10 Pro 19044** | Surveillance Station Client. WinRM as `Zenith Admin`. Replacement Win11 Pro. |
 
 ## In progress
@@ -60,5 +60,5 @@
 2. Optional later: a real sale on WS1 if we should capture the cash-drawer **kick**.
 3. USB menus and `VGCTXssCOUNTERn` license names are recorded (operator confirmed the store number). Sunday hours unknown (Q-051).
 4. Replacement **implementation** stays later phases. Open refinements: wallpaper design, NAS share path, account names, UPS percent (issue 007).
-5. Zenith **Video wall** (`Z-SSTATION` / `10.0.253.164`) WinRM works. **Management desk** still needs the same bootstrap.
+5. Zenith **Video wall** (`Z-SSTATION` / `10.0.253.164`) and **Management desk** (`ZENITH-WORKDESK` / `10.0.253.162`) both have WinRM.
 6. Phase 1 write-up `docs/DISCOVERY-REPORT.md` can be drafted.

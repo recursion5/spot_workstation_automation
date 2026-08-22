@@ -59,3 +59,4 @@ def test_spot_client_names_follow_store_and_counter():
     for store in data["stores"]:
         for i, w in enumerate(store["workstations"], start=1):
             assert w["spot_client_name"] == f"VGCTX{store['number']:02d}COUNTER{i}"
+            assert w["runs_spot"] is True

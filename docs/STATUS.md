@@ -58,4 +58,5 @@
 2. Optional later: a real sale on WS1 if we should capture the cash-drawer **kick**.
 3. USB menus and `VGCTXssCOUNTERn` license names are recorded (operator confirmed the store number). Sunday hours unknown (Q-051).
 4. Replacement **implementation** stays later phases. Open refinements: wallpaper design, NAS share path, account names, UPS percent (issue 007).
-5. Phase 1 write-up `docs/DISCOVERY-REPORT.md` can be drafted.
+5. Two **non-SPOT** Windows PCs will join the USB rebuild catalog (names/stores TBD, Q-080).
+6. Phase 1 write-up `docs/DISCOVERY-REPORT.md` can be drafted.

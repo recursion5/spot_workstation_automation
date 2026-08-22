@@ -13,8 +13,8 @@ Operator registered desired-state notes for automated replacements. Implementati
 
 1. **UPS.** Every workstation sits on a UPS. Windows stays up on battery and performs a **graceful shutdown only when the UPS cannot continue**. Exception: a UPS that is awaiting repair or replacement. Do not hard-power-off.
 2. **RustDesk.** Installed on replacements, ID/rendezvous/relay server **`dsm.vogueclean.int`** (DNS name, not a raw IP). Current Zenith PCs already run RustDesk aimed at `10.0.253.110`.
-3. **Wallpaper.** For **all local users**: black background plus text for store, Windows computer name, and SPOT workstation ID. Visual design (font, size, placement) is still open.
-4. **Accounts.** An **admin** account exists. SPOT should run under a **standard** (non-admin) auto-logon user. Today’s shop-floor users are administrators; that is leftover, not the target.
+3. **Wallpaper.** For **all local users**: black background plus text for store, Windows computer name, and (if the PC runs SPOT) SPOT workstation ID. Non-SPOT rebuilds omit the SPOT line. Visual design is still open.
+4. **Accounts.** An **admin** account exists. The auto-logon user should be **standard** (non-admin). On SPOT PCs that user runs SPOT. Today’s shop-floor users are administrators; that is leftover, not the target.
 5. **Secrets.** Source of truth is the **NAS**, not git and not a plaintext USB. The **build applies SPOT-related secrets** so a replacement does not need a SPOT support remote session to install the launcher, set station identity, or attach printers/peripherals. Complements ADR-0005 and ADR-0010.
 6. **OOBE.** Replacement hardware ships with **retail Windows 11 Pro**. The USB process must not leave the operator on the “new PC experience.” Unattended setup skips OOBE.
 

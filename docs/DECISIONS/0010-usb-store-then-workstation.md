@@ -32,7 +32,9 @@ Official menus (**Requirement**, operator 2026-08-21), in `config/catalog/workst
 
 The replacement process is **USB boot → store menu → workstation menu → apply that catalog entry**.
 
-- One catalog drives both menus. Choosing a workstation selects the whole desired state: local accounts, auto-logon **behavior**, SPOTLauncher RDS (`ConnectionMode` 1, ADR-0009), `ClientName`, printer/peripheral **role**, shortcuts.
+- One catalog drives both menus. Choosing a workstation selects the whole desired state for that row.
+- **SPOT rows** (`runs_spot: true`): SPOTLauncher RDS (`ConnectionMode` 1, ADR-0009), `ClientName`, printer/peripheral role, shortcuts.
+- **Non-SPOT rows** (`runs_spot: false`): same USB, same store menu, **no** SPOTLauncher or `VGCTX` license. Shared policy still applies (UPS, RustDesk, wallpaper without a SPOT id, admin + standard user, skip OOBE — ADR-0011). Operator 2026-08-22: two additional Windows PCs will be added; they do not run SPOT. Names not yet in the catalog.
 - Do not clone the old disk. Do not make the operator type `VGCTX03COUNTER3` if a menu can offer “Mark-In 2 (back mark-in)”.
 - One USB serves all three stores. A separate USB per store is an implementation fallback, not the goal.
 - Secrets live on the **NAS** and are applied during the build (ADR-0011). They do not live in git or as plaintext on a stick that can leave the building.
@@ -47,6 +49,6 @@ The replacement process is **USB boot → store menu → workstation menu → ap
 
 ## Consequences
 
-- Catalog labels and `VGCTXssCOUNTERn` license names are locked. Vogue **peripherals** are still by analogy until a Vogue PC is read.
+- Catalog labels and `VGCTXssCOUNTERn` license names are locked for SPOT rows. Vogue **peripherals** are still by analogy until a Vogue PC is read. Non-SPOT rebuilds wait on menu names (Q-080).
 - First replacement candidate is Zenith **Front Counter (cash drawer)** (current ZENITH-WS1, Win10).
 - Open questions: Q-062 (offline USB vs NAS pull), UEFI USB boot on replacement hardware (Assumption: yes on MINIX/NUC-class boxes).

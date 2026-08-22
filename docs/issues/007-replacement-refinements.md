@@ -10,7 +10,8 @@ Locked enough to design toward:
 | UPS on every PC | Yes | Brand/model for new buys; WS3 currently has **no** UPS HID in Windows (repair?). Critical shutdown **percent** (today 5%). Confirm “shutdown” not hibernate. Sleep-on-battery timeout. |
 | Stay on battery until graceful shutdown is required | Yes | Exact Windows power-plan numbers. Vendor UPS software vs built-in HID. |
 | RustDesk → `dsm.vogueclean.int` | Yes | Confirm that name is the same host as `zenith-dsm.vogueclean.int` / `10.0.253.110`. Self-hosted **public key** and install flags (service, tray, unattended). Version pin. |
-| Black wallpaper with store, computer name, SPOT ID | Yes (content) | Layout, font, size, color of text, logo or not, whether SPOT ID is `VGCTX03COUNTER3` or the USB menu name. All-users vs per-user copy. |
+| Black wallpaper with store, computer name, SPOT ID | Yes (content) | Layout, font, size, color of text, logo or not, whether SPOT ID is `VGCTX03COUNTER3` or the USB menu name. Non-SPOT PCs omit the SPOT line. |
+| Non-SPOT USB rows | Yes, in scope | Which store and menu names (Q-080). |
 | Admin + SPOT on a standard user | Yes (intent) | Account **names** for new builds (`ZenithAdmin`/`ZenithUser` vs generic). Password policy. Do not change live PCs. |
 | Secrets on NAS; SPOT secrets in the build | Yes | Share path, who can read, how the USB authenticates to the NAS, which files (launcher settings, RDS, printer). Q-062/Q-074. |
 | Skip retail Windows 11 Pro OOBE | Yes | Product key source (COA / digital license / unattend). Language/region/privacy screens. Local account creation during unattend. |

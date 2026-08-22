@@ -12,10 +12,12 @@ stores:
         menu: Front Counter (cash drawer)
         role: front-counter
         spot_client_name: VGCTX01COUNTER1
+        runs_spot: true
       - id: mark-in
         menu: Mark-In
         role: mark-in
         spot_client_name: VGCTX01COUNTER2
+        runs_spot: true
   - id: vogue-denton
     number: 2
     menu: Vogue Denton
@@ -24,10 +26,12 @@ stores:
         menu: Front Counter (cash drawer)
         role: front-counter
         spot_client_name: VGCTX02COUNTER1
+        runs_spot: true
       - id: mark-in
         menu: Mark-In
         role: mark-in
         spot_client_name: VGCTX02COUNTER2
+        runs_spot: true
   - id: zenith
     number: 3
     menu: Zenith
@@ -36,11 +40,14 @@ stores:
         menu: Front Counter (cash drawer)
         role: front-counter
         spot_client_name: VGCTX03COUNTER1
+        runs_spot: true
       - id: mark-in-1
         menu: Mark-In 1 (front mark-in)
         role: mark-in-front
         spot_client_name: VGCTX03COUNTER2
+        runs_spot: true
       - id: mark-in-2
         menu: Mark-In 2 (back mark-in)
         role: mark-in-back
         spot_client_name: VGCTX03COUNTER3
+        runs_spot: true

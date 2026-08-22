@@ -32,7 +32,7 @@
             "minItems": 1,
             "items": {
               "type": "object",
-              "required": ["id", "menu", "role", "spot_client_name"],
+              "required": ["id", "menu", "role", "spot_client_name", "runs_spot"],
               "additionalProperties": false,
               "properties": {
                 "id": {
@@ -43,7 +43,8 @@
                 "role": { "type": "string", "minLength": 1 },
                 "spot_client_name": {
                   "type": ["string", "null"]
-                }
+                },
+                "runs_spot": { "type": "boolean" }
               }
             }
           }

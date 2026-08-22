@@ -56,6 +56,8 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | Q-073 | Replacement **account names** (reuse `ZenithAdmin`/`ZenithUser`, store-prefixed, or generic)? | Standard user must auto-logon; admin is for WinRM/RustDesk. |
 | Q-074 | NAS **share path** and how the USB authenticates to read secrets? | `dsm.vogueclean.int` is the host; folder and ACL unknown. Same box as `10.0.253.110` / `zenith-dsm.vogueclean.int`? |
 | Q-075 | UPS **critical percent** and action (shut down vs hibernate); vendor software vs Windows HID; sleep-on-battery allowed? | Today: low 10% do nothing, critical 5% **hibernate** on all three; WS1 cannot hibernate. |
+| Q-080 | The two extra **non-SPOT** Windows rebuilds: which store, USB menu label, role/purpose, current hostname/IP? | Catalog rows not created until named. Same USB; `runs_spot: false`. |
+| Q-081 | Desired state for non-SPOT PCs besides shared ADR-0011 (apps, printers, auto-logon)? | Do not assume SPOTLauncher or POS printers. |
 
 ## Store hours
 

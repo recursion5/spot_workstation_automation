@@ -14,11 +14,12 @@ Statements the operator or constitution say the future system must honor. Not di
 
 **Class: Requirement / operator-reported context.**
 
-- Target OS: Windows 11 Pro POS workstations.
+- Target OS: Windows 11 Pro workstations (SPOT POS and other store Windows PCs on the same USB rebuild list).
 - Application: Xplor Spot hosted POS (`https://xplorspot.com`).
 - **App delivery for replacements (2026-08-21):** SPOTLauncher → RDS RemoteApp (`mstsc`, `ConnectionMode` 1). Do **not** install Citrix Receiver/Workspace on new PCs. Some existing stations still use Citrix; that is leftover, not the target ([ADR-0009](DECISIONS/0009-rds-not-citrix.md)).
 - **Replacement operator flow (2026-08-21):** boot from USB → choose store → choose workstation → automation applies that identity. Not a cloned image. See [ADR-0010](DECISIONS/0010-usb-store-then-workstation.md). Implementation is Phase 3.
 - **USB menus (2026-08-21):** Store 1 Vogue Krum; Store 2 Vogue Denton; Store 3 Zenith. Zenith workstations: Front Counter (cash drawer), Mark-In 1 (front mark-in), Mark-In 2 (back mark-in). Each Vogue store: Front Counter (cash drawer), Mark-In. Catalog: `config/catalog/workstations.yml`.
+- **Non-SPOT rebuilds (2026-08-22):** two more Windows workstations will be on the same USB store → workstation list. They do **not** run SPOT (no launcher, no `VGCTX` id). Menu names and stores not yet supplied (Q-080).
 - Employees do not perform Windows logon; a local standard user auto-logs on; POS is launched from a desktop shortcut.
 - Store open (Zenith): weekdays **06:00**, Saturday **08:00** America/Chicago. Sunday unknown. SPOT is not left running overnight.
 - A local administrative account exists.

@@ -152,7 +152,8 @@ RustDesk is installed under `C:\Program Files\RustDesk\` with a service and Star
 
 - Windows **10 Pro** build **19045**. Ethernet `10.0.253.162/24`. DNS `ZENITH-WORKDESK.vogueclean.int`.
 - Hardware: Micro-Star **KBL-U Pro Cubi2 (MS-B142)**, AMI BIOS 8.60.
-- Remoting user **`Zenith Admin`**. Enabled local users also **Gayla** and **Yevhen** (neither is an administrator).
+- Remoting user **`Zenith Admin`**. Enabled local users also **Gayla** and **Yevhen** (neither is an administrator). **Operator (rebuild):** do **not** recreate Yevhen.
+- **PUP cleanup 2026-08-22 (operator-requested):** Gayla profile had **OneLaunch 5.42** (startup updater + tray), **OneBrowser** (scheduled task `OBUpdate` running), desktop/Start Menu shortcuts, and Chrome extension **Cash Catch** (`cjbmfmeflcomeifhpeglfmpgmmhcopdo`). Chrome was not running. Removed processes, tasks, Run key, folders, shortcuts, and the extension folder. Machine policy now blocklists that extension id. Left 3CX Click to Call, Adobe Acrobat, Google Docs Offline. Yevhen account still on disk (not deleted).
 - Console: **Gayla** logged on (session since 2026-08-04). **No** Winlogon `AutoAdminLogon` / `DefaultUserName` (people sign in). `DisableCAD=1`.
 - RustDesk 1.4.9 running; config `10.0.253.110` (not the DNS name). Chrome, Adobe Acrobat, Edge. **3CX Phone** in Public Startup.
 - Synology Surveillance Station Client **is installed** (same 2.2.1 package as the video wall) but **not running** and not in Gayla’s Startup.

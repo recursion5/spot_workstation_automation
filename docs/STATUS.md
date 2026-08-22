@@ -23,7 +23,7 @@
 | Mark-In 2 (back mark-in) | ZENITH-WS3 | 10.0.253.204 | VGCTX03COUNTER3 | Win11 | First specimen |
 | Mark-In 1 (front mark-in) | ZENITH-WS2 | 10.0.253.205 | VGCTX03COUNTER2 | Win11 | Tag on USB002; Citrix leftover |
 | Front Counter (cash drawer) | ZENITH-WS1 | 10.0.253.212 | VGCTX03COUNTER1 | **Win10 Pro 1809** | CashDrawer. Replacement candidate. |
-| Management desk | **ZENITH-WORKDESK** | 10.0.253.162 | — | **Win10 Pro 19045** | MSI Cubi2. WinRM as `Zenith Admin`. Named users Gayla/Yevhen. |
+| Management desk | **ZENITH-WORKDESK** | 10.0.253.162 | — | **Win10 Pro 19045** | MSI Cubi2. Gayla (not Yevhen). OneLaunch/OneBrowser removed 2026-08-22. |
 | Video wall | **Z-SSTATION** | 10.0.253.164 | — | **Win10 Pro 19044** | Surveillance Station Client. WinRM as `Zenith Admin`. Replacement Win11 Pro. |
 
 ## In progress

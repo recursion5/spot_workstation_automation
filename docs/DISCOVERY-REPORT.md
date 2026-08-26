@@ -99,7 +99,7 @@ Scanners: USB HID keyboard-wedge like WS3 (`VID_0536`). All stations the same.
 
 ### Non-SPOT
 
-- Video wall: Synology Surveillance Station Client 2.2.1 running, Startup for Zenith User. RustDesk to `10.0.253.110`.
+- Video wall: Synology Surveillance Station Client 2.2.1 running, Startup for Zenith User. Custom **CallerIdOverlay** at logon via scheduled task `\CallerIdOverlay` (`C:\ProgramData\CallerIdOverlay\CallerIdOverlay.exe`); talks to `http://10.0.253.113:8080`, `store_id` 103. RustDesk to `10.0.253.110`.
 - Workdesk: MSI Cubi2; Chrome/Acrobat/3CX; SS Client installed but unused. OneLaunch/OneBrowser/Cash Catch and `velis-browser.com` start-page hijack **removed**; operator confirmed Chrome is good.
 
 ### RustDesk / UPS
@@ -137,7 +137,7 @@ WS2 substitutes Citrix Workspace / `wfica32` / ICA `SPOT - Auto Login` for the m
 - Role: cash drawer vs tag vs back mark-in vs desk vs video wall
 - Printer **names** and whether `CashDrawer` / `Tag` exist
 - ConnectionMode 1 + RDS (desired); WS2’s 0 is not desired
-- Video wall: SS Client auto-start
+- Video wall: SS Client auto-start; CallerIdOverlay logon task + config (token lives with NAS secrets, not git)
 - Workdesk: Gayla, no auto-logon, 3CX
 
 ---

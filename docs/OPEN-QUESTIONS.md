@@ -58,7 +58,7 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | Q-075 | UPS **critical percent** and action (shut down vs hibernate); vendor software vs Windows HID; sleep-on-battery allowed? | Today: low 10% do nothing, critical 5% **hibernate** on all three; WS1 cannot hibernate. |
 | Q-080 | The two extra **non-SPOT** Windows rebuilds: which store, USB menu label, role/purpose, current hostname/IP? | **Answered.** Video wall `Z-SSTATION` / `10.0.253.164`. Management desk `ZENITH-WORKDESK` / `10.0.253.162`. |
 | Q-081 | Desired state for non-SPOT PCs besides shared ADR-0011 (apps, printers, auto-logon)? | Video wall: SS Client + auto-logon `Zenith User` (not admin). Management desk: **no** auto-logon; named user **Gayla** (operator: **do not** recreate **Yevhen**). 3CX; Chrome/Acrobat. SS Client installed but unused. |
-| Q-082 | Video wall: auto-start Surveillance Station Client, which NAS/cameras, display layout? | Needed for a replacement to come up showing cameras without hand-building. |
+| Q-082 | Video wall: auto-start Surveillance Station Client, which NAS/cameras, display layout? | **Partly answered.** SS Client + **CallerIdOverlay** at logon (task `\CallerIdOverlay`). Overlay config: store_id 103, admin `http://10.0.253.113:8080`, 900×260 top-center 8s. Camera layout / SS Client connection to NAS still open. Token not in git. |
 
 ## Store hours
 

@@ -14,13 +14,15 @@
 | `SPOTLauncherSetup_1.1.167.1.exe` | 2167034 | `17a1b53446cb1eabe0d0366ebd1ee64d6b0af30747bc45be70bba4c10bb096f7` | WS2 Downloads (older leftover) |
 | `SPOTLauncherSetup_1.1.169.3.exe` | 2168063 | `7fece0a254a8cfe64ce7604590aac41e2c2b646aec951da576c3a35317d15fce` | Operator dropped on share root 2026-08-27; moved to `common/packages/` |
 | `SPOTLauncher-1.1.169.3-installed.zip` | 741405 | `8b1a8ea8ce30532a542c83c078097e33e1c2e29d6a939d8bbc87c50b949c2fa9` | WS2 installed AppData tree (backup; prefer the Setup exe) |
-| `CitrixWorkspace-26.3.10.69-payload.zip` | 477901421 | `d4c681ce9fd2b17819dd1c140ae28e7f2458446dcddc94513dce668c4d9beeac` | WS2 `Citrix Workspace 26.3.10.69` install-dir payload (not `CitrixWorkspaceApp.exe`) |
+| `CitrixWorkspace-26.3.10.69-payload.zip` | 477901421 | `d4c681ce9fd2b17819dd1c140ae28e7f2458446dcddc94513dce668c4d9beeac` | WS2 install-dir payload (backup) |
+| `CitrixWorkspaceFullInstaller_x64.exe` | 925931872 | `fd9a4a8c5fd5862af2a51891f9808489c92b81693885cda16470fed13f97a29e` | Official Workspace **2603.10** x64 offline installer (operator; matches about.txt). Prefer this. |
+| `Citrix-Workspace-app_about.txt` | 154 | — | Checksum card from Citrix download |
 | `CallerIdOverlay.exe` | 172971674 | `2cbaae505c506e277f2bf064ea8cd200f2f7e0bf0ef94514c65fe26229a3cdcd` | Z-SSTATION `ProgramData\CallerIdOverlay` |
 | `CallerIdOverlay-update.ps1` | 3344 | `08884aa84ad65b8775f3bb7ced4d11cc8a9b346fdceec25af3ae5e12142d9b35` | same folder |
 
 ## Gaps (not captured as vendor Setup)
 
-- Official **CitrixWorkspaceApp.exe** bootstrapper: not in Downloads; payload zip is the leftover MSI/CAB set from the installed product.
+- Official **Citrix Workspace 2603.10 x64 offline installer**: **captured** as `CitrixWorkspaceFullInstaller_x64.exe` (operator; SHA-256 matches Citrix about file). Live WS2 is `26.3.10.69` (same 2603.10 line). Payload zip kept as backup.
 - Official **SPOTLauncherSetup 1.1.169.3**: **captured** (operator dropped on share root; moved to `common/packages/`). Older 1.1.167.1 leftover kept. Installed-tree zip kept as backup.
 - **SS Client 2.2.1.2565** installer: not on disk. Leftover Downloads on Z-SSTATION are **2.0.1-2304** and **2.0.2-2406** only (not copied this pass; still on that PC).
 

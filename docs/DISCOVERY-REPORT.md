@@ -242,7 +242,7 @@ Still missing or unproven (any one of these can make “SPOT 100% ready” false
 - The USB/WinPE/unattend **does not exist**. Phase 2 is a recipe, not an installer.
 - NAS share, how the stick authenticates, secret-pack layout (Q-074, Q-062). Passwords, launcher/Citrix material, RustDesk key are not in a build pack.
 - Win11 product key / activation (Q-071).
-- Installers we have **not** captured as official setups: Citrix **WorkspaceApp.exe** (have install-dir payload zip). **SPOTLauncherSetup 1.1.169.3** is on the NAS pack (operator 2026-08-27).
+- Official setups on the pack: **SPOTLauncherSetup 1.1.169.3**, **Citrix Workspace 2603.10 x64** offline installer (`CitrixWorkspaceFullInstaller_x64.exe`). Still missing SS Client 2.2.1 setup.
 - APD/Star **silent** switches and post-PnP USB binding on **new** hardware.
 - Hosted SPOT Account Key (Q-013) and whether Citrix maps local `EPSON`/`CashDrawer`/`Tag`/Brother the same way ScrewDrivers does on RDS (**Hypothesis** until a Citrix replacement is tested). Front Counter today is RDS; replacements will be Citrix.
 - Mark-In / desk / video wall recipes not drafted. Vogue POS not inventoried.
@@ -256,7 +256,7 @@ Wallpaper and Edge lockdown depth do not block SPOT printing; NAS, secrets, Work
 
 1. Review Zenith desired-state drafts: [desired-state/](desired-state/) (all five USB rows). Vogue still analogical.
 2. Pack live at `\\zenith-dsm.vogueclean.int\spot-rebuild` (`common/packages/` copied 2026-08-27). Operator still drops per-row passwords.
-3. Official **SPOTLauncherSetup 1.1.169.3** is on the pack. Still missing official CitrixWorkspaceApp.exe and SS Client 2.2.1 setup.
+3. Official **SPOTLauncherSetup 1.1.169.3** and **Citrix Workspace 2603.10** offline installer are on the pack. Still missing SS Client 2.2.1 setup.
 4. USB/WinPE only after the share exists. First stick = staffed Front Counter test, old PC kept. Product key is OEM (Q-071 answered).
 5. Fill `rows/zenith-video-wall/ss-client/dsm-login.txt` on the NAS with the DSM password (DPAPI will not copy).
 6. Optional: read one Vogue POS if those printers might differ.

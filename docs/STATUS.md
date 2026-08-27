@@ -70,6 +70,6 @@
 
 1. Pack is on `\\zenith-dsm.vogueclean.int\spot-rebuild` as user **`spot-rebuild`**. Vendor kits are in `common/packages/` (checksums verified 2026-08-27). Password in gitignored `.env`, not git.
 2. Operator still places per-row Windows passwords under `rows/` — never git. Overlay config and SS Client HKCU export are on the share; **fill `ss-client/dsm-login.txt`** (DPAPI will not copy to a new PC).
-3. Official **SPOTLauncherSetup 1.1.169.3** is on the pack. Still missing official `CitrixWorkspaceApp.exe` and SS Client **2.2.1** setup (payload / leftover 2.0.x only).
+3. Official **SPOTLauncherSetup 1.1.169.3** and **Citrix Workspace 2603.10 x64** offline installer are on the pack. Still missing SS Client **2.2.1** setup (leftover Downloads are 2.0.x).
 4. USB/WinPE only after the share exists; first stick is a **staffed Front Counter test**.
 5. Watchers: weekday 06:00 / Saturday 08:00; pull only when tasked.

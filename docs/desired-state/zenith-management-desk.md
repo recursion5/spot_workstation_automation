@@ -21,7 +21,7 @@ Office / management PC. Named user **Gayla** signs in interactively. 3CX phone, 
 ## Apply after USB identity choice
 
 1. Windows 11 Pro unattend. Product key: Open question (Q-071).
-2. Pull the secret pack for this row from the NAS (Q-074).
+2. Pull the secret pack for this row from `\\zenith-dsm.vogueclean.int\spot-rebuild`.
 3. Create accounts, wallpaper, RustDesk, 3CX, Chrome/Acrobat. Do **not** apply the SPOT Edge-only lockdown.
 4. Validate (checklist below). Person at the keyboard types Gayla’s password.
 

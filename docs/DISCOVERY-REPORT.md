@@ -166,7 +166,7 @@ Desktop shortcut  SPOT (VGCTX03COUNTERn).lnk
 1. USB boot → store → workstation ([ADR-0010](DECISIONS/0010-usb-store-then-workstation.md)).
 2. Windows 11 Pro; skip retail OOBE.
 3. SPOT rows: SPOTLauncher **Citrix Workspace / ICA**, not RDS ([ADR-0012](DECISIONS/0012-citrix-launch-path.md)).
-4. Secrets from NAS `dsm.vogueclean.int`, applied at build ([ADR-0005](DECISIONS/0005-secrets-handling.md), [ADR-0011](DECISIONS/0011-replacement-policy-notes.md)).
+4. Secrets from NAS `\\zenith-dsm.vogueclean.int\spot-rebuild`, applied at build ([ADR-0005](DECISIONS/0005-secrets-handling.md), [ADR-0011](DECISIONS/0011-replacement-policy-notes.md), [ADR-0013](DECISIONS/0013-nas-pack-and-oem-key.md)).
 5. RustDesk → `rustdesk.vogueclean.int`.
 6. UPS; stay on battery; **shut down** when the UPS cannot continue (not hibernate).
 7. Black wallpaper: store, computer name, SPOT id if `runs_spot`.
@@ -254,7 +254,7 @@ Wallpaper and Edge lockdown depth do not block SPOT printing; NAS, secrets, Work
 ## Next steps (Phase 2 — analysis, still no installer)
 
 1. Review Zenith desired-state drafts: [desired-state/](desired-state/) (all five USB rows). Vogue still analogical.
-2. Create `\\dsm.vogueclean.int\spot-rebuild` (ADR-0013) and copy controller `vendor-installers/` there. USB auth still open.
+2. Pack live at `\\zenith-dsm.vogueclean.int\spot-rebuild` (`common/packages/` copied 2026-08-27). Operator still drops per-row passwords.
 3. Official CitrixWorkspaceApp / SPOTLauncher 1.1.169.3 Setup / SS 2.2.1 installers were **not** on disk; staged payload/installed-tree/overlay instead.
 4. USB/WinPE only after the share exists. First stick = staffed Front Counter test, old PC kept. Product key is OEM (Q-071 answered).
 5. Video-wall camera layout (Q-082) before that row is useful.

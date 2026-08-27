@@ -21,7 +21,7 @@ Always-on display: Synology Surveillance Station Client camera wall plus a custo
 ## Apply after USB identity choice
 
 1. Windows 11 Pro unattend. Product key: Open question (Q-071).
-2. Pull the secret pack for this row from the NAS (Q-074), including overlay token and SS Client connection (not git).
+2. Pull the secret pack for this row from `\\zenith-dsm.vogueclean.int\spot-rebuild`, including overlay token and SS Client connection (not git).
 3. Create accounts, wallpaper, RustDesk, SS Client, CallerIdOverlay logon task.
 4. Validate (checklist below). Desktop after reboot with no password typed.
 

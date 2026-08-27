@@ -39,7 +39,7 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | --- | --- | --- |
 | Q-030 | May we install Sysmon with a conservative config? | Level B observation |
 | Q-031 | May we run short ProcMon traces around POS launch and a tag/invoice print? | Level C |
-| Q-032 | Approved evidence store path (controller disk vs Synology `zenith-dsm` vs other)? | **Partly answered.** Secrets and (likely) build packs live on NAS **`dsm.vogueclean.int`**. Discovery evidence still on the controller. Share path open (Q-074). |
+| Q-032 | Approved evidence store path (controller disk vs Synology `zenith-dsm` vs other)? | **Partly answered.** Rebuild pack is `\\zenith-dsm.vogueclean.int\spot-rebuild`. Discovery evidence still on the controller. |
 
 ## Identity
 
@@ -48,13 +48,13 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | Q-040 | Operator-facing store id and register id for this specimen? | **Answered 2026-08-21.** Store 3 **Zenith**, workstation **Mark-In 2 (back mark-in)**. Machine ids `store=zenith`, `register=mark-in-2`. SPOT `VGCTX03COUNTER3`. |
 | Q-060 | What labels should the USB **store** menu show? | **Answered.** Store 1 Vogue Krum; Store 2 Vogue Denton; Store 3 Zenith. |
 | Q-061 | Per-store **workstation** menu labels and `ClientName` map? | **Answered.** Pattern `VGCTXssCOUNTERn`. Operator confirmed the store number after `VGCTX`. Catalog: `config/catalog/workstations.yml`. |
-| Q-062 | After the USB choice, is Windows setup fully offline on the stick, or does it pull the rest from the NAS once on the LAN? | **Answered 2026-08-27 for pack location:** pull from `\\dsm.vogueclean.int\spot-rebuild` (ADR-0013). Still open: what stays on the USB if that share is down. |
+| Q-062 | After the USB choice, is Windows setup fully offline on the stick, or does it pull the rest from the NAS once on the LAN? | **Answered 2026-08-27 for pack location:** pull from `\\zenith-dsm.vogueclean.int\spot-rebuild` (ADR-0013). Still open: what stays on the USB if that share is down. |
 | Q-063 | SPOT `ClientName` / license names for Vogue Krum and Vogue Denton workstations? | **Answered 2026-08-21.** Operator confirmed store number in the name: Krum `VGCTX01COUNTER1/2`, Denton `VGCTX02COUNTER1/2`. Zenith on disk: `VGCTX03COUNTER1/2/3`. |
 | Q-070 | Windows **computer name** pattern on replacements (keep `ZENITH-WS1` style, or derive from store + role)? | **Answered 2026-08-27.** Keep the live names: `ZENITH-WS1/2/3`, `ZENITH-WORKDESK`, `Z-SSTATION`. Vogue hostnames when those PCs are in inventory. |
 | Q-071 | Retail Windows 11 Pro **product key** on new boxes (COA sticker, OEM digital entitlement, or unattend key)? | **Answered 2026-08-27.** Each box uses its **COA / OEM** license. No key in the NAS pack or git (ADR-0013). |
 | Q-072 | Wallpaper **exact strings** and layout: store menu name vs id; SPOT ID = `VGCTX03COUNTER3` or “Mark-In 2 (back mark-in)”; font/size/position? | Operator: design still to refine. |
 | Q-073 | Replacement **account names** (reuse `ZenithAdmin`/`ZenithUser`, store-prefixed, or generic)? | **Answered 2026-08-27.** **`ZenithAdmin`** and **`ZenithUser`** (no space). Shop-floor is standard user. Workdesk also keeps named **Gayla**. Live WS1/video wall still have spaces until replaced. |
-| Q-074 | NAS **share path** and how the USB authenticates to read secrets? | **Answered 2026-08-27.** Share `\\dsm.vogueclean.int\spot-rebuild`, user **`spot-rebuild`**. Password not in git. **Open:** `dsm.vogueclean.int` did not resolve (use `zenith-dsm.vogueclean.int` / `10.0.253.110` until DNS exists). |
+| Q-074 | NAS **share path** and how the USB authenticates to read secrets? | **Answered 2026-08-27.** Share `\\zenith-dsm.vogueclean.int\spot-rebuild`, user **`spot-rebuild`**. Password not in git. Kits copied to `common/packages/` the same day. |
 | Q-083 | When will **`rustdesk.vogueclean.int`** resolve (A/CNAME to the RustDesk server)? | **Answered 2026-08-27.** Resolves to `10.0.253.110`. Live RustDesk configs on WS1/WS2/WS3, workdesk, and Z-SSTATION updated; service restarted. |
 | Q-075 | UPS **critical percent** and action (shut down vs hibernate); vendor software vs Windows HID; sleep-on-battery allowed? | Today: low 10% do nothing, critical 5% **hibernate** on all three; WS1 cannot hibernate. |
 | Q-080 | The two extra **non-SPOT** Windows rebuilds: which store, USB menu label, role/purpose, current hostname/IP? | **Answered.** Video wall `Z-SSTATION` / `10.0.253.164`. Management desk `ZENITH-WORKDESK` / `10.0.253.162`. |

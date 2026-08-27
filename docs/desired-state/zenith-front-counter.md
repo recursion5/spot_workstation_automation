@@ -21,7 +21,7 @@ Customer-facing register: hosted Xplor Spot, thermal invoices, cash-drawer kick 
 ## Apply after USB identity choice
 
 1. Windows 11 Pro unattend (no “new PC” screens). Product key: Open question (Q-071).
-2. Pull the secret pack for this row from the NAS (`dsm.vogueclean.int` / share still Q-074). Do not bake passwords into the USB.
+2. Pull the secret pack for this row from `\\zenith-dsm.vogueclean.int\spot-rebuild`. Do not bake passwords into the USB.
 3. Create accounts, wallpaper, RustDesk, printers, SPOTLauncher, browser policy.
 4. Bind printers to **whatever USB/WSD PnP the new box sees**. Do not copy `USB001` or WSD GUIDs from WS1.
 5. Validate (checklist below). Staff: desktop → SPOT shortcut; shop-floor user already signed in.

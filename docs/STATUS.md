@@ -68,8 +68,8 @@
 
 ## Next
 
-1. Share user is **`spot-rebuild`**. Copy controller `vendor-installers/` onto `\\dsm.vogueclean.int\spot-rebuild` once DNS exists (`dsm.vogueclean.int` did not resolve 2026-08-27; `zenith-dsm.vogueclean.int` = `10.0.253.110`). Password in gitignored `.env`, not git.
-2. Copy controller `vendor-installers/` onto that share. Operator places passwords/tokens (never git).
+1. Pack is on `\\zenith-dsm.vogueclean.int\spot-rebuild` as user **`spot-rebuild`**. Vendor kits are in `common/packages/` (checksums verified 2026-08-27). Password in gitignored `.env`, not git.
+2. Operator still places per-row passwords (admin, autologon, Citrix/launcher) under `rows/` — never git. Overlay config for the video wall is already on the share.
 3. Still missing **official** setups: `CitrixWorkspaceApp.exe`, `SPOTLauncherSetup_1.1.169.3.exe`, SS Client **2.2.1**. We have install-dir payload / installed tree / overlay exe instead.
 4. USB/WinPE only after the share exists; first stick is a **staffed Front Counter test**.
 5. Watchers: weekday 06:00 / Saturday 08:00; pull only when tasked.

@@ -1,9 +1,9 @@
 # NAS secret pack (existence only)
 
 **Status:** draft layout. **No values in git.**  
-**Class:** Requirement (ADR-0005, ADR-0011, ADR-0013). Open: DNS for `dsm.vogueclean.int`; what to do if the share is down (Q-062 remainder). User **`spot-rebuild`**; password in controller `.env` / pack, not git.
+**Class:** Requirement (ADR-0005, ADR-0011, ADR-0013). Open: what to do if the share is down (Q-062 remainder). Live UNC `\\zenith-dsm.vogueclean.int\spot-rebuild`, user **`spot-rebuild`**. Password in controller `.env` / pack, not git.
 
-The USB process must **apply** these so SPOT support does not remote in to finish a replacement. Pack root: `\\dsm.vogueclean.int\spot-rebuild` (operator, 2026-08-27). Git may list **file names and purpose** only.
+The USB process must **apply** these so SPOT support does not remote in to finish a replacement. Pack root: `\\zenith-dsm.vogueclean.int\spot-rebuild` (operator, 2026-08-27). Git may list **file names and purpose** only.
 
 Windows 11 Pro: **no product key in this pack** (COA / OEM on each box, ADR-0013).
 
@@ -16,7 +16,7 @@ This is not an installer. The share must exist and be readable by the stick befo
 Machine-readable twin: [config/examples/secret-pack.manifest.example.yml](../../config/examples/secret-pack.manifest.example.yml).
 
 ```
-\\dsm.vogueclean.int\spot-rebuild\
+\\zenith-dsm.vogueclean.int\spot-rebuild\
   common/
     rustdesk-id_ed25519.pub            # rendezvous public key
     rustdesk-server.txt                # rustdesk.vogueclean.int (non-secret; may live in git)
@@ -67,7 +67,7 @@ Admin password may be one value reused across rows; still store it in the pack, 
 
 | Item | Where it is today |
 | --- | --- |
-| NAS share created + USB auth | Path decided; share may not exist yet; auth still open |
+| NAS share created + USB auth | **Done.** `\\zenith-dsm.vogueclean.int\spot-rebuild` as `spot-rebuild`. Per-row passwords still for the operator to drop. |
 | Official `CitrixWorkspaceApp.exe` | Not on disk. Staged: zip of the WS2 `Citrix Workspace 26.3.10.69` payload folder |
 | Official `SPOTLauncherSetup_1.1.169.3.exe` | Installer gone (temp source). Staged: installed AppData tree zip + leftover 1.1.167.1 setup |
 | SS Client **2.2.1.2565** installer | Installed; leftover Downloads are **2.0.1 / 2.0.2** only |

@@ -21,7 +21,7 @@ Front mark-in: hosted Xplor Spot, thermal invoices, USB tag printer, Brother rep
 ## Apply after USB identity choice
 
 1. Windows 11 Pro unattend (no “new PC” screens). Product key: Open question (Q-071).
-2. Pull the secret pack for this row from the NAS (`dsm.vogueclean.int` / share still Q-074).
+2. Pull the secret pack for this row from `\\zenith-dsm.vogueclean.int\spot-rebuild`.
 3. Create accounts, wallpaper, RustDesk, printers, SPOTLauncher, Citrix Workspace, browser policy.
 4. Bind printers to **whatever USB/WSD PnP the new box sees**. Live Tag is `USB002` — do not copy that instance id.
 5. Validate (checklist below).

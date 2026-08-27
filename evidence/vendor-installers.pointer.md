@@ -23,4 +23,4 @@
 - Official **SPOTLauncherSetup 1.1.169.3**: InstallSource was a Temp folder that is gone. Have installed tree + older 1.1.167.1 setup.
 - **SS Client 2.2.1.2565** installer: not on disk. Leftover Downloads on Z-SSTATION are **2.0.1-2304** and **2.0.2-2406** only (not copied this pass; still on that PC).
 
-Pack destination when the share exists: `\\dsm.vogueclean.int\spot-rebuild` (ADR-0013).
+Pack destination: `\\zenith-dsm.vogueclean.int\spot-rebuild` (ADR-0013). Kits copied to `common/packages/` 2026-08-27; SHA-256 matched the controller copies.

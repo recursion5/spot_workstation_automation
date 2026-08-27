@@ -17,7 +17,7 @@ Operator registered desired-state notes for automated replacements. Implementati
 4. **Accounts.** An **admin** account exists. The auto-logon user should be **standard** (non-admin). On SPOT PCs that user runs SPOT. Today’s shop-floor users are administrators; that is leftover, not the target.
 5. **Secrets.** Source of truth is the **NAS**, not git and not a plaintext USB. The **build applies SPOT-related secrets** so a replacement does not need a SPOT support remote session to install the launcher, set station identity, or attach printers/peripherals. Complements ADR-0005 and ADR-0010.
 6. **OOBE.** Replacement hardware ships with **retail Windows 11 Pro**. The USB process must not leave the operator on the “new PC experience.” Unattended setup skips OOBE.
-7. **SPOT standard-user browser (2026-08-27).** On SPOT workstations the shop-floor (non-admin) profile gets **one** browser, with minimized/controlled settings (search provider, new tab, home). Default / home / new tab is **`https://help.spotpos.com`**. Further lockdown, Start menu, and “which browser” are still to discuss (Q-084). Does **not** automatically apply to the management desk or video wall unless stated. Live POS browsers are not changed yet.
+7. **SPOT standard-user browser (2026-08-27).** On SPOT workstations the shop-floor (non-admin) profile gets **one** browser: **Microsoft Edge** (included with Windows). Default / home / new tab is **`https://help.spotpos.com`**. Search provider controlled (Google unless later specified). Further lockdown, Start menu, and Store (Q-084 remainder) still open. Does **not** automatically apply to the management desk or video wall unless stated. Live POS browsers are not changed yet.
 
 ## Alternatives considered
 

@@ -28,7 +28,7 @@ WinRM is HTTP 5985 NTLM from `10.0.253.225` only. Users:
 
 **Watchers:** store-open systemd timer still starts a low-overhead loop **on WS1/WS2/WS3** (`C:\ProgramData\spot-discovery\observe\`). Boot/logon scheduled tasks do the same after reboot. Files stay on the PCs until an agent pulls them. That does **not** spend Grok tokens. The 12-hour Grok chat loop was **cancelled** 2026-08-22. Do not recreate it unless the operator asks.
 
-**Do not** collect more from SPOT PCs unless asked. Cash-drawer kick and scanners are closed. Do not reverse-engineer POS auto-logon. Do not convert live WS2 from Citrix to RDS to experiment.
+**Do not** collect more from SPOT PCs unless asked. Cash-drawer kick and scanners are closed. Do not reverse-engineer POS auto-logon. Do not convert live WS1/WS3 from RDS to Citrix to experiment.
 
 ---
 
@@ -86,6 +86,8 @@ Cash-drawer **kick** = standard Epson pulse on `CashDrawer`. **Check-in** is not
 
 Scanners: USB HID keyboard-wedge like WS3 (`VID_0536`). All stations the same.
 
+**Vendor install kits (SPOT leftover Downloads):** captured on the controller 2026-08-27 — Epson APD 5.11 (`APD_511R1_T88V_EWM.zip`), Star PRNT 3.8.1, WASP fonts (49 ttf; ~30 installed per-user for the shop-floor account), older SPOTLauncher 1.1.167.1. Pointer: [vendor-installers.pointer.md](../evidence/vendor-installers.pointer.md). Rebuilds install those packages, not only printer objects.
+
 ### Accounts and auto-logon
 
 | PC | Admin | Shop-floor | Shop-floor is admin? | AutoAdminLogon |
@@ -127,7 +129,7 @@ Desktop shortcut  SPOT (VGCTX03COUNTERn).lnk
                Brother: WSD / IPP class driver
 ```
 
-WS2 substitutes Citrix Workspace / `wfica32` / ICA `SPOT - Auto Login` for the mstsc hop. Do not copy that onto new PCs.
+**Live:** WS1/WS3 use the RDS hop above; WS2 substitutes Citrix Workspace / `wfica32` / ICA `SPOT - Auto Login`. **Replacements (ADR-0012):** copy the WS2 Citrix hop, not `mstsc`.
 
 ---
 
@@ -136,19 +138,20 @@ WS2 substitutes Citrix Workspace / `wfica32` / ICA `SPOT - Auto Login` for the m
 - `ClientName` / RDP user / shortcut name `VGCTXssCOUNTERn`
 - Role: cash drawer vs tag vs back mark-in vs desk vs video wall
 - Printer **names** and whether `CashDrawer` / `Tag` exist
-- ConnectionMode 1 + RDS (desired); WS2’s 0 is not desired
+- `ConnectionMode` **0** + Citrix Workspace (desired, ADR-0012); live WS1/WS3 `ConnectionMode` 1 / RDS is not the replacement path
+- Windows computer names keep the live hostnames (`ZENITH-WS1`, `ZENITH-WS2`, `ZENITH-WS3`, `ZENITH-WORKDESK`, `Z-SSTATION`)
 - Video wall: SS Client auto-start; CallerIdOverlay logon task + config (token lives with NAS secrets, not git)
 - Workdesk: Gayla, no auto-logon, 3CX
+- Vendor kits: Epson APD 5.11, Star PRNT 3.8.1, WASP per-user fonts, SPOTLauncher (live 1.1.169.3)
 
 ---
 
 ## Hardware-bound (do not copy literally)
 
 - USB instance IDs, `USB001` vs `USB002`, WSD port GUIDs
-- Windows computer names (`ZENITH-WS1`, `Z-SSTATION`, …) until Q-070 is decided
 - MINIX N42C-4 (WS1), NEO Z100, MSI Cubi2 as required hardware
 - Win10 17763 vs 19044/19045 vs Win11 26200
-- Citrix install, Receiver autostart, leftover ICA
+- Receiver 4.9 autostart / leftover ICA on RDS boxes (replacement Citrix is **Workspace**, WS2 template)
 - POS shop-floor users in Administrators
 - Old RustDesk IP `10.0.253.110` (live and rebuilds use `rustdesk.vogueclean.int`)
 - Chrome hijack leftovers; OneLaunch
@@ -171,6 +174,7 @@ WS2 substitutes Citrix Workspace / `wfica32` / ICA `SPOT - Auto Login` for the m
 9. SPOT shop-floor: **Edge**; home/new tab **`https://help.spotpos.com`**. Further lockdown still open.
 10. Accounts **`ZenithAdmin`** / **`ZenithUser`**. Computer names keep the live hostnames.
 11. First POS replacement candidate: **Zenith Front Counter** (WS1).
+12. Vendor kits: Epson APD 5.11 + WASP fonts for `ZenithUser` (Star PRNT on tag rows). Binaries on the controller, not git.
 
 ---
 

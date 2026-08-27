@@ -36,6 +36,7 @@
 ## In progress
 
 - Launch path is **station-dependent today** (WS1/WS3 RDS, WS2 Citrix). **Decision (ADR-0012):** replacements use **Citrix** for all SPOT rows. Live PCs are not converted in place.
+- **Vendor install kits captured (2026-08-27):** Epson APD 5.11, Star PRNT 3.8.1, WASP fonts, older SPOTLauncher 1.1.167.1 copied to controller `vendor-installers/` (not git). Installed products were already in software inventory; WASP fonts are per-user for the shop-floor account.
 - Operator workflow 2026-08-20: tag print failed (not repaired). Invoice/scan/relaunch were attempted. Details in DISCOVERIES.
 - Printer/PnP correlation (logical names captured; USB mapping still partly hypothesis).
 - Reboot test: `ZenithUser` auto-signed in; WinRM still works. Auto-logon mechanism still not the classic registry switch.
@@ -64,7 +65,7 @@
 ## Next
 
 1. Review the Front Counter recipe (Citrix, `ZenithAdmin`/`ZenithUser`, Edge, hostname `ZENITH-WS1`). NAS share (Q-074) still blocks a real stick.
-2. Copy remaining vendor zips (`APD_511R1`, `starprnt_v3.8.1`) onto the NAS with WASP fonts when that share exists.
+2. Copy vendor kits from the controller `vendor-installers/` onto the NAS when that share exists.
 3. Same recipe shape for Mark-In 1/2, desk, video wall.
 4. USB/WinPE only after blocking items for the first stick.
 5. Watchers: weekday 06:00 / Saturday 08:00; pull only when tasked.

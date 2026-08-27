@@ -36,6 +36,7 @@ Statements the operator or constitution say the future system must honor. Not di
 - **OOBE (2026-08-21):** retail Windows 11 Pro boxes must not stop on the “new PC experience.” USB unattend skips it.
 - **SPOT standard-user browser (2026-08-27):** **Microsoft Edge** only; controlled search/new-tab/home. Home and new tab = **`https://help.spotpos.com`**. Further lockdown still open. SPOT PCs only unless extended.
 - **Computer names (2026-08-27):** keep the live names (`ZENITH-WS1`, `ZENITH-WS2`, `ZENITH-WS3`, `ZENITH-WORKDESK`, `Z-SSTATION`).
+- **Vendor driver/font kits (2026-08-27):** rebuilds install Epson APD 5.11 (`APD_511R1`), WASP barcode fonts (shop-floor user), and Star PRNT 3.8.1 on tag rows. Not only printer objects. Kits captured on the controller; not git.
 
 ## Phase 1 acceptance
 

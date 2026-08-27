@@ -8,7 +8,7 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | --- | --- | --- | --- |
 | Q-001 | What is the specimen hostname and IPv4? | **Answered:** `ZENITH-WS3` / `10.0.253.204`. | No |
 | Q-002 | Which VLAN/subnet are POS PCs on, and does OPNsense allow 5985 from `10.0.253.225`? | **Answered for this PC:** same subnet `10.0.253.0/24`; no extra firewall rule needed. | No |
-| Q-003 | Local admin account name for remoting (workgroup vs domain)? | **Answered for live PCs:** workgroup; remoting user `ZenithAdmin` / `Zenith Admin`. Shop-floor `ZenithUser` is **also an administrator** today. Replacements: admin + standard SPOT user (ADR-0011). Names for new builds still open (Q-073). | No |
+| Q-003 | Local admin account name for remoting (workgroup vs domain)? | **Answered for live PCs:** workgroup; remoting user `ZenithAdmin` / `Zenith Admin`. Shop-floor `ZenithUser` is **also an administrator** today. Replacements: **`ZenithAdmin`** / **`ZenithUser`** (no space), shop-floor standard (Q-073, ADR-0011). | No |
 | Q-004 | Is the auto-logon standard user already logged on during business hours? | **Answered:** `ZenithUser` was logged on during collection. | No |
 | Q-005 | Winlogon `AutoAdminLogon` is `0` and no DefaultPassword is present. How does the desktop return after reboot? | **Closed as a research item.** Operator: reproduce **behavior** only (shop-floor desktop after reboot, no password). Implementation on new builds is our choice. | No |
 
@@ -17,7 +17,7 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | ID | Question | Why it matters |
 | --- | --- | --- |
 | Q-010 | Is this specimen on Citrix + SPOTLauncher, SPOTWeb + ConnectLink, or both? | **Answered.** Live mix: WS1/WS3 RDS `mstsc`; WS2 Citrix ICA. **Replacement target (ADR-0012, 2026-08-27):** Citrix Workspace / ICA for **all** new SPOT PCs. |
-| Q-011 | Exact Citrix product/version, StoreFront/gateway URL, ICA vs HDX? | **Answered for current PCs.** WS3: Receiver 4.9 LTSR installed, but SPOT is **RDS `mstsc`**. WS2: Workspace **26.3.10.69**, live SPOT is ICA **`wfica32`** / `SPOT - Auto Login`. WS1: `mstsc` only after reboot. Gateway `rds.mydrycleaner.com`. Citrix is leftover on some PCs, not the replacement method. |
+| Q-011 | Exact Citrix product/version, StoreFront/gateway URL, ICA vs HDX? | **Answered for current PCs.** WS3: Receiver 4.9 LTSR installed, but live SPOT is **RDS `mstsc`**. WS2: Workspace **26.3.10.69**, live SPOT is ICA **`wfica32`** / `SPOT - Auto Login`. WS1: `mstsc` only after reboot. Gateway `rds.mydrycleaner.com`. **Replacement method is Workspace / ICA (ADR-0012);** Receiver 4.9 on WS3 is leftover, not the package to copy. |
 | Q-014 | Must existing WS2 be converted from Citrix to RDS before it is replaced, or only new PCs? | Not blocking replacement of WS1. Do not change WS2 in production to experiment. |
 | Q-012 | Where is workstation identity stored locally? | Shortcut name `SPOT (VGCTX03COUNTER3)`; launcher under `ZenithAdmin` AppData; args `"/launch:SPOT"`. Still need config files inside SPOTLauncher. |
 | Q-013 | Account Key / store / workstation names as used in SPOT | Workstation/`ClientName`: `VGCTXssCOUNTERn`. Hosted Account Key unknown. |

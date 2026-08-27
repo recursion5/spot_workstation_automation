@@ -17,7 +17,7 @@ Then inspect git status, repair missing scaffold required by the spec, and conti
 
 ## Current phase
 
-Phase 1 evidence for Zenith is in [docs/DISCOVERY-REPORT.md](docs/DISCOVERY-REPORT.md). Next work is **Phase 2 analysis** (desired-state model), not USB/OOBE coding unless the operator asks.
+Phase 1 evidence is in [docs/DISCOVERY-REPORT.md](docs/DISCOVERY-REPORT.md). **Phase 2** has started: desired-state recipes under [docs/desired-state/](docs/desired-state/). First row: [zenith-front-counter.md](docs/desired-state/zenith-front-counter.md). Do **not** implement USB/OOBE until the operator asks and NAS/account/browser opens that block a real stick are decided.
 
 Do **not** implement replacement provisioning, OOBE automation, kiosk lockdown, or a final desired-state playbook until that analysis exists. Record candidate directions in docs and ADRs only. Do not collect more from SPOT PCs unless asked.
 

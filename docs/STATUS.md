@@ -1,7 +1,7 @@
 # Project status
 
-**Phase:** 1 complete (Zenith evidence + report). Phase 2 not started.  
-**Date:** 2026-08-22  
+**Phase:** 2 analysis (desired-state). First recipe: [desired-state/zenith-front-counter.md](desired-state/zenith-front-counter.md).  
+**Date:** 2026-08-27  
 **Handoff:** [DISCOVERY-REPORT.md](DISCOVERY-REPORT.md)  
 **Specimen:** `ZENITH-WS3` at `10.0.253.204`  
 **Store:** Store 3 **Zenith** (`store=zenith`)  
@@ -63,6 +63,7 @@
 
 ## Next
 
-1. Phase 2: desired-state per catalog row; **Zenith Front Counter** first.
-2. Operator decisions still needed: wallpaper layout, NAS share path, account names, computer names, which one shop-floor browser (issue 007 / Q-084). Home/new tab for that browser is `https://help.spotpos.com`.
-3. Watchers: weekday 06:00 / Saturday 08:00; pull from the PCs only when tasked.
+1. Review the Front Counter recipe. Decide account names (Q-073), computer name (Q-070), Edge vs Chrome (Q-084), NAS share (Q-074) when ready for a stick.
+2. Then the same recipe shape for Mark-In 1/2, desk, video wall.
+3. USB/WinPE only after those blocking items for the first stick.
+4. Watchers: weekday 06:00 / Saturday 08:00; pull only when tasked.

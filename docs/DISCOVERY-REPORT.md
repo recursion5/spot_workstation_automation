@@ -3,7 +3,7 @@
 **Date:** 2026-08-22  
 **Store:** Zenith (store 3)  
 **Controller:** `utility-agent` `10.0.253.225`  
-**Phase:** 1 complete for *this site’s* evidence and identity. **Do not** implement USB/OOBE/provisioning until Phase 2 analysis.  
+**Phase:** 1 complete for Zenith evidence. Phase 2 started (Front Counter desired-state draft). **Do not** implement USB/OOBE until that recipe is accepted and blocking opens (NAS, accounts, browser) are decided.  
 **This document is the handoff.** Prefer it plus ADRs, `config/catalog/workstations.yml`, and evidence pointers over chat history.
 
 Classification: **Discovery** unless labeled Requirement, Decision, Hypothesis, Assumption, or Open question.
@@ -229,7 +229,7 @@ On PCs: `C:\ProgramData\spot-discovery\` (staging, observe snapshots, connection
 
 ## Next steps (Phase 2 — analysis, still no installer)
 
-1. Desired-state document per catalog row (Zenith Front Counter first).
+1. Desired-state document per catalog row. **Front Counter draft:** [desired-state/zenith-front-counter.md](desired-state/zenith-front-counter.md).
 2. Secret-pack layout on the NAS (no values in git).
 3. USB/WinPE design: store menu → workstation menu → unattend Win11 + apply row.
 4. Account-name and computer-name decisions (Q-073, Q-070).

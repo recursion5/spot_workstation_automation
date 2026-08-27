@@ -140,8 +140,10 @@ NAS pack (paths TBD, Q-074), at least:
 
 - Shop-floor auto-logon secret
 - Local admin password
-- Hosted SPOTLauncher / Citrix material for `VGCTX03COUNTER1`
+- SPOTLauncher `settings.json` (not a secret: `ClientName` + API + `ConnectionMode` 0) — already known
 - RustDesk public key (and ID if we pre-register)
+
+Citrix ICA tickets are **not** pack secrets (ephemeral). Farm “SPOT - Auto Login” **Hypothesis:** no stored Citrix password required.
 
 Layout: [secret-pack.md](secret-pack.md). ScrewDrivers is live on RDS boxes; Citrix replacements may not need that license (**Hypothesis**).
 

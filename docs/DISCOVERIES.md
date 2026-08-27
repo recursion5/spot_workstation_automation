@@ -280,6 +280,18 @@ The 06:00 CDT systemd job **did start** watchers on WS1/WS2, but they did not wr
 - USB device **EPSON USB Controller for TM/BA/EU Printers** (`USB\VID_04B8&PID_0202`) is present. Maps to the `EPSON` logical printer via Epson APD5 virtual port `ESDPRT001` (hypothesis until a print trace).
 - Epson APD5 5.11.1.0 and TM-T88V utility installed.
 - Star Micronics Printer Software 3.8.1 installed.
+### SPOT/Citrix secrets on the PC (2026-08-27)
+
+**Class: Discovery** unless labeled Hypothesis.
+
+SPOTLauncher on WS2 (`ConnectionMode` 0, the replacement template) stores **no password** in `settings.json`. Keys are only `RDGatewayAddress`, `ClientName`, `APIURL`, `DisableDeleteRDPFiles`, `PrintingClientInstallCount`, `ConnectionMode`. `apps.json` is StoreFront resource URLs for published app `SPOT - Auto Login`. `CredentialManagement.dll` and `SPOT.Core.Cryptography.dll` sit next to the exe; there is **no** SBS/SPOT HKCU key and **no** Windows Credential Manager entry visible to the admin session. Shop-floor CredMan was not dumped.
+
+Live ICA (`SelfService\Temp\MDCDDC.SPOT - Auto Login.ica`) has `AutologonAllowed=ON`, `ClientName=VGCTX03COUNTERn`, `ClearPassword` (encrypted), `RemoveICAFile=yes`. That password field is a **StoreFront/session ticket**, not a long-lived secret we can drop on a new PC.
+
+RDS boxes (`apps.json`) use RemoteApp user `VGCTXssCOUNTERn@mydrycleaner.com` with `/autologin /useaduser` and also have no launcher password field. Replacements do not use that RDS file.
+
+**Hypothesis:** Citrix replacements authenticate because the **farm** published app is “SPOT - Auto Login” and the launcher sends `ClientName`. Copying an ICA file or hunting DPAPI is the wrong pack. Identity files (`settings.json`) are enough to *try* a staffed test. Windows auto-logon and local admin passwords are separate and are **not** in these configs (and POS auto-logon was closed as a research item).
+
 - **Leftover SPOT vendor installers in Downloads (2026-08-27):** not previously inventoried as a kit. WS2: `APD_511R1_T88V_EWM.zip`, `WASP_Fonts.zip` (49 barcode/MICR `.ttf`), `SPOTLauncherSetup_1.1.167.1.exe`. WS3: `starprnt_v3.8.1.zip`. **Copied to controller** `spot-discovery/evidence/vendor-installers/` (hashes in `vendor-installers.pointer.md`). Installed Add/Remove products were already in Level A. WASP fonts are **per-user** for the shop-floor account (`AppData\Local\Microsoft\Windows\Fonts`, ~30 of 49 files) on WS1/WS2/WS3; not in `C:\Windows\Fonts`. Rebuilds must **install these packages**, not only create printer objects. Other Downloads leftovers (LogMeIn Rescue, TeamViewer Host setup, RustDesk MSI, a payment-receipt PDF) are not rebuild kits and were not copied.
 
 ### Vendor kit analysis (2026-08-27): what is needed vs “just install the zip”

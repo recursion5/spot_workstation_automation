@@ -20,7 +20,7 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | Q-011 | Exact Citrix product/version, StoreFront/gateway URL, ICA vs HDX? | **Answered for current PCs.** WS3: Receiver 4.9 LTSR installed, but live SPOT is **RDS `mstsc`**. WS2: Workspace **26.3.10.69**, live SPOT is ICA **`wfica32`** / `SPOT - Auto Login`. WS1: `mstsc` only after reboot. Gateway `rds.mydrycleaner.com`. **Replacement method is Workspace / ICA (ADR-0012);** Receiver 4.9 on WS3 is leftover, not the package to copy. |
 | Q-014 | Must existing WS2 be converted from Citrix to RDS before it is replaced, or only new PCs? | Not blocking replacement of WS1. Do not change WS2 in production to experiment. |
 | Q-012 | Where is workstation identity stored locally? | Shortcut name `SPOT (VGCTX03COUNTER3)`; launcher under `ZenithAdmin` AppData; args `"/launch:SPOT"`. Still need config files inside SPOTLauncher. |
-| Q-013 | Account Key / store / workstation names as used in SPOT | Workstation/`ClientName`: `VGCTXssCOUNTERn`. Hosted Account Key unknown. |
+| Q-013 | Account Key / store / workstation names as used in SPOT | Workstation/`ClientName`: `VGCTXssCOUNTERn`. **Launcher `settings.json` has no password/Account Key fields** (Discovery 2026-08-27). Hosted Account Key still not on the PC as a clear field. Citrix ICA `ClearPassword` is a short-lived ticket (`RemoveICAFile=yes`); not a copyable farm password. **Hypothesis:** a new box with the same `ClientName` + Workspace + launcher may not need a stored Citrix password. |
 
 ## Peripherals
 

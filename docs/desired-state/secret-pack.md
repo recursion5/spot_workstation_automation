@@ -30,9 +30,9 @@ Machine-readable twin: [config/examples/secret-pack.manifest.example.yml](../../
       SS Client installer              # live 2.2.1 has no leftover setup; Downloads only 2.0.x
   rows/
     zenith-front-counter/              # VGCTX03COUNTER1 / ZENITH-WS1
-      zenithadmin.password
-      zenithuser.autologon
-      spotlauncher/                    # ClientName, ConnectionMode 0, Citrix material
+      zenithadmin.password             # Windows local admin — not in SPOTLauncher
+      zenithuser.autologon             # Windows auto-logon — not in SPOTLauncher
+      spotlauncher/settings.json       # NOT a secret: ClientName + API + ConnectionMode 0
     zenith-mark-in-1/                  # VGCTX03COUNTER2 / ZENITH-WS2
       zenithadmin.password
       zenithuser.autologon

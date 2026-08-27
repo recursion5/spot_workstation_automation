@@ -99,12 +99,12 @@ Scanners: USB HID keyboard-wedge like WS3 (`VID_0536`). All stations the same.
 
 ### Non-SPOT
 
-- Video wall: Synology Surveillance Station Client 2.2.1 running, Startup for Zenith User. Custom **CallerIdOverlay** at logon via scheduled task `\CallerIdOverlay` (`C:\ProgramData\CallerIdOverlay\CallerIdOverlay.exe`); talks to `http://10.0.253.113:8080`, `store_id` 103. RustDesk to `10.0.253.110`.
+- Video wall: Synology Surveillance Station Client 2.2.1 running, Startup for Zenith User. Custom **CallerIdOverlay** at logon via scheduled task `\CallerIdOverlay` (`C:\ProgramData\CallerIdOverlay\CallerIdOverlay.exe`); talks to `http://10.0.253.113:8080`, `store_id` 103. RustDesk to `rustdesk.vogueclean.int`.
 - Workdesk: MSI Cubi2; Chrome/Acrobat/3CX; SS Client installed but unused. OneLaunch/OneBrowser/Cash Catch and `velis-browser.com` start-page hijack **removed**; operator confirmed Chrome is good.
 
 ### RustDesk / UPS
 
-- All reached PCs have RustDesk; live configs use **IP** `10.0.253.110`. **Requirement** for new builds: **`rustdesk.vogueclean.int`**. That name did not resolve from the controller on 2026-08-27; live configs were not changed.
+- All reached PCs have RustDesk. **Requirement** and live config (2026-08-27): **`rustdesk.vogueclean.int`** (DNS A `10.0.253.110`).
 - UPS HID: WS1 APC, WS2 CyberPower, WS3 none, workdesk none, video wall HID present.
 
 ### Hours
@@ -150,7 +150,7 @@ WS2 substitutes Citrix Workspace / `wfica32` / ICA `SPOT - Auto Login` for the m
 - Win10 17763 vs 19044/19045 vs Win11 26200
 - Citrix install, Receiver autostart, leftover ICA
 - POS shop-floor users in Administrators
-- RustDesk IP `10.0.253.110` (rebuilds use `rustdesk.vogueclean.int`)
+- Old RustDesk IP `10.0.253.110` (live and rebuilds use `rustdesk.vogueclean.int`)
 - Chrome hijack leftovers; OneLaunch
 - Yevhen account
 

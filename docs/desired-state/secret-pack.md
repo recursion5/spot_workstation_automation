@@ -22,7 +22,9 @@ Machine-readable twin: [config/examples/secret-pack.manifest.example.yml](../../
     rustdesk-server.txt                # rustdesk.vogueclean.int (non-secret; may live in git)
     packages/
       CitrixWorkspace-26.3.10.69-payload.zip  # staged from WS2 install dir (not CitrixWorkspaceApp.exe)
-      SPOTLauncher-1.1.169.3-installed.zip    # installed tree; vendor Setup 1.1.167.1 leftover also kept
+      SPOTLauncherSetup_1.1.169.3.exe         # official setup (operator 2026-08-27)
+      SPOTLauncher-1.1.169.3-installed.zip    # installed tree backup
+      SPOTLauncherSetup_1.1.167.1.exe         # leftover older setup
       APD_511R1_T88V_EWM.zip
       starprnt_v3.8.1.zip
       WASP_Fonts.zip
@@ -69,7 +71,7 @@ Admin password may be one value reused across rows; still store it in the pack, 
 | --- | --- |
 | NAS share created + USB auth | **Done.** `\\zenith-dsm.vogueclean.int\spot-rebuild` as `spot-rebuild`. Per-row passwords still for the operator to drop. |
 | Official `CitrixWorkspaceApp.exe` | Not on disk. Staged: zip of the WS2 `Citrix Workspace 26.3.10.69` payload folder |
-| Official `SPOTLauncherSetup_1.1.169.3.exe` | Installer gone (temp source). Staged: installed AppData tree zip + leftover 1.1.167.1 setup |
+| Official `SPOTLauncherSetup_1.1.169.3.exe` | **On the pack** (`common/packages/`, operator 2026-08-27) |
 | SS Client **2.2.1.2565** installer | Installed; leftover Downloads are **2.0.1 / 2.0.2** only |
 | CallerIdOverlay token | In `config.json` on the wall PC; never git. Binary staged to controller |
 | Per-row launcher/Citrix secrets | Operator places on the NAS |

@@ -88,7 +88,8 @@ SPOT’s manual new-PC setup leaves these in Downloads. **Installed products wer
 | `APD_511R1_T88V_EWM.zip` | Yes (controller) | Epson APD 5.11 R1 for TM-T88V (`APD_511R1_T88V.exe`) |
 | `starprnt_v3.8.1.zip` | Yes (controller) | Star Micronics Printer Software 3.8.1 (tag stations; Front Counter has no Tag printer) |
 | `WASP_Fonts.zip` | Yes (controller) | 49 WASP barcode/MICR `.ttf` fonts |
-| `SPOTLauncherSetup_1.1.167.1.exe` | Yes (controller) | Older launcher; prefer live **1.1.169.3** |
+| `SPOTLauncherSetup_1.1.169.3.exe` | Yes (NAS `common/packages/` + controller) | Official setup (operator). Prefer this over 1.1.167.1 leftover. |
+| `SPOTLauncherSetup_1.1.167.1.exe` | Yes (controller) | Older leftover; do not prefer |
 
 WASP fonts on the live PCs are **per-user** for the shop-floor account (`AppData\Local\Microsoft\Windows\Fonts`), not `C:\Windows\Fonts`. About 30 of 49 files from the zip are installed (Code 39/93/128, Codabar, MICR, OCR, UPC). Rebuilds must **run Epson APD + install WASP fonts for `ZenithUser`** (and Star PRNT on tag rows), not only “create a printer object.” Silent switches are not extracted yet.
 

@@ -241,7 +241,7 @@ Still missing or unproven (any one of these can make “SPOT 100% ready” false
 - The USB/WinPE/unattend **does not exist**. Phase 2 is a recipe, not an installer.
 - NAS share, how the stick authenticates, secret-pack layout (Q-074, Q-062). Passwords, launcher/Citrix material, RustDesk key are not in a build pack.
 - Win11 product key / activation (Q-071).
-- Installers we have **not** captured: Citrix **Workspace 26.3.10.69**, live **SPOTLauncher 1.1.169.3** (only older 1.1.167.1 in Downloads).
+- Installers we have **not** captured as official setups: Citrix **WorkspaceApp.exe** (have install-dir payload zip). **SPOTLauncherSetup 1.1.169.3** is on the NAS pack (operator 2026-08-27).
 - APD/Star **silent** switches and post-PnP USB binding on **new** hardware.
 - Hosted SPOT Account Key (Q-013) and whether Citrix maps local `EPSON`/`CashDrawer`/`Tag`/Brother the same way ScrewDrivers does on RDS (**Hypothesis** until a Citrix replacement is tested). Front Counter today is RDS; replacements will be Citrix.
 - Mark-In / desk / video wall recipes not drafted. Vogue POS not inventoried.

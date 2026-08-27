@@ -25,10 +25,12 @@ Collectors should look for these names, then record what is actually present.
 
 ## Printer names and drivers
 
-- Invoice Windows name often `EPSON`; Epson APD from `install.spotpos.com/Drivers/Printers/Epson/`
-- Tag Windows name often `Tag`; frequently Generic/Text Only; USB requires share + `net use LPT1`
-- Cash drawer Windows name often `Cash Drawer`; port shared with EPSON
-- SPOT tag printing documented as LPT1/LPT2 only
+- Invoice Windows name often `EPSON`; Epson APD from `install.spotpos.com/Drivers/Printers/Epson/` (`APD_456E` older article; **`APD_511R1`** is the article that matches these PCs)
+- After APD: paper **80×3276**; do not set as default printer
+- Tag Windows name often `Tag`; frequently Generic/Text Only; USB docs require share + `net use LPT1` — **Zenith specimens do not do that**
+- Cash drawer Windows name `CashDrawer` (APD_511R1) or `Cash Drawer` (older APD456); port shared with EPSON; no feed/cut; drawer #1 open
+- SPOT tag printing documented as LPT1/LPT2 only; Device Name example `Star SP700 (EPOS)`
+- Barcode types in SPOT docs: **`128(128L)`**, **`39(39M)`**, I2of5, Code 93 — names match WASP font files
 - Driver cache URL pattern: `http://install.spotpos.com/Drivers/...`
 
 ## Hardware lists (supported, not necessarily installed)

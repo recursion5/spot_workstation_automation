@@ -92,6 +92,8 @@ SPOT’s manual new-PC setup leaves these in Downloads. **Installed products wer
 
 WASP fonts on the live PCs are **per-user** for the shop-floor account (`AppData\Local\Microsoft\Windows\Fonts`), not `C:\Windows\Fonts`. About 30 of 49 files from the zip are installed (Code 39/93/128, Codabar, MICR, OCR, UPC). Rebuilds must **run Epson APD + install WASP fonts for `ZenithUser`** (and Star PRNT on tag rows), not only “create a printer object.” Silent switches are not extracted yet.
 
+**Running the installers is necessary, not sufficient.** After APD, the wizard still has to register a printer named **`EPSON`** (not default), paper **80×3276**, port auto (`ESDPRT001` / `PCSVC` on the live boxes). Front Counter also registers a second APD printer named **`CashDrawer`** on that same port, no feed/cut, drawer #1 open (SPOT APD_511R1 article + live WS1). Hosted SPOT Setup for `VGCTX03COUNTER1` already exists; local Windows names must match it. Citrix Workspace + SPOTLauncher identity are separate from these zips. See [DISCOVERIES.md](../DISCOVERIES.md) vendor-kit analysis.
+
 ---
 
 ## Browser (SPOT shop-floor only)

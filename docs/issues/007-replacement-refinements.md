@@ -16,6 +16,7 @@ Locked enough to design toward:
 | Secrets on NAS; SPOT secrets in the build | Yes | Path **`\\zenith-dsm.vogueclean.int\spot-rebuild`**, user **`spot-rebuild`**. Kits in `common/packages/`. Password not in git. |
 | Skip retail Windows 11 Pro OOBE | Yes | **Key: COA/OEM on each box**, none in the pack (ADR-0013). Language/region/privacy screens. Local account creation during unattend. |
 | Reachable by this controller / later agents | Yes — **WinRM** (ADR-0002 + 0011 §8) | USB applies bootstrap; firewall CIDR; Ansible optional on the controller only. No second agent. |
+| Fleet monitoring dashboard | Later (Q-085) | Do **not** install Intune/Salt/OpenSSH for it. Dashboard can read WinRM/collector JSON from this controller. |
 | USB store → workstation menus | Yes (ADR-0010) | Vogue printers still by analogy until a Vogue PC is read. |
 | SPOT license / `ClientName` | Yes — `VGCTXssCOUNTERn` | Wallpaper whether to show this string or the menu name (Q-072). |
 | SPOT standard-user browser | **Edge**; home/new tab `https://help.spotpos.com` | Rest of lockdown still to discuss. Not auto-applied to desk/video wall. |

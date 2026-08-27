@@ -61,6 +61,7 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | Q-081 | Desired state for non-SPOT PCs besides shared ADR-0011 (apps, printers, auto-logon)? | Video wall: SS Client + auto-logon `Zenith User` (not admin). Management desk: **no** auto-logon; named user **Gayla** (operator: **do not** recreate **Yevhen**). 3CX; Chrome/Acrobat. SS Client installed but unused. |
 | Q-082 | Video wall: auto-start Surveillance Station Client, which NAS/cameras, display layout? | **Answered 2026-08-27 for connection/auto-login.** HKCU `AutoLogin=true`, `RememberPassword=true`, `RunOnStartup=true`; Startup `.lnk`; primary NAS `10.0.253.110:9901` HTTPS user `ATestUserson`. Passwords are **DPAPI** (not portable). Camera grid is in that HKCU key, not a separate file. Overlay unchanged. |
 | Q-084 | SPOT shop-floor: **which one browser** (Edge vs Chrome), and how far to lock down (Start menu, Store, USB, kiosk vs normal desktop)? | **Browser: Edge.** Home/new tab `https://help.spotpos.com`. Lockdown depth still open. |
+| Q-085 | Later **fleet dashboard** (inventory/health)? Which data plane? | **Not choosing a product now.** WinRM collectors on this controller are enough to *feed* a dashboard later. OpenSSH / Intune / Salt are not required for that at this fleet size. See issue 007. |
 
 ## Store hours
 

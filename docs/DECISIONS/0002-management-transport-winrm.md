@@ -26,4 +26,4 @@ HTTPS/5986 with a local certificate is a follow-up ADR if the HTTP path must lea
 
 ## Consequences
 
-Operator must run `Bootstrap-WinRM.ps1` once. OPNsense may need a 5985 allow from `10.0.253.225` to the POS VLAN.
+Live PCs: operator ran `Bootstrap-WinRM.ps1` once. Replacements: the USB build applies the same WinRM bootstrap (ADR-0011 §8). OPNsense may need a 5985 allow from `10.0.253.225` to the POS VLAN.

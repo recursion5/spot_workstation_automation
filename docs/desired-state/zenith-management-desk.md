@@ -38,7 +38,7 @@ Computer name: **`ZENITH-WORKDESK`**.
 | Yevhen | present on disk | **Do not recreate.** |
 | Built-in Administrator | disabled | Stay disabled. |
 
-WinRM as the admin user only.
+WinRM as **`ZenithAdmin` only** (HTTP 5985 NTLM, firewall `10.0.253.225/32`). USB applies the discovery bootstrap (ADR-0011 §8).
 
 ---
 

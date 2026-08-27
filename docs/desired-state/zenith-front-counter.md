@@ -119,7 +119,7 @@ Further lockdown (Start menu, Store): still Open (Q-084 remainder). Do not apply
 | RustDesk | Installed; rendezvous/relay **`rustdesk.vogueclean.int`**. Public key from NAS pack. |
 | Wallpaper (all local users) | Black; text: store **Zenith**, Windows computer name, SPOT id **`VGCTX03COUNTER1`**. Font/layout: Open question (Q-072). |
 | UPS | Present. Stay up on battery. Critical action **Shut down** (not hibernate; live WS1 cannot hibernate). Percent: Open question (Q-075). |
-| WinRM | HTTP 5985 NTLM, firewall to controller `10.0.253.225/32`, admin user only. Same bootstrap as discovery. |
+| WinRM | HTTP 5985 NTLM, firewall to controller `10.0.253.225/32`, **`ZenithAdmin` only**. USB applies the same bootstrap as discovery (ADR-0011 §8). No extra Windows agent. |
 | Bloat | Remove consumer junk (OneLaunch, extra Store apps, second browsers). Exact list still part of lockdown discussion. |
 
 ---

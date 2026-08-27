@@ -171,6 +171,7 @@ Desktop shortcut  SPOT (VGCTX03COUNTERn).lnk
 6. UPS; stay on battery; **shut down** when the UPS cannot continue (not hibernate).
 7. Black wallpaper: store, computer name, SPOT id if `runs_spot`.
 8. Admin + standard user; SPOT and video wall auto-logon as standard user.
+8a. WinRM on every replacement (HTTP 5985 NTLM to `10.0.253.225/32`, `ZenithAdmin`); USB applies bootstrap so this controller can manage the box. Ansible stays optional on the Linux side.
 9. SPOT shop-floor: **Edge**; home/new tab **`https://help.spotpos.com`**. Further lockdown still open.
 10. Accounts **`ZenithAdmin`** / **`ZenithUser`**. Computer names keep the live hostnames.
 11. First POS replacement candidate: **Zenith Front Counter** (WS1).
@@ -255,7 +256,7 @@ Wallpaper and Edge lockdown depth do not block SPOT printing; NAS, secrets, Work
 
 1. Review Zenith desired-state drafts: [desired-state/](desired-state/) (all five USB rows). Vogue still analogical.
 2. Pack live at `\\zenith-dsm.vogueclean.int\spot-rebuild` (`common/packages/` copied 2026-08-27). Operator still drops per-row passwords.
-3. Official CitrixWorkspaceApp / SPOTLauncher 1.1.169.3 Setup / SS 2.2.1 installers were **not** on disk; staged payload/installed-tree/overlay instead.
+3. Official **SPOTLauncherSetup 1.1.169.3** is on the pack. Still missing official CitrixWorkspaceApp.exe and SS Client 2.2.1 setup.
 4. USB/WinPE only after the share exists. First stick = staffed Front Counter test, old PC kept. Product key is OEM (Q-071 answered).
 5. Fill `rows/zenith-video-wall/ss-client/dsm-login.txt` on the NAS with the DSM password (DPAPI will not copy).
 6. Optional: read one Vogue POS if those printers might differ.

@@ -16,3 +16,5 @@ Do not copy USB instance paths or clone the old disk. Secrets stay on the NAS: [
 Build order: Front Counter first (live PC is Win10 replacement candidate). First replacement is a **staffed test**, old PC kept available.
 
 SPOT rows share: Citrix Workspace / `ConnectionMode` 0 (ADR-0012), `ZenithAdmin` + standard `ZenithUser`, Edge + `https://help.spotpos.com`, Epson APD + WASP fonts, RustDesk `rustdesk.vogueclean.int`.
+
+**All rows** (including desk and video wall): WinRM HTTP 5985 NTLM to `10.0.253.225/32` as `ZenithAdmin` after the USB finishes (ADR-0011 §8). That is how this controller and later agents manage the box. Ansible is not installed on the PC.

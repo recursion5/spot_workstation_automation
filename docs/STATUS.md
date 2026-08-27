@@ -1,6 +1,6 @@
 # Project status
 
-**Phase:** 2 analysis (desired-state). First recipe: [desired-state/zenith-front-counter.md](desired-state/zenith-front-counter.md).  
+**Phase:** 2 analysis (desired-state). Zenith recipes: [desired-state/](desired-state/).  
 **Date:** 2026-08-27  
 **Handoff:** [DISCOVERY-REPORT.md](DISCOVERY-REPORT.md)  
 **Specimen:** `ZENITH-WS3` at `10.0.253.204`  
@@ -68,8 +68,9 @@
 
 ## Next
 
-1. Review the Front Counter recipe (Citrix, `ZenithAdmin`/`ZenithUser`, Edge, hostname `ZENITH-WS1`). NAS share (Q-074) still blocks a real stick.
-2. Copy vendor kits from the controller `vendor-installers/` onto the NAS when that share exists.
-3. Same recipe shape for Mark-In 1/2, desk, video wall.
-4. USB/WinPE only after blocking items for the first stick.
+1. Operator: NAS share path + how the USB authenticates (Q-074). Product key (Q-071).
+2. Place secret-pack files on the NAS using [desired-state/secret-pack.md](desired-state/secret-pack.md) (values never in git). Copy controller `vendor-installers/` there.
+3. Still missing as binaries: Citrix Workspace 26.3.10.69 installer, SPOTLauncher 1.1.169.3 installer, SS Client, CallerIdOverlay.exe. Do not collect from POS PCs unless asked.
+4. USB/WinPE only after those blocking items; first stick is a **staffed Front Counter test**.
 5. Watchers: weekday 06:00 / Saturday 08:00; pull only when tasked.
+6. Vogue POS still by analogy until a Vogue PC is read.

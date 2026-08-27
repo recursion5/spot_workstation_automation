@@ -140,9 +140,10 @@ NAS pack (paths TBD, Q-074), at least:
 
 - Shop-floor auto-logon secret
 - Local admin password
-- Hosted RDS / SPOTLauncher secret for `VGCTX03COUNTER1`
+- Hosted SPOTLauncher / Citrix material for `VGCTX03COUNTER1`
 - RustDesk public key (and ID if we pre-register)
-- ScrewDrivers license if required
+
+Layout: [secret-pack.md](secret-pack.md). ScrewDrivers is live on RDS boxes; Citrix replacements may not need that license (**Hypothesis**).
 
 ---
 

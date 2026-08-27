@@ -17,7 +17,7 @@ Then inspect git status, repair missing scaffold required by the spec, and conti
 
 ## Current phase
 
-Phase 1 evidence is in [docs/DISCOVERY-REPORT.md](docs/DISCOVERY-REPORT.md). **Phase 2** has started: desired-state recipes under [docs/desired-state/](docs/desired-state/). First row: [zenith-front-counter.md](docs/desired-state/zenith-front-counter.md). Do **not** implement USB/OOBE until the operator asks and NAS/account/browser opens that block a real stick are decided.
+Phase 1 evidence is in [docs/DISCOVERY-REPORT.md](docs/DISCOVERY-REPORT.md). **Phase 2** desired-state drafts exist for all five Zenith USB rows under [docs/desired-state/](docs/desired-state/). Do **not** implement USB/OOBE until the operator asks and NAS/product-key opens that block a real stick are decided (Q-074, Q-071).
 
 Do **not** implement replacement provisioning, OOBE automation, kiosk lockdown, or a final desired-state playbook until that analysis exists. Record candidate directions in docs and ADRs only. Do not collect more from SPOT PCs unless asked.
 
@@ -54,4 +54,4 @@ Do not silently convert assumptions into facts. If vendor documentation disagree
 
 ## First remaining milestone
 
-A later agent can clone this repo, read `docs/DISCOVERY-REPORT.md`, reach the Zenith PCs with documented WinRM, and begin Phase 2 analysis (Front Counter desired state first) without this chat. Watchers on WS1/WS2/WS3 may have new files under `C:\ProgramData\spot-discovery\observe\`; pull only if needed. The 12-hour Grok loop is off.
+A later agent can clone this repo, read `docs/DISCOVERY-REPORT.md` and `docs/desired-state/`, reach the Zenith PCs with documented WinRM, and continue Phase 2 (NAS secret-pack path, missing installers) without this chat. Do not start USB coding until Q-074/Q-071 and an operator ask. Watchers on WS1/WS2/WS3 may have new files under `C:\ProgramData\spot-discovery\observe\`; pull only if needed. The 12-hour Grok loop is off.

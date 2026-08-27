@@ -1,10 +1,10 @@
 # Phase 1 discovery report
 
-**Date:** 2026-08-22  
+**Date:** 2026-08-27  
 **Store:** Zenith (store 3)  
 **Controller:** `utility-agent` `10.0.253.225`  
-**Phase:** 1 complete for Zenith evidence. Phase 2 started (Front Counter desired-state draft). **Do not** implement USB/OOBE until that recipe is accepted and blocking opens (NAS, accounts, browser) are decided.  
-**This document is the handoff.** Prefer it plus ADRs, `config/catalog/workstations.yml`, and evidence pointers over chat history.
+**Phase:** 1 complete for Zenith evidence. Phase 2: desired-state drafts for all five Zenith USB rows. **Do not** implement USB/OOBE until the operator asks and Q-074/Q-071 are decided.  
+**This document is the handoff.** Prefer it plus ADRs, `docs/desired-state/`, `config/catalog/workstations.yml`, and evidence pointers over chat history.
 
 Classification: **Discovery** unless labeled Requirement, Decision, Hypothesis, Assumption, or Open question.
 
@@ -253,11 +253,11 @@ Wallpaper and Edge lockdown depth do not block SPOT printing; NAS, secrets, Work
 
 ## Next steps (Phase 2 — analysis, still no installer)
 
-1. Desired-state document per catalog row. **Front Counter draft:** [desired-state/zenith-front-counter.md](desired-state/zenith-front-counter.md).
-2. Secret-pack layout on the NAS (no values in git).
-3. USB/WinPE design: store menu → workstation menu → unattend Win11 + apply row.
-4. Account-name and computer-name decisions (Q-073, Q-070).
-5. Video-wall SS Client config capture when the operator wants that replacement.
+1. Review Zenith desired-state drafts: [desired-state/](desired-state/) (all five USB rows). Vogue still analogical.
+2. NAS share (Q-074) + place the [secret pack](desired-state/secret-pack.md). Copy vendor zips from the controller.
+3. Capture missing installers only if asked: Citrix Workspace 26.3.10.69, SPOTLauncher 1.1.169.3, SS Client, CallerIdOverlay.
+4. USB/WinPE only after Q-074/Q-071. First stick = staffed Front Counter test, old PC kept.
+5. Video-wall camera layout (Q-082) before that row is useful.
 6. Optional: read one Vogue POS if those printers might differ.
 
 Phase 1 acceptance in [project-spec.md](../project-spec.md) §25 is met for Zenith evidence, WinRM, inventories, launch/print observation, watchers, and this report. Provisioning remains Phase 3.

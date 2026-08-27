@@ -132,8 +132,8 @@ Live state after the **second** Windows reboot `2026-08-21T19:56:06Z` (2:56 p.m.
 | PC | UPS visible to Windows | Critical battery | RustDesk server in config | Admin HKCU wallpaper |
 | --- | --- | --- | --- | --- |
 | WS3 Mark-In 2 | **None** (no battery/UPS PnP) | Hibernate at 5%; low 10% do nothing | now `rustdesk.vogueclean.int` (was IP) | Windows Spotlight |
-| WS2 Mark-In 1 | HID UPS `VID_0764` (CyberPower) | same | same IP | Spotlight/Iris |
-| WS1 Front Counter | APC USB UPS `VID_051D` | same, but **hibernate is not available** on this Win10 box | same IP | default `img0.jpg` |
+| WS2 Mark-In 1 | HID UPS `VID_0764` (CyberPower) | same | `rustdesk.vogueclean.int` | Spotlight/Iris |
+| WS1 Front Counter | APC USB UPS `VID_051D` | same, but **hibernate is not available** on this Win10 box | `rustdesk.vogueclean.int` | default `img0.jpg` |
 
 RustDesk is installed under `C:\Program Files\RustDesk\` with a service and Startup tray. **2026-08-27:** live configs on WS1/WS2/WS3, ZENITH-WORKDESK, and Z-SSTATION now use **`rustdesk.vogueclean.int`** (resolves to `10.0.253.110`); service restarted. Shop-floor wallpaper was not read in this pass.
 
@@ -155,7 +155,7 @@ RustDesk is installed under `C:\Program Files\RustDesk\` with a service and Star
 - Remoting user **`Zenith Admin`**. Enabled local users also **Gayla** and **Yevhen** (neither is an administrator). **Operator (rebuild):** do **not** recreate Yevhen.
 - **PUP cleanup 2026-08-22 (operator-requested):** Gayla profile had **OneLaunch 5.42** (startup updater + tray), **OneBrowser** (scheduled task `OBUpdate` running), desktop/Start Menu shortcuts, and Chrome extension **Cash Catch** (`cjbmfmeflcomeifhpeglfmpgmmhcopdo`). Removed those. Start page was still hijacked via Chrome **Secure Preferences** (`velis-browser.com` labeled as Yahoo). Replaced those URLs; machine policy forces Google search and New Tab (`RestoreOnStartup=5`). **Operator confirmed** Chrome start page is good after that. Left 3CX Click to Call, Adobe Acrobat, Google Docs Offline. Yevhen account still on disk (not deleted).
 - Console: **Gayla** logged on (session since 2026-08-04). **No** Winlogon `AutoAdminLogon` / `DefaultUserName` (people sign in). `DisableCAD=1`.
-- RustDesk 1.4.9 running; config `10.0.253.110` (not the DNS name). Chrome, Adobe Acrobat, Edge. **3CX Phone** in Public Startup.
+- RustDesk 1.4.9 running; config **`rustdesk.vogueclean.int`**. Chrome, Adobe Acrobat, Edge. **3CX Phone** in Public Startup.
 - Synology Surveillance Station Client **is installed** (same 2.2.1 package as the video wall) but **not running** and not in Gayla’s Startup.
 - No HID UPS visible to Windows. No SPOT / Citrix / mstsc.
 

@@ -32,7 +32,7 @@ Statements the operator or constitution say the future system must honor. Not di
 - **RustDesk (2026-08-27):** rendezvous/relay **`rustdesk.vogueclean.int`**. Live Zenith PCs updated the same day (was `10.0.253.110`).
 - **Wallpaper (2026-08-21):** all users; black; text = store, Windows computer name, SPOT workstation ID. Appearance still to refine.
 - **Accounts (2026-08-27):** replacements use **`ZenithAdmin`** and **`ZenithUser`** (no space). `ZenithUser` is not an administrator. Auto-logon that standard user on SPOT and video wall.
-- **Secrets (2026-08-27):** pack root `\\dsm.vogueclean.int\spot-rebuild` (ADR-0013). SPOT-related secrets are applied by the build so we do not call SPOT to install/configure/attach hardware. USB auth to that share still open.
+- **Secrets (2026-08-27):** pack root `\\dsm.vogueclean.int\spot-rebuild`, SMB user **`spot-rebuild`** (ADR-0013). Password not in git. `dsm.vogueclean.int` DNS still needed (`zenith-dsm.vogueclean.int` already points at the NAS).
 - **OOBE (2026-08-21):** retail Windows 11 Pro boxes must not stop on the “new PC experience.” USB unattend skips it. **Product key (2026-08-27):** each box uses its COA / OEM license; no key in the pack.
 - **SPOT standard-user browser (2026-08-27):** **Microsoft Edge** only; controlled search/new-tab/home. Home and new tab = **`https://help.spotpos.com`**. Further lockdown still open. SPOT PCs only unless extended.
 - **Computer names (2026-08-27):** keep the live names (`ZENITH-WS1`, `ZENITH-WS2`, `ZENITH-WS3`, `ZENITH-WORKDESK`, `Z-SSTATION`).

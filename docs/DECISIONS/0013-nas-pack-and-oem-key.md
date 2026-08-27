@@ -20,7 +20,8 @@ USB replacement needs drivers, fonts, Citrix Workspace, SPOTLauncher, and secret
 - Canonical pack UNC: `\\dsm.vogueclean.int\spot-rebuild`.
 - USB, once on the LAN, **pulls** packages and secrets from that share (Q-062 still open only for “NAS down”).
 - Windows 11 Pro activation: hardware COA / OEM entitlement. Unattend skips OOBE without injecting a key.
-- Stick and controller authenticate to the share as a **NAS user** (operator will name the account). Password lives in the pack, not git. Username still to be supplied when the share exists.
+- Stick and controller authenticate to the share as NAS user **`spot-rebuild`**. Password lives in the controller `.env` / NAS pack, not git.
+- DNS: operator UNC is `\\dsm.vogueclean.int\spot-rebuild`. As of 2026-08-27 `dsm.vogueclean.int` did **not** resolve; `zenith-dsm.vogueclean.int` and `rustdesk.vogueclean.int` both A `10.0.253.110`. Need an A/CNAME for `dsm.vogueclean.int` or the stick must use `zenith-dsm` / the IP.
 
 ## Alternatives considered
 

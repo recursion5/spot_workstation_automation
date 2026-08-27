@@ -13,7 +13,7 @@ Locked enough to design toward:
 | Black wallpaper with store, computer name, SPOT ID | Yes (content) | Layout, font, size, color of text, logo or not, whether SPOT ID is `VGCTX03COUNTER3` or the USB menu name. Non-SPOT PCs omit the SPOT line. |
 | Non-SPOT USB rows | Named and on WinRM | Video wall: SS Client + CallerIdOverlay recorded; camera layout still Q-082. Workdesk: Gayla, no Yevhen, no auto-logon. |
 | Admin + SPOT on a standard user | Yes | Names **`ZenithAdmin`** / **`ZenithUser`**. Password policy. Do not rename live PCs. |
-| Secrets on NAS; SPOT secrets in the build | Yes | Path **`\\dsm.vogueclean.int\spot-rebuild`**. Who can read / USB auth still open. |
+| Secrets on NAS; SPOT secrets in the build | Yes | Path **`\\dsm.vogueclean.int\spot-rebuild`**, user **`spot-rebuild`**. Password not in git. DNS for `dsm.vogueclean.int` still needed (live alias `zenith-dsm.vogueclean.int`). |
 | Skip retail Windows 11 Pro OOBE | Yes | **Key: COA/OEM on each box**, none in the pack (ADR-0013). Language/region/privacy screens. Local account creation during unattend. |
 | USB store → workstation menus | Yes (ADR-0010) | Vogue printers still by analogy until a Vogue PC is read. |
 | SPOT license / `ClientName` | Yes — `VGCTXssCOUNTERn` | Wallpaper whether to show this string or the menu name (Q-072). |

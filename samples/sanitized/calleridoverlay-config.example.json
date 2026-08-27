@@ -1,0 +1,11 @@
+{
+  "store_id": "NNN",
+  "token": "[redacted]",
+  "listen_port": 47990,
+  "admin_url": "http://203.0.113.10:8080",
+  "width": 900,
+  "height": 260,
+  "position": "top-center",
+  "display_seconds": 8,
+  "font_size": 64
+}

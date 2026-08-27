@@ -28,3 +28,4 @@ Template:
 | [0012](0012-citrix-launch-path.md) | Replacement SPOT stations use Citrix Workspace / ICA | accepted |
 | [0010](0010-usb-store-then-workstation.md) | Replacement USB: boot, pick store, pick workstation | accepted |
 | [0011](0011-replacement-policy-notes.md) | UPS, RustDesk, wallpaper, accounts, NAS secrets, skip OOBE | accepted |
+| [0013](0013-nas-pack-and-oem-key.md) | Rebuild pack `\\dsm.vogueclean.int\spot-rebuild`; OEM Win11 key | accepted |

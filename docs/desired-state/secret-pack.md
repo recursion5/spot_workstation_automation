@@ -1,11 +1,13 @@
 # NAS secret pack (existence only)
 
 **Status:** draft layout. **No values in git.**  
-**Class:** Requirement (ADR-0005, ADR-0011) + Open question (Q-074 share path, Q-062 USB-if-NAS-down).
+**Class:** Requirement (ADR-0005, ADR-0011, ADR-0013). Open: USB auth to the share; what to do if the share is down (Q-062 remainder).
 
-The USB process must **apply** these so SPOT support does not remote in to finish a replacement. Values live on `dsm.vogueclean.int` (also `zenith-dsm` / `10.0.253.110`). Git may list **file names and purpose** only.
+The USB process must **apply** these so SPOT support does not remote in to finish a replacement. Pack root: `\\dsm.vogueclean.int\spot-rebuild` (operator, 2026-08-27). Git may list **file names and purpose** only.
 
-This is not an installer. Until Q-074 is answered, nothing can be pulled at build time.
+Windows 11 Pro: **no product key in this pack** (COA / OEM on each box, ADR-0013).
+
+This is not an installer. The share must exist and be readable by the stick before a real build.
 
 ---
 
@@ -14,17 +16,18 @@ This is not an installer. Until Q-074 is answered, nothing can be pulled at buil
 Machine-readable twin: [config/examples/secret-pack.manifest.example.yml](../../config/examples/secret-pack.manifest.example.yml).
 
 ```
-spot-rebuild/                          # share path TBD
+\\dsm.vogueclean.int\spot-rebuild\
   common/
     rustdesk-id_ed25519.pub            # rendezvous public key
     rustdesk-server.txt                # rustdesk.vogueclean.int (non-secret; may live in git)
-    win11-product-key.txt              # Q-071; or omit if OEM digital entitlement
     packages/
-      CitrixWorkspace-26.3.10.69.*     # NOT captured yet (live installed on WS2)
-      SPOTLauncherSetup_1.1.169.3.exe  # NOT captured yet (only 1.1.167.1 leftover)
-      APD_511R1_T88V_EWM.zip           # on controller vendor-installers/
-      starprnt_v3.8.1.zip              # on controller vendor-installers/
-      WASP_Fonts.zip                   # on controller vendor-installers/
+      CitrixWorkspace-26.3.10.69-payload.zip  # staged from WS2 install dir (not CitrixWorkspaceApp.exe)
+      SPOTLauncher-1.1.169.3-installed.zip    # installed tree; vendor Setup 1.1.167.1 leftover also kept
+      APD_511R1_T88V_EWM.zip
+      starprnt_v3.8.1.zip
+      WASP_Fonts.zip
+      CallerIdOverlay.exe              # video-wall row
+      SS Client installer              # live 2.2.1 has no leftover setup; Downloads only 2.0.x
   rows/
     zenith-front-counter/              # VGCTX03COUNTER1 / ZENITH-WS1
       zenithadmin.password
@@ -64,9 +67,9 @@ Admin password may be one value reused across rows; still store it in the pack, 
 
 | Item | Where it is today |
 | --- | --- |
-| NAS share + USB auth | Q-074 unanswered |
-| Citrix Workspace 26.3.10.69 installer | Installed on WS2; installer not copied |
-| SPOTLauncher 1.1.169.3 installer | Installed under shop-floor AppData; only older 1.1.167.1 copied |
-| SS Client installer | Installed on Z-SSTATION; not copied |
-| CallerIdOverlay.exe + token | On Z-SSTATION; token not in git; binary not copied |
-| Per-row launcher/Citrix secrets | On live PCs / SPOT farm; must be operator-placed on NAS |
+| NAS share created + USB auth | Path decided; share may not exist yet; auth still open |
+| Official `CitrixWorkspaceApp.exe` | Not on disk. Staged: zip of the WS2 `Citrix Workspace 26.3.10.69` payload folder |
+| Official `SPOTLauncherSetup_1.1.169.3.exe` | Installer gone (temp source). Staged: installed AppData tree zip + leftover 1.1.167.1 setup |
+| SS Client **2.2.1.2565** installer | Installed; leftover Downloads are **2.0.1 / 2.0.2** only |
+| CallerIdOverlay token | In `config.json` on the wall PC; never git. Binary staged to controller |
+| Per-row launcher/Citrix secrets | Operator places on the NAS |

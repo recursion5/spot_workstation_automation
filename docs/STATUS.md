@@ -68,9 +68,8 @@
 
 ## Next
 
-1. Operator: NAS share path + how the USB authenticates (Q-074). Product key (Q-071).
-2. Place secret-pack files on the NAS using [desired-state/secret-pack.md](desired-state/secret-pack.md) (values never in git). Copy controller `vendor-installers/` there.
-3. Still missing as binaries: Citrix Workspace 26.3.10.69 installer, SPOTLauncher 1.1.169.3 installer, SS Client, CallerIdOverlay.exe. Do not collect from POS PCs unless asked.
-4. USB/WinPE only after those blocking items; first stick is a **staffed Front Counter test**.
+1. Create NAS share `\\dsm.vogueclean.int\spot-rebuild` (path decided, ADR-0013). How the USB authenticates still open.
+2. Copy controller `vendor-installers/` onto that share. Operator places passwords/tokens (never git).
+3. Still missing **official** setups: `CitrixWorkspaceApp.exe`, `SPOTLauncherSetup_1.1.169.3.exe`, SS Client **2.2.1**. We have install-dir payload / installed tree / overlay exe instead.
+4. USB/WinPE only after the share exists; first stick is a **staffed Front Counter test**.
 5. Watchers: weekday 06:00 / Saturday 08:00; pull only when tasked.
-6. Vogue POS still by analogy until a Vogue PC is read.

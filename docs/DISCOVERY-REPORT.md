@@ -254,9 +254,9 @@ Wallpaper and Edge lockdown depth do not block SPOT printing; NAS, secrets, Work
 ## Next steps (Phase 2 — analysis, still no installer)
 
 1. Review Zenith desired-state drafts: [desired-state/](desired-state/) (all five USB rows). Vogue still analogical.
-2. NAS share (Q-074) + place the [secret pack](desired-state/secret-pack.md). Copy vendor zips from the controller.
-3. Capture missing installers only if asked: Citrix Workspace 26.3.10.69, SPOTLauncher 1.1.169.3, SS Client, CallerIdOverlay.
-4. USB/WinPE only after Q-074/Q-071. First stick = staffed Front Counter test, old PC kept.
+2. Create `\\dsm.vogueclean.int\spot-rebuild` (ADR-0013) and copy controller `vendor-installers/` there. USB auth still open.
+3. Official CitrixWorkspaceApp / SPOTLauncher 1.1.169.3 Setup / SS 2.2.1 installers were **not** on disk; staged payload/installed-tree/overlay instead.
+4. USB/WinPE only after the share exists. First stick = staffed Front Counter test, old PC kept. Product key is OEM (Q-071 answered).
 5. Video-wall camera layout (Q-082) before that row is useful.
 6. Optional: read one Vogue POS if those printers might differ.
 

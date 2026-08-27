@@ -1,6 +1,6 @@
 # Desired state: Zenith Front Counter (cash drawer)
 
-**Status:** draft (Phase 2). Not an installer.  
+**Status:** draft (Phase 2). Not an installer. **Not** a guarantee of a production-ready USB cutover.  
 **Catalog:** `store=zenith`, `register=front-counter`, `runs_spot=true`  
 **USB menus:** Store 3 **Zenith** → **Front Counter (cash drawer)**  
 **SPOT `ClientName`:** `VGCTX03COUNTER1`  

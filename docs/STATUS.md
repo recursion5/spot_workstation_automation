@@ -62,6 +62,10 @@
 - Pointer: [evidence/20260819T203635Z-43b3934a.pointer.md](../evidence/20260819T203635Z-43b3934a.pointer.md)
 - Do not commit the zip or JSON bodies (may contain host identifiers; keep out of git except the pointer).
 
+## Production USB readiness
+
+**Not ready.** Store/workstation menus are decided; that is not enough for a guaranteed cutover. See DISCOVERY-REPORT “Production USB readiness.” Do not tell the operator a first stick will be 100% production-ready.
+
 ## Next
 
 1. Review the Front Counter recipe (Citrix, `ZenithAdmin`/`ZenithUser`, Edge, hostname `ZENITH-WS1`). NAS share (Q-074) still blocks a real stick.

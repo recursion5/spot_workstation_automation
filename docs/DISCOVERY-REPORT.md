@@ -230,6 +230,27 @@ On PCs: `C:\ProgramData\spot-discovery\` (staging, observe snapshots, connection
 
 ---
 
+## Production USB readiness (2026-08-27)
+
+**Class: Decision (scope) + Open question.** We do **not** have enough to guarantee that USB → store → workstation yields a box that is 100% production-ready in place of the old one.
+
+Known well enough to *design* the first **Zenith Front Counter** test (not a cutover): identity (`ZENITH-WS1`, `VGCTX03COUNTER1`, `ZenithAdmin`/`ZenithUser`), Citrix launch target (ADR-0012 / WS2 template), local printer **names**, Epson APD + WASP kit files, scanner HID, Edge home page, RustDesk host.
+
+Still missing or unproven (any one of these can make “SPOT 100% ready” false):
+
+- The USB/WinPE/unattend **does not exist**. Phase 2 is a recipe, not an installer.
+- NAS share, how the stick authenticates, secret-pack layout (Q-074, Q-062). Passwords, launcher/Citrix material, RustDesk key are not in a build pack.
+- Win11 product key / activation (Q-071).
+- Installers we have **not** captured: Citrix **Workspace 26.3.10.69**, live **SPOTLauncher 1.1.169.3** (only older 1.1.167.1 in Downloads).
+- APD/Star **silent** switches and post-PnP USB binding on **new** hardware.
+- Hosted SPOT Account Key (Q-013) and whether Citrix maps local `EPSON`/`CashDrawer`/`Tag`/Brother the same way ScrewDrivers does on RDS (**Hypothesis** until a Citrix replacement is tested). Front Counter today is RDS; replacements will be Citrix.
+- Mark-In / desk / video wall recipes not drafted. Vogue POS not inventoried.
+- First replacement must be a **staffed test**, not an unattended swap.
+
+Wallpaper and Edge lockdown depth do not block SPOT printing; NAS, secrets, Workspace/launcher bits, and Citrix print proof do.
+
+---
+
 ## Next steps (Phase 2 — analysis, still no installer)
 
 1. Desired-state document per catalog row. **Front Counter draft:** [desired-state/zenith-front-counter.md](desired-state/zenith-front-counter.md).

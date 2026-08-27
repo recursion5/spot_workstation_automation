@@ -16,7 +16,7 @@ Statements the operator or constitution say the future system must honor. Not di
 
 - Target OS: Windows 11 Pro workstations (SPOT POS and other store Windows PCs on the same USB rebuild list).
 - Application: Xplor Spot hosted POS (`https://xplorspot.com`).
-- **App delivery for replacements (2026-08-21):** SPOTLauncher → RDS RemoteApp (`mstsc`, `ConnectionMode` 1). Do **not** install Citrix Receiver/Workspace on new PCs. Some existing stations still use Citrix; that is leftover, not the target ([ADR-0009](DECISIONS/0009-rds-not-citrix.md)).
+- **App delivery for replacements (2026-08-27):** SPOTLauncher `ConnectionMode` **0** → Citrix **Workspace** / ICA `SPOT - Auto Login` ([ADR-0012](DECISIONS/0012-citrix-launch-path.md)). Live WS1/WS3 still RDS until replaced. Not SPOTWeb.
 - **Replacement operator flow (2026-08-21):** boot from USB → choose store → choose workstation → automation applies that identity. Not a cloned image. See [ADR-0010](DECISIONS/0010-usb-store-then-workstation.md). Implementation is Phase 3.
 - **USB menus (2026-08-21):** Store 1 Vogue Krum; Store 2 Vogue Denton; Store 3 Zenith. Zenith workstations: Front Counter (cash drawer), Mark-In 1 (front mark-in), Mark-In 2 (back mark-in). Each Vogue store: Front Counter (cash drawer), Mark-In. Catalog: `config/catalog/workstations.yml`.
 - **Non-SPOT rebuilds (2026-08-22):** Zenith **Management desk** and **Video wall**. Currently Windows 10 Pro; replacements **Windows 11 Pro**. No SPOTLauncher / no `VGCTX` id. Video wall: Synology Surveillance Station Client for camera feeds. Same USB conventions (RustDesk, accounts, wallpaper, UPS, skip OOBE) as they are decided.
@@ -31,10 +31,11 @@ Statements the operator or constitution say the future system must honor. Not di
 - **UPS (2026-08-21):** every workstation on a UPS; run on battery until a graceful shutdown is required. Exception: UPS awaiting repair/replacement. [ADR-0011](DECISIONS/0011-replacement-policy-notes.md).
 - **RustDesk (2026-08-27):** rendezvous/relay **`rustdesk.vogueclean.int`**. Live Zenith PCs updated the same day (was `10.0.253.110`).
 - **Wallpaper (2026-08-21):** all users; black; text = store, Windows computer name, SPOT workstation ID. Appearance still to refine.
-- **Accounts (2026-08-21):** admin account plus a **standard** user that runs SPOT / auto-logon. Shop-floor should not be an administrator on new PCs.
+- **Accounts (2026-08-27):** replacements use **`ZenithAdmin`** and **`ZenithUser`** (no space). `ZenithUser` is not an administrator. Auto-logon that standard user on SPOT and video wall.
 - **Secrets (2026-08-21):** stored on the NAS; SPOT-related secrets are applied by the build so we do not call SPOT to install/configure/attach hardware.
 - **OOBE (2026-08-21):** retail Windows 11 Pro boxes must not stop on the “new PC experience.” USB unattend skips it.
-- **SPOT standard-user browser (2026-08-27):** one browser only; controlled search/new-tab/home. Home and new tab = **`https://help.spotpos.com`**. Which browser and the rest of lockdown still open. SPOT PCs only unless extended.
+- **SPOT standard-user browser (2026-08-27):** **Microsoft Edge** only; controlled search/new-tab/home. Home and new tab = **`https://help.spotpos.com`**. Further lockdown still open. SPOT PCs only unless extended.
+- **Computer names (2026-08-27):** keep the live names (`ZENITH-WS1`, `ZENITH-WS2`, `ZENITH-WS3`, `ZENITH-WORKDESK`, `Z-SSTATION`).
 
 ## Phase 1 acceptance
 

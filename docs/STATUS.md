@@ -35,7 +35,7 @@
 
 ## In progress
 
-- Launch path is **station-dependent today**. WS1 and WS3: SPOTLauncher `ConnectionMode` 1 → **`mstsc`** (RDS RemoteApp). WS2: `ConnectionMode` 0 → Citrix ICA **`wfica32`** (`SPOT - Auto Login`). **Decision (ADR-0009):** replacements use the RDS path, not Citrix. Operator: they are moving off Citrix; stations are not all converted yet.
+- Launch path is **station-dependent today** (WS1/WS3 RDS, WS2 Citrix). **Decision (ADR-0012):** replacements use **Citrix** for all SPOT rows. Live PCs are not converted in place.
 - Operator workflow 2026-08-20: tag print failed (not repaired). Invoice/scan/relaunch were attempted. Details in DISCOVERIES.
 - Printer/PnP correlation (logical names captured; USB mapping still partly hypothesis).
 - Reboot test: `ZenithUser` auto-signed in; WinRM still works. Auto-logon mechanism still not the classic registry switch.
@@ -63,7 +63,8 @@
 
 ## Next
 
-1. Review the Front Counter recipe. Decide account names (Q-073), computer name (Q-070), Edge vs Chrome (Q-084), NAS share (Q-074) when ready for a stick.
-2. Then the same recipe shape for Mark-In 1/2, desk, video wall.
-3. USB/WinPE only after those blocking items for the first stick.
-4. Watchers: weekday 06:00 / Saturday 08:00; pull only when tasked.
+1. Review the Front Counter recipe (Citrix, `ZenithAdmin`/`ZenithUser`, Edge, hostname `ZENITH-WS1`). NAS share (Q-074) still blocks a real stick.
+2. Copy remaining vendor zips (`APD_511R1`, `starprnt_v3.8.1`) onto the NAS with WASP fonts when that share exists.
+3. Same recipe shape for Mark-In 1/2, desk, video wall.
+4. USB/WinPE only after blocking items for the first stick.
+5. Watchers: weekday 06:00 / Saturday 08:00; pull only when tasked.

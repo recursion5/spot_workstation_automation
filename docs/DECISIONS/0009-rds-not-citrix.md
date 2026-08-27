@@ -1,7 +1,8 @@
 # ADR 0009 — Replacement workstations use SPOTLauncher RDS, not Citrix
 
-- Status: accepted
+- Status: superseded
 - Date: 2026-08-21
+- Superseded by: [0012](0012-citrix-launch-path.md) (2026-08-27). Operator: all replacements use the Citrix config.
 
 ## Context
 

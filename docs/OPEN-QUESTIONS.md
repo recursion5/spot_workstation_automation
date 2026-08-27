@@ -16,7 +16,7 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 
 | ID | Question | Why it matters |
 | --- | --- | --- |
-| Q-010 | Is this specimen on Citrix + SPOTLauncher, SPOTWeb + ConnectLink, or both? | **Answered, then refined 2026-08-21.** All three have SPOTLauncher 1.1.169.3. No ConnectLink. **Live mix:** WS1/WS3 launch SPOT via RDS `mstsc`; WS2 via Citrix ICA. Leftover Citrix autostart on WS2/WS3. **Replacement target (ADR-0009):** RDS, not Citrix. |
+| Q-010 | Is this specimen on Citrix + SPOTLauncher, SPOTWeb + ConnectLink, or both? | **Answered.** Live mix: WS1/WS3 RDS `mstsc`; WS2 Citrix ICA. **Replacement target (ADR-0012, 2026-08-27):** Citrix Workspace / ICA for **all** new SPOT PCs. |
 | Q-011 | Exact Citrix product/version, StoreFront/gateway URL, ICA vs HDX? | **Answered for current PCs.** WS3: Receiver 4.9 LTSR installed, but SPOT is **RDS `mstsc`**. WS2: Workspace **26.3.10.69**, live SPOT is ICA **`wfica32`** / `SPOT - Auto Login`. WS1: `mstsc` only after reboot. Gateway `rds.mydrycleaner.com`. Citrix is leftover on some PCs, not the replacement method. |
 | Q-014 | Must existing WS2 be converted from Citrix to RDS before it is replaced, or only new PCs? | Not blocking replacement of WS1. Do not change WS2 in production to experiment. |
 | Q-012 | Where is workstation identity stored locally? | Shortcut name `SPOT (VGCTX03COUNTER3)`; launcher under `ZenithAdmin` AppData; args `"/launch:SPOT"`. Still need config files inside SPOTLauncher. |
@@ -50,17 +50,17 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | Q-061 | Per-store **workstation** menu labels and `ClientName` map? | **Answered.** Pattern `VGCTXssCOUNTERn`. Operator confirmed the store number after `VGCTX`. Catalog: `config/catalog/workstations.yml`. |
 | Q-062 | After the USB choice, is Windows setup fully offline on the stick, or does it pull the rest from the NAS once on the LAN? | **Leaning pull-from-NAS** (secrets must come from there). Still open: what stays on the USB if the NAS is down. |
 | Q-063 | SPOT `ClientName` / license names for Vogue Krum and Vogue Denton workstations? | **Answered 2026-08-21.** Operator confirmed store number in the name: Krum `VGCTX01COUNTER1/2`, Denton `VGCTX02COUNTER1/2`. Zenith on disk: `VGCTX03COUNTER1/2/3`. |
-| Q-070 | Windows **computer name** pattern on replacements (keep `ZENITH-WS1` style, or derive from store + role)? | Wallpaper and inventory both need a rule. |
+| Q-070 | Windows **computer name** pattern on replacements (keep `ZENITH-WS1` style, or derive from store + role)? | **Answered 2026-08-27.** Keep the live names: `ZENITH-WS1/2/3`, `ZENITH-WORKDESK`, `Z-SSTATION`. Vogue hostnames when those PCs are in inventory. |
 | Q-071 | Retail Windows 11 Pro **product key** on new boxes (COA sticker, OEM digital entitlement, or unattend key)? | Skip-OOBE still has to activate. |
 | Q-072 | Wallpaper **exact strings** and layout: store menu name vs id; SPOT ID = `VGCTX03COUNTER3` or “Mark-In 2 (back mark-in)”; font/size/position? | Operator: design still to refine. |
-| Q-073 | Replacement **account names** (reuse `ZenithAdmin`/`ZenithUser`, store-prefixed, or generic)? | Live mix: POS WS2/WS3 `ZenithAdmin`/`ZenithUser`; WS1 and video wall `Zenith Admin`/`Zenith User` (space). Video wall shop-floor user is **not** admin. Management desk: `Zenith Admin` plus named standard user **Gayla**. Operator: **no Yevhen** on rebuilds. |
+| Q-073 | Replacement **account names** (reuse `ZenithAdmin`/`ZenithUser`, store-prefixed, or generic)? | **Answered 2026-08-27.** **`ZenithAdmin`** and **`ZenithUser`** (no space). Shop-floor is standard user. Workdesk also keeps named **Gayla**. Live WS1/video wall still have spaces until replaced. |
 | Q-074 | NAS **share path** and how the USB authenticates to read secrets? | Secrets NAS still `dsm.vogueclean.int` / `zenith-dsm` / `10.0.253.110` unless told otherwise. RustDesk host is separately **`rustdesk.vogueclean.int`**. |
 | Q-083 | When will **`rustdesk.vogueclean.int`** resolve (A/CNAME to the RustDesk server)? | **Answered 2026-08-27.** Resolves to `10.0.253.110`. Live RustDesk configs on WS1/WS2/WS3, workdesk, and Z-SSTATION updated; service restarted. |
 | Q-075 | UPS **critical percent** and action (shut down vs hibernate); vendor software vs Windows HID; sleep-on-battery allowed? | Today: low 10% do nothing, critical 5% **hibernate** on all three; WS1 cannot hibernate. |
 | Q-080 | The two extra **non-SPOT** Windows rebuilds: which store, USB menu label, role/purpose, current hostname/IP? | **Answered.** Video wall `Z-SSTATION` / `10.0.253.164`. Management desk `ZENITH-WORKDESK` / `10.0.253.162`. |
 | Q-081 | Desired state for non-SPOT PCs besides shared ADR-0011 (apps, printers, auto-logon)? | Video wall: SS Client + auto-logon `Zenith User` (not admin). Management desk: **no** auto-logon; named user **Gayla** (operator: **do not** recreate **Yevhen**). 3CX; Chrome/Acrobat. SS Client installed but unused. |
 | Q-082 | Video wall: auto-start Surveillance Station Client, which NAS/cameras, display layout? | **Partly answered.** SS Client + **CallerIdOverlay** at logon (task `\CallerIdOverlay`). Overlay config: store_id 103, admin `http://10.0.253.113:8080`, 900×260 top-center 8s. Camera layout / SS Client connection to NAS still open. Token not in git. |
-| Q-084 | SPOT shop-floor: **which one browser** (Edge vs Chrome), and how far to lock down (Start menu, Store, USB, kiosk vs normal desktop)? | Home/new tab locked to `https://help.spotpos.com`. Operator expects more discussion on simplify/standardize. |
+| Q-084 | SPOT shop-floor: **which one browser** (Edge vs Chrome), and how far to lock down (Start menu, Store, USB, kiosk vs normal desktop)? | **Browser: Edge.** Home/new tab `https://help.spotpos.com`. Lockdown depth still open. |
 
 ## Store hours
 

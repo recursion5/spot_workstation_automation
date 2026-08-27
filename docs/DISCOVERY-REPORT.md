@@ -64,7 +64,7 @@ Source of truth: `config/catalog/workstations.yml`. License form **`VGCTXssCOUNT
 | WS1, WS3 | 1 | `mstsc` RemoteApp (`||spot`), `/rdsvirtualchannel` |
 | WS2 | 0 | Citrix ICA `wfica32`, published app `SPOT - Auto Login` |
 
-**Decision (ADR-0009):** replacements use SPOTLauncher **RDS** (`ConnectionMode` 1), not Citrix. WS2 Citrix is leftover.
+**Decision (ADR-0012, supersedes 0009):** replacements use SPOTLauncher **Citrix** (`ConnectionMode` 0, Workspace, `wfica32` / `SPOT - Auto Login`). Live WS1/WS3 stay RDS until replaced. WS2 is the launch-path template.
 
 Shortcut pattern: `SPOT (VGCTX03COUNTERn).lnk` → SPOTLauncher 1.1.169.3, args `"/launch:SPOT"`.
 
@@ -162,14 +162,15 @@ WS2 substitutes Citrix Workspace / `wfica32` / ICA `SPOT - Auto Login` for the m
 
 1. USB boot → store → workstation ([ADR-0010](DECISIONS/0010-usb-store-then-workstation.md)).
 2. Windows 11 Pro; skip retail OOBE.
-3. SPOT rows: SPOTLauncher RDS, not Citrix ([ADR-0009](DECISIONS/0009-rds-not-citrix.md)).
+3. SPOT rows: SPOTLauncher **Citrix Workspace / ICA**, not RDS ([ADR-0012](DECISIONS/0012-citrix-launch-path.md)).
 4. Secrets from NAS `dsm.vogueclean.int`, applied at build ([ADR-0005](DECISIONS/0005-secrets-handling.md), [ADR-0011](DECISIONS/0011-replacement-policy-notes.md)).
 5. RustDesk → `rustdesk.vogueclean.int`.
 6. UPS; stay on battery; **shut down** when the UPS cannot continue (not hibernate).
 7. Black wallpaper: store, computer name, SPOT id if `runs_spot`.
 8. Admin + standard user; SPOT and video wall auto-logon as standard user.
-9. SPOT shop-floor: **one** browser; home/new tab **`https://help.spotpos.com`**; search and NTP controlled. Which browser and further lockdown still open (Q-084).
-10. First POS replacement candidate: **Zenith Front Counter** (WS1).
+9. SPOT shop-floor: **Edge**; home/new tab **`https://help.spotpos.com`**. Further lockdown still open.
+10. Accounts **`ZenithAdmin`** / **`ZenithUser`**. Computer names keep the live hostnames.
+11. First POS replacement candidate: **Zenith Front Counter** (WS1).
 
 ---
 
@@ -179,15 +180,13 @@ See [OPEN-QUESTIONS.md](OPEN-QUESTIONS.md). Highest leverage for Phase 2:
 
 | ID | Topic |
 | --- | --- |
-| Q-070 | Replacement computer-name pattern |
-| Q-073 | Exact admin/standard **account names** (space or not) |
-| Q-072 | Wallpaper layout and which SPOT string |
+| Q-072 | Wallpaper layout |
 | Q-074 | NAS **share path** and how the USB authenticates |
 | Q-062 | What lives on the USB if NAS is down |
 | Q-071 | Retail Win11 product key |
 | Q-075 | UPS critical percent; WS3 missing UPS HID |
 | Q-082 | Video-wall camera layout / NAS target for SS Client |
-| Q-084 | Which one SPOT shop-floor browser; how far to lock down |
+| Q-084 | How far to lock down Edge |
 | Q-051 | Sunday hours |
 | Q-013 | Hosted SPOT Account Key (not on the PC as a clear field) |
 

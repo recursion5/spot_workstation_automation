@@ -3,7 +3,8 @@
 **Status:** draft (Phase 2). Not an installer.  
 **Catalog:** `store=zenith`, `register=front-counter`, `runs_spot=true`  
 **USB menus:** Store 3 **Zenith** → **Front Counter (cash drawer)**  
-**SPOT `ClientName` / RDS user:** `VGCTX03COUNTER1`  
+**SPOT `ClientName`:** `VGCTX03COUNTER1`  
+**Windows computer name:** `ZENITH-WS1` (Decision: keep the live names)  
 **Live specimen:** `ZENITH-WS1` `10.0.253.212` (Win10 Pro 17763, MINIX N42C-4) — replace, do not clone.  
 **Replacement OS:** Windows 11 Pro. Skip retail OOBE.
 
@@ -25,7 +26,7 @@ Customer-facing register: hosted Xplor Spot, thermal invoices, cash-drawer kick 
 4. Bind printers to **whatever USB/WSD PnP the new box sees**. Do not copy `USB001` or WSD GUIDs from WS1.
 5. Validate (checklist below). Staff: desktop → SPOT shortcut; shop-floor user already signed in.
 
-Computer name: **Open question (Q-070)**. Live name `ZENITH-WS1` is hardware history, not a requirement.
+Computer name: **`ZENITH-WS1`** (Decision 2026-08-27).
 
 ---
 
@@ -33,34 +34,33 @@ Computer name: **Open question (Q-070)**. Live name `ZENITH-WS1` is hardware his
 
 | Role | Live on WS1 (Discovery) | Desired |
 | --- | --- | --- |
-| Local admin (WinRM, RustDesk admin) | `Zenith Admin` (space) | One local **Administrators** account. Exact name: Open question (Q-073). |
-| Shop-floor | `Zenith User` (space), **is** an admin today | One local **standard** (non-admin) user. Auto-logon **behavior**: desktop after reboot, no password typed. Mechanism is our choice (video wall already uses `AutoAdminLogon=1`). |
+| Local admin | `Zenith Admin` (space) | **`ZenithAdmin`** (no space), Administrators |
+| Shop-floor | `Zenith User` (space), **is** an admin today | **`ZenithUser`** (no space), **standard** (not admin). Auto-logon **behavior**: desktop after reboot, no password typed. |
 | Built-in Administrator | disabled | Stay disabled. |
 
 Do not put the shop-floor user in Administrators. Do not reverse-engineer WS1’s `AutoAdminLogon=0` path.
 
 ---
 
-## SPOT launch (Decision ADR-0009)
+## SPOT launch (Decision ADR-0012, supersedes 0009)
 
 | Item | Value |
 | --- | --- |
 | Client | SPOTLauncher **1.1.169.3** (or current vendor build of the same product) |
-| `ConnectionMode` | **1** (RDS). Not 0 / Citrix. |
+| `ConnectionMode` | **0** (Citrix). Template: WS2. |
 | `ClientName` | `VGCTX03COUNTER1` |
 | `RDGatewayAddress` | `https://rds.mydrycleaner.com` |
 | `APIURL` | `https://api.mydrycleaner.com` |
-| Desktop shortcut | `SPOT (VGCTX03COUNTER1).lnk`, args `"/launch:SPOT"`, under the shop-floor profile |
-| RemoteApp | `||spot`, cmdline `/autologin /useaduser /rdsvirtualchannel` |
-| RDP user | `VGCTX03COUNTER1` @ `mydrycleaner.com` |
-| `redirectprinters` | `0` |
-| Print path | SBSRDPAddin + ScrewDrivers to **local Windows printer names** |
+| Desktop shortcut | `SPOT (VGCTX03COUNTER1).lnk`, args `"/launch:SPOT"`, under `ZenithUser` |
+| Citrix | **Workspace** (live WS2: `26.3.10.69`), not Receiver 4.9 |
+| Session | ICA `wfica32`, published app **`SPOT - Auto Login`** |
+| Print | Local Windows printer **names**; Citrix/ScrewDrivers mapping **Hypothesis** until first Citrix replacement is tested |
 
-**Do not install** Citrix Receiver, Workspace, or ICA.
+**Do not** use RDS `mstsc` / `ConnectionMode` 1 as the SPOT window on new boxes. Do not convert live WS1 to Citrix to experiment.
 
-`PrintingClientInstallCount` on the live box is **2** (Discovery: Epson + CashDrawer pair). Recreate that pair, not the integer for its own sake.
+`PrintingClientInstallCount` on the live box is **2** (Discovery: Epson + CashDrawer pair). Recreate that pair.
 
-SPOT-related secrets (RDS password, ScrewDrivers if any, launcher crypto) come from the NAS pack. Not git.
+SPOT-related secrets (Citrix/ICA, launcher) come from the NAS pack. Not git.
 
 **Ops:** if SPOT prints fail but Windows test pages work, use SPOT **Logoff** then relaunch, not Exit. See [RUNBOOK.md](../RUNBOOK.md) §9.
 
@@ -79,6 +79,21 @@ Logical names must match hosted SPOT Setup for this workstation.
 
 Scanner: USB HID keyboard-wedge (same as WS3). No extra driver.
 
+### Vendor driver / font packages (Discovery 2026-08-27)
+
+Not previously listed as a “SPOT setup kit.” Leftovers in Downloads (copy to NAS for the build; large zips stay off git):
+
+| Package | Where found | What it is |
+| --- | --- | --- |
+| `APD_511R1_T88V_EWM.zip` | WS2 Downloads | Epson APD 5.11 R1 for TM-T88V (`APD_511R1_T88V.exe`) |
+| `starprnt_v3.8.1.zip` | WS3 Downloads | Star Micronics Printer Software 3.8.1 (tag stations; Front Counter has no Tag printer but the kit is the vendor payload) |
+| `WASP_Fonts.zip` | WS2 Downloads; copy on controller `vendor-installers/` | 49 WASP barcode/MICR `.ttf` fonts |
+| `SPOTLauncherSetup_1.1.167.1.exe` | WS2 Downloads | Older launcher; prefer live **1.1.169.3** |
+
+Installed today (already in software inventory): Epson APD5, TM-T88V utility, Generic/Text (tag PCs), Brother class driver, ScrewDrivers on RDS boxes. **Rebuilds must run the Epson APD + WASP fonts** (and Star PRNT on tag rows), not only “create a printer object.”
+
+WS1 Downloads no longer had these zips.
+
 ---
 
 ## Browser (SPOT shop-floor only)
@@ -87,11 +102,12 @@ Scanner: USB HID keyboard-wedge (same as WS3). No extra driver.
 
 | Setting | Value |
 | --- | --- |
+| Browser | **Microsoft Edge** (included with Windows) |
 | Home / default / new tab | `https://help.spotpos.com` |
 | Search provider | Controlled (Google unless later specified) |
 | Extra browsers, coupon extensions, OneLaunch | Absent |
 
-Which product (Edge vs Chrome) and further lockdown: Open question (Q-084). Do not apply this recipe to Gayla’s desk unless asked.
+Further lockdown (Start menu, Store): still Open (Q-084 remainder). Do not apply this recipe to Gayla’s desk unless asked.
 
 ---
 
@@ -109,7 +125,7 @@ Which product (Edge vs Chrome) and further lockdown: Open question (Q-084). Do n
 
 ## Explicitly out of this row
 
-- Citrix / ICA / `ConnectionMode` 0
+- RDS `mstsc` / `ConnectionMode` 1 as the SPOT window (ADR-0012)
 - `Tag` printer / Star SP742
 - Shop-floor user as Administrator
 - Cloning WS1’s disk, USB instance IDs, or WSD port IDs
@@ -133,7 +149,7 @@ NAS pack (paths TBD, Q-074), at least:
 ## Validation (after a future USB build)
 
 1. Reboot: shop-floor desktop, no password prompt.
-2. Shortcut `SPOT (VGCTX03COUNTER1)` opens hosted SPOT via `mstsc` (no Citrix).
+2. Shortcut `SPOT (VGCTX03COUNTER1)` opens hosted SPOT via **Citrix** (`wfica32` / `SPOT - Auto Login`), not `mstsc`.
 3. Windows test page: `EPSON` and Brother.
 4. SPOT invoice on `EPSON`; sale kicks `CashDrawer`.
 5. SPOT report on Brother.
@@ -149,10 +165,10 @@ NAS pack (paths TBD, Q-074), at least:
 
 | ID | Blocks USB coding? |
 | --- | --- |
-| Q-070 computer name | No for a first draft; yes before unattend hostname. |
-| Q-073 account names | Prefer a decision before the first stick. |
+| Q-070 computer name | **Answered:** `ZENITH-WS1`. |
+| Q-073 account names | **Answered:** `ZenithAdmin` / `ZenithUser`. |
 | Q-072 wallpaper layout | No. |
-| Q-084 Edge vs Chrome + lockdown depth | Prefer a decision before the first stick. |
+| Q-084 Edge vs Chrome | **Edge.** Lockdown depth still open. |
 | Q-074 NAS share | Yes before a real build. |
 | Q-071 product key | Yes before a real build. |
 | Q-075 UPS percent | No. |

@@ -12,11 +12,11 @@ Locked enough to design toward:
 | RustDesk → `rustdesk.vogueclean.int` | Yes | Live PCs updated 2026-08-27. Public key, install flags, version pin still for the USB build. |
 | Black wallpaper with store, computer name, SPOT ID | Yes (content) | Layout, font, size, color of text, logo or not, whether SPOT ID is `VGCTX03COUNTER3` or the USB menu name. Non-SPOT PCs omit the SPOT line. |
 | Non-SPOT USB rows | Named and on WinRM | Video wall: SS Client + CallerIdOverlay recorded; camera layout still Q-082. Workdesk: Gayla, no Yevhen, no auto-logon. |
-| Admin + SPOT on a standard user | Yes (intent) | Account **names** for new builds (`ZenithAdmin`/`ZenithUser` vs generic). Password policy. Do not change live PCs. |
+| Admin + SPOT on a standard user | Yes | Names **`ZenithAdmin`** / **`ZenithUser`**. Password policy. Do not rename live PCs. |
 | Secrets on NAS; SPOT secrets in the build | Yes | Share path, who can read, how the USB authenticates to the NAS, which files (launcher settings, RDS, printer). Q-062/Q-074. |
 | Skip retail Windows 11 Pro OOBE | Yes | Product key source (COA / digital license / unattend). Language/region/privacy screens. Local account creation during unattend. |
 | USB store → workstation menus | Yes (ADR-0010) | Vogue printers still by analogy until a Vogue PC is read. |
 | SPOT license / `ClientName` | Yes — `VGCTXssCOUNTERn` | Wallpaper whether to show this string or the menu name (Q-072). |
-| SPOT standard-user browser | One browser; home/new tab `https://help.spotpos.com`; controlled search | Which browser (Q-084). Rest of lockdown (Start menu, Store, etc.) still to discuss. Not auto-applied to desk/video wall. |
+| SPOT standard-user browser | **Edge**; home/new tab `https://help.spotpos.com` | Rest of lockdown still to discuss. Not auto-applied to desk/video wall. |
 
 Refs: ADR-0011, Q-070–Q-075, Q-032, Q-062.

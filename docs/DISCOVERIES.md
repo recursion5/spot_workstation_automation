@@ -60,7 +60,7 @@ Same gateway `https://rds.mydrycleaner.com` and API `https://api.mydrycleaner.co
 
 **Discovery:** `ConnectionMode` 0 launches Citrix ICA; `ConnectionMode` 1 launches RDS (`mstsc`). Count 2 on WS1 may reflect Epson + cash-drawer printer pair.
 
-**Operator (2026-08-21):** stations are configured differently on purpose of incomplete migration — they are **moving away from Citrix** and have not converted every PC. **Decision (ADR-0009):** automated replacements use the RDS / `ConnectionMode` 1 path (WS1 and WS3), not WS2’s Citrix ICA path. Do not install Receiver/Workspace on new builds. SPOTWeb + ConnectLink is still not observed and is not the target.
+**Operator (2026-08-21):** stations were mixed (RDS vs Citrix). **Decision (ADR-0012, 2026-08-27):** automated replacements use the **Citrix** path (WS2 template: Workspace, `ConnectionMode` 0, `wfica32`). Do not convert live WS1/WS3 in place. SPOTWeb + ConnectLink is still not the target.
 
 Watchers are running on **all three** PCs. Open times (**operator**): weekdays **06:00**, Saturday **08:00** America/Chicago. Sunday hours unknown. The systemd timer follows those weekday/Saturday times and does not fire Sunday.
 
@@ -280,6 +280,7 @@ The 06:00 CDT systemd job **did start** watchers on WS1/WS2, but they did not wr
 - USB device **EPSON USB Controller for TM/BA/EU Printers** (`USB\VID_04B8&PID_0202`) is present. Maps to the `EPSON` logical printer via Epson APD5 virtual port `ESDPRT001` (hypothesis until a print trace).
 - Epson APD5 5.11.1.0 and TM-T88V utility installed.
 - Star Micronics Printer Software 3.8.1 installed.
+- **Leftover SPOT vendor installers in Downloads (2026-08-27):** not previously inventoried as a kit. WS2: `APD_511R1_T88V_EWM.zip`, `WASP_Fonts.zip` (49 barcode/MICR `.ttf`), `SPOTLauncherSetup_1.1.167.1.exe`. WS3: `starprnt_v3.8.1.zip`. WASP zip copied to controller evidence (`vendor-installers.pointer.md`). Rebuilds must **install these packages**, not only create printer objects.
 - HID USB devices include `VID_0536` (typical handheld barcode vendor) and keyboard/mouse-class devices. Hypothesis: at least one USB barcode scanner is attached.
 
 ### Operator workflow trace (2026-08-20, run `20260820T001911Z-9af4f7de`)

@@ -35,7 +35,7 @@ Official menus (**Requirement**, operator 2026-08-21), in `config/catalog/workst
 The replacement process is **USB boot → store menu → workstation menu → apply that catalog entry**.
 
 - One catalog drives both menus. Choosing a workstation selects the whole desired state for that row.
-- **SPOT rows** (`runs_spot: true`): SPOTLauncher RDS (`ConnectionMode` 1, ADR-0009), `ClientName`, printer/peripheral role, shortcuts.
+- **SPOT rows** (`runs_spot: true`): SPOTLauncher **Citrix** (`ConnectionMode` 0, ADR-0012), `ClientName`, printer/peripheral role, shortcuts.
 - **Non-SPOT rows** (`runs_spot: false`): same USB, same store menu, **no** SPOTLauncher or `VGCTX` license. Shared policy still applies (UPS, RustDesk, wallpaper without a SPOT id, admin + standard user, skip OOBE — ADR-0011). Operator 2026-08-22: Zenith **Management desk** and **Video wall** (both currently Windows 10 Pro; replacements Windows 11 Pro). Video wall runs Synology Surveillance Station Client.
 - Do not clone the old disk. Do not make the operator type `VGCTX03COUNTER3` if a menu can offer “Mark-In 2 (back mark-in)”.
 - One USB serves all three stores. A separate USB per store is an implementation fallback, not the goal.

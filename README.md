@@ -10,12 +10,12 @@ Canonical intent: [project-spec.md](project-spec.md). Agent rules: [AGENTS.md](A
 
 Collect enough structured evidence from one known-good workstation that a later agent can answer, from artifacts rather than this chat:
 
-- what launches SPOT (Citrix / SPOTLauncher / SPOTWeb / ConnectLink — discover, do not assume; **replacements use SPOTLauncher RDS, not Citrix** — [ADR-0009](docs/DECISIONS/0009-rds-not-citrix.md));
+- what launches SPOT (Citrix / SPOTLauncher / SPOTWeb / ConnectLink — discover, do not assume; **replacements use Citrix Workspace / ICA** — [ADR-0012](docs/DECISIONS/0012-citrix-launch-path.md));
 - which local software, services, shortcuts, and identity values are required;
 - how logical printer names map to drivers, ports, and USB/PnP devices;
 - what is workstation-specific versus hardware-bound.
 
-The POS application is **Xplor Spot** ([xplorspot.com](https://xplorspot.com)). Vendor documentation describes a Citrix + SPOTLauncher path and a newer SPOTWeb + ConnectLink path. On the Zenith floor the live mix is SPOTLauncher → **RDS RemoteApp** (WS1, WS3) or leftover **Citrix ICA** (WS2). Replacements follow RDS.
+The POS application is **Xplor Spot** ([xplorspot.com](https://xplorspot.com)). On the Zenith floor the live mix is RDS (WS1, WS3) or Citrix ICA (WS2). **Replacements follow Citrix Workspace / ICA** ([ADR-0012](docs/DECISIONS/0012-citrix-launch-path.md)).
 
 ## Operator: connect the first workstation before leaving the site
 

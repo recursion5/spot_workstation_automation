@@ -64,5 +64,5 @@
 ## Next
 
 1. Phase 2: desired-state per catalog row; **Zenith Front Counter** first.
-2. Operator decisions still needed: wallpaper layout, NAS share path, account names, computer names (issue 007).
+2. Operator decisions still needed: wallpaper layout, NAS share path, account names, computer names, which one shop-floor browser (issue 007 / Q-084). Home/new tab for that browser is `https://help.spotpos.com`.
 3. Watchers: weekday 06:00 / Saturday 08:00; pull from the PCs only when tasked.

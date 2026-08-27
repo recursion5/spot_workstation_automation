@@ -34,6 +34,7 @@ Statements the operator or constitution say the future system must honor. Not di
 - **Accounts (2026-08-21):** admin account plus a **standard** user that runs SPOT / auto-logon. Shop-floor should not be an administrator on new PCs.
 - **Secrets (2026-08-21):** stored on the NAS; SPOT-related secrets are applied by the build so we do not call SPOT to install/configure/attach hardware.
 - **OOBE (2026-08-21):** retail Windows 11 Pro boxes must not stop on the “new PC experience.” USB unattend skips it.
+- **SPOT standard-user browser (2026-08-27):** one browser only; controlled search/new-tab/home. Home and new tab = **`https://help.spotpos.com`**. Which browser and the rest of lockdown still open. SPOT PCs only unless extended.
 
 ## Phase 1 acceptance
 

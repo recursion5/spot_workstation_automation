@@ -168,7 +168,8 @@ WS2 substitutes Citrix Workspace / `wfica32` / ICA `SPOT - Auto Login` for the m
 6. UPS; stay on battery; **shut down** when the UPS cannot continue (not hibernate).
 7. Black wallpaper: store, computer name, SPOT id if `runs_spot`.
 8. Admin + standard user; SPOT and video wall auto-logon as standard user.
-9. First POS replacement candidate: **Zenith Front Counter** (WS1).
+9. SPOT shop-floor: **one** browser; home/new tab **`https://help.spotpos.com`**; search and NTP controlled. Which browser and further lockdown still open (Q-084).
+10. First POS replacement candidate: **Zenith Front Counter** (WS1).
 
 ---
 
@@ -186,6 +187,7 @@ See [OPEN-QUESTIONS.md](OPEN-QUESTIONS.md). Highest leverage for Phase 2:
 | Q-071 | Retail Win11 product key |
 | Q-075 | UPS critical percent; WS3 missing UPS HID |
 | Q-082 | Video-wall camera layout / NAS target for SS Client |
+| Q-084 | Which one SPOT shop-floor browser; how far to lock down |
 | Q-051 | Sunday hours |
 | Q-013 | Hosted SPOT Account Key (not on the PC as a clear field) |
 

@@ -17,5 +17,6 @@ Locked enough to design toward:
 | Skip retail Windows 11 Pro OOBE | Yes | Product key source (COA / digital license / unattend). Language/region/privacy screens. Local account creation during unattend. |
 | USB store → workstation menus | Yes (ADR-0010) | Vogue printers still by analogy until a Vogue PC is read. |
 | SPOT license / `ClientName` | Yes — `VGCTXssCOUNTERn` | Wallpaper whether to show this string or the menu name (Q-072). |
+| SPOT standard-user browser | One browser; home/new tab `https://help.spotpos.com`; controlled search | Which browser (Q-084). Rest of lockdown (Start menu, Store, etc.) still to discuss. Not auto-applied to desk/video wall. |
 
 Refs: ADR-0011, Q-070–Q-075, Q-032, Q-062.

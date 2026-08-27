@@ -60,6 +60,7 @@ Track unresolved items here and as GitHub issues. Do not answer them in place wi
 | Q-080 | The two extra **non-SPOT** Windows rebuilds: which store, USB menu label, role/purpose, current hostname/IP? | **Answered.** Video wall `Z-SSTATION` / `10.0.253.164`. Management desk `ZENITH-WORKDESK` / `10.0.253.162`. |
 | Q-081 | Desired state for non-SPOT PCs besides shared ADR-0011 (apps, printers, auto-logon)? | Video wall: SS Client + auto-logon `Zenith User` (not admin). Management desk: **no** auto-logon; named user **Gayla** (operator: **do not** recreate **Yevhen**). 3CX; Chrome/Acrobat. SS Client installed but unused. |
 | Q-082 | Video wall: auto-start Surveillance Station Client, which NAS/cameras, display layout? | **Partly answered.** SS Client + **CallerIdOverlay** at logon (task `\CallerIdOverlay`). Overlay config: store_id 103, admin `http://10.0.253.113:8080`, 900×260 top-center 8s. Camera layout / SS Client connection to NAS still open. Token not in git. |
+| Q-084 | SPOT shop-floor: **which one browser** (Edge vs Chrome), and how far to lock down (Start menu, Store, USB, kiosk vs normal desktop)? | Home/new tab locked to `https://help.spotpos.com`. Operator expects more discussion on simplify/standardize. |
 
 ## Store hours
 

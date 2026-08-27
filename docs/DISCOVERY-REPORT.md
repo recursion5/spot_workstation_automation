@@ -189,7 +189,7 @@ See [OPEN-QUESTIONS.md](OPEN-QUESTIONS.md). Highest leverage for Phase 2:
 | Q-062 | What lives on the USB if NAS is down |
 | Q-071 | Retail Win11 product key |
 | Q-075 | UPS critical percent; WS3 missing UPS HID |
-| Q-082 | Video-wall camera layout / NAS target for SS Client |
+| Q-082 | Video-wall SS Client auto-login / NAS | **Answered** (HKCU + Startup; primary `10.0.253.110:9901` `ATestUserson`). DPAPI not portable. |
 | Q-084 | How far to lock down Edge |
 | Q-051 | Sunday hours |
 | Q-013 | Hosted SPOT Account Key (not on the PC as a clear field) |
@@ -257,7 +257,7 @@ Wallpaper and Edge lockdown depth do not block SPOT printing; NAS, secrets, Work
 2. Pack live at `\\zenith-dsm.vogueclean.int\spot-rebuild` (`common/packages/` copied 2026-08-27). Operator still drops per-row passwords.
 3. Official CitrixWorkspaceApp / SPOTLauncher 1.1.169.3 Setup / SS 2.2.1 installers were **not** on disk; staged payload/installed-tree/overlay instead.
 4. USB/WinPE only after the share exists. First stick = staffed Front Counter test, old PC kept. Product key is OEM (Q-071 answered).
-5. Video-wall camera layout (Q-082) before that row is useful.
+5. Fill `rows/zenith-video-wall/ss-client/dsm-login.txt` on the NAS with the DSM password (DPAPI will not copy).
 6. Optional: read one Vogue POS if those printers might differ.
 
 Phase 1 acceptance in [project-spec.md](../project-spec.md) §25 is met for Zenith evidence, WinRM, inventories, launch/print observation, watchers, and this report. Provisioning remains Phase 3.

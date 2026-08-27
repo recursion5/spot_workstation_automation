@@ -1,0 +1,64 @@
+{
+  "AutoLogin": "true",
+  "RememberPassword": "true",
+  "RunOnStartup": "true",
+  "LoginLang": "enu",
+  "DisplayZoom": "0",
+  "WinGeometry": "-11,-11,3862,2182",
+  "WinStates": 0,
+  "EnableGpuDecoder": "true",
+  "AutoBalance": "true",
+  "MaxGpuDecoderNum": 4,
+  "HideSvsIcon": "false",
+  "LoginHistory_redacted": [
+    {
+      "Host": "10.0.253.110",
+      "Port": 9901,
+      "Https": true,
+      "User": "ATestUserson",
+      "ServerName": "Zenith-DSM",
+      "ServerModel": "DS1821+",
+      "DeviceName": "Z-SSTATION",
+      "Password": "[DPAPI blob \u2014 not portable to a new PC]",
+      "has_ssl_cert": true,
+      "has_device_id": true
+    },
+    {
+      "Host": "10.0.253.123",
+      "Port": 5000,
+      "Https": false,
+      "User": "mmorris",
+      "ServerName": "Zenith-DSM",
+      "ServerModel": "DS1821+",
+      "DeviceName": "Z-SSTATION",
+      "Password": "[DPAPI blob \u2014 not portable to a new PC]",
+      "has_ssl_cert": false,
+      "has_device_id": true
+    },
+    {
+      "Host": "zcactus.dyndns.biz",
+      "Port": 9901,
+      "Https": true,
+      "User": "ATestUserson",
+      "ServerName": "Zenith-DSM",
+      "ServerModel": "DS1821+",
+      "DeviceName": "Z-SSTATION",
+      "Password": "[DPAPI blob \u2014 not portable to a new PC]",
+      "has_ssl_cert": false,
+      "has_device_id": true
+    },
+    {
+      "Host": "47.190.138.13",
+      "Port": 9901,
+      "Https": true,
+      "User": "ATestUserson",
+      "ServerName": "Zenith-DSM",
+      "ServerModel": "DS1821+",
+      "DeviceName": "Z-SSTATION",
+      "Password": "[DPAPI blob \u2014 not portable to a new PC]",
+      "has_ssl_cert": false,
+      "has_device_id": false
+    }
+  ],
+  "note": "Passwords and SessionCookie are Windows DPAPI on the live profile. A replacement must set AutoLogin/RememberPassword/RunOnStartup and re-enter the DSM password once (or the build injects a new DPAPI blob after first login)."
+}

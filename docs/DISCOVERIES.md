@@ -168,13 +168,13 @@ RustDesk is installed under `C:\Program Files\RustDesk\` with a service and Star
 - Windows **10 Pro** build **19044**. Ethernet `10.0.253.164/24`. DNS `Z-SSTATION.vogueclean.int`.
 - Remoting user **`Zenith Admin`** (space), same pattern as WS1. Shop-floor **`Zenith User` is not an administrator** (unlike the POS PCs).
 - Console: `Zenith User` logged on. Winlogon **`AutoAdminLogon=1`**, `DefaultUserName=Zenith User`, `DisableCAD=1` (classic auto-logon; POS PCs had AutoAdminLogon=0).
-- **Synology Surveillance Station Client 2.2.1.2565** at `C:\Program Files\Synology\SynologySurveillanceStationClient`, running, in Zenith User Startup.
+- **Synology Surveillance Station Client 2.2.1.2565** at `C:\Program Files\Synology\SynologySurveillanceStationClient`, running (`--standalone 0`), in **Zenith User** Startup (`.lnk` → exe, no args). HKCU `Software\Synology\Surveillance Station Client`: `AutoLogin=true`, `RememberPassword=true`, `RunOnStartup=true`, `WinGeometry=-11,-11,3862,2182`. `LoginHistory` has four saved servers for NAS **Zenith-DSM** (DS1821+): `10.0.253.110:9901` HTTPS `ATestUserson`; `10.0.253.123:5000` HTTP `mmorris`; `zcactus.dyndns.biz:9901` HTTPS `ATestUserson`; `47.190.138.13:9901` HTTPS `ATestUserson`. Passwords/session cookie are **DPAPI** (not portable to a new PC). Full export on NAS `rows/zenith-video-wall/ss-client/` (not git).
 - **Caller ID overlay (custom):** **not** in Startup folder or Run keys. Scheduled task `\CallerIdOverlay` **At logon** as `Zenith User` → `C:\ProgramData\CallerIdOverlay\CallerIdOverlay.exe` (v1.0.0.0, ~173 MB, last written 2026-08-19). Process running. Config (no token in git): `store_id` 103, listen port 47990, admin UI `http://10.0.253.113:8080`, overlay 900×260 top-center, 8s, font 64. First inventory missed this because it only listed Win32_StartupCommand.
 - RustDesk 1.4.9; config **`rustdesk.vogueclean.int`** as of 2026-08-27.
 - HID UPS battery present. BIOS American Megatrends 5.13; board strings empty (“Default string”).
 - No SPOT / Citrix / mstsc.
 
-**Hypothesis:** video-wall replacements should auto-logon a standard user and start Surveillance Station Client. Management desk still unknown.
+**Requirement (operator 2026-08-27):** replacements must duplicate **Windows auto-logon** and **SS Client auto-login** (startup + `AutoLogin`/`RememberPassword`) plus the NAS connection. DPAPI blobs cannot be cloned; DSM password goes in the NAS pack.
 
 ### Store and workstation catalog (operator 2026-08-21)
 

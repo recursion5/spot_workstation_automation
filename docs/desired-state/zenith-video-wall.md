@@ -14,16 +14,17 @@ Classification: **Requirement** / **Decision** unless labeled Discovery, Hypothe
 
 ## What this station is for
 
-Always-on display: Synology Surveillance Station Client camera wall plus a custom **CallerIdOverlay**. **No SPOT.** Auto-logon a standard user.
+Always-on display: Synology Surveillance Station Client camera wall plus a custom **CallerIdOverlay**. **No SPOT.** After reboot, nobody types a password: Windows auto-logon, then SS Client auto-starts and auto-logs into the NAS.
 
 ---
 
 ## Apply after USB identity choice
 
-1. Windows 11 Pro unattend. Product key: Open question (Q-071).
-2. Pull the secret pack for this row from `\\zenith-dsm.vogueclean.int\spot-rebuild`, including overlay token and SS Client connection (not git).
+1. Windows 11 Pro unattend. Product key: OEM/COA (ADR-0013).
+2. Pull the pack from `\\zenith-dsm.vogueclean.int\spot-rebuild` (overlay + SS Client settings; DSM password for SS Client in `rows/zenith-video-wall/ss-client/dsm-login.txt`).
 3. Create accounts, wallpaper, RustDesk, SS Client, CallerIdOverlay logon task.
-4. Validate (checklist below). Desktop after reboot with no password typed.
+4. Recreate SS Client HKCU + Startup shortcut (below). **Do not** import live DPAPI password blobs onto a new PC.
+5. Validate (checklist below).
 
 Computer name: **`Z-SSTATION`**.
 
@@ -34,22 +35,58 @@ Computer name: **`Z-SSTATION`**.
 | Role | Live (Discovery) | Desired |
 | --- | --- | --- |
 | Local admin | `Zenith Admin` (space) | **`ZenithAdmin`** (no space), Administrators |
-| Display user | `Zenith User` (space), **already standard** | **`ZenithUser`** (no space), **standard**. Auto-logon **behavior**. Live uses classic `AutoAdminLogon=1` (unlike POS). Mechanism on the new box is our choice. |
+| Display user | `Zenith User` (space), **already standard** | **`ZenithUser`** (no space), **standard**. Live Windows auto-logon is classic `AutoAdminLogon=1` / `DefaultUserName=Zenith User` / `DisableCAD=1`. Reproduce **behavior**. |
 | Built-in Administrator | disabled | Stay disabled. |
 
 Do not put the display user in Administrators.
 
 ---
 
-## Applications
+## Surveillance Station Client (Discovery 2026-08-27 + Requirement)
 
-| App | Desired |
+Live: **2.2.1.2565** at `C:\Program Files\Synology\SynologySurveillanceStationClient`. Running as `…\Synology Surveillance Station Client.exe --standalone 0`.
+
+### Auto-start (Windows)
+
+| Item | Live | Desired |
+| --- | --- | --- |
+| Startup `.lnk` | `C:\Users\Zenith User\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\Synology Surveillance Station Client.lnk` | Same under **`ZenithUser`**. Target: SS Client exe. No extra args. Working dir: `…\bin`. |
+| App setting | HKCU `RunOnStartup=true` | Same |
+
+### Auto-login (app, not Windows)
+
+HKCU `Software\Synology\Surveillance Station Client` (shop-floor user):
+
+| Value | Live |
 | --- | --- |
-| SPOTLauncher / Citrix / `VGCTX` | **Absent** |
-| Synology Surveillance Station Client | **2.2.1.2565** (live). Auto-start at logon for `ZenithUser`. Path live: `C:\Program Files\Synology\SynologySurveillanceStationClient`. NAS/camera layout: Open question (Q-082). Installer **not** in controller `vendor-installers/`. |
-| CallerIdOverlay | Custom. Scheduled task `\CallerIdOverlay` **At logon** as the display user → `C:\ProgramData\CallerIdOverlay\CallerIdOverlay.exe` (~173 MB on the live box). Config (no token in git): `store_id` **103**, listen **47990**, admin `http://10.0.253.113:8080`, overlay 900×260 top-center, 8s, font 64. Binary and token are **not** on the controller yet. |
-| Edge / Chrome lockdown | Not the SPOT shop-floor recipe unless asked. |
-| Epson APD / Star / WASP | **Not** this row. |
+| `AutoLogin` | `true` |
+| `RememberPassword` | `true` |
+| `LoginLang` | `enu` |
+| `WinGeometry` | `-11,-11,3862,2182` (near-fullscreen on the live display) |
+| `EnableGpuDecoder` | `true` |
+| `AutoBalance` | `true` |
+| `MaxGpuDecoderNum` | `4` |
+
+`LoginHistory` (4 saved servers, same NAS **Zenith-DSM** DS1821+):
+
+| Host | Port | HTTPS | User |
+| --- | --- | --- | --- |
+| `10.0.253.110` | 9901 | yes | `ATestUserson` |
+| `10.0.253.123` | 5000 | no | `mmorris` |
+| `zcactus.dyndns.biz` | 9901 | yes | `ATestUserson` |
+| `47.190.138.13` | 9901 | yes | `ATestUserson` |
+
+**Primary for the LAN rebuild:** `10.0.253.110:9901` HTTPS as `ATestUserson`.
+
+Passwords in that history are **Windows DPAPI** blobs. They decrypt only for this user on this PC. Importing `ss-client.reg` onto a new box will **not** auto-login until the DSM password is entered once (or the build writes a new Remember-password blob). Live export is on the NAS for reference: `rows/zenith-video-wall/ss-client/`.
+
+Installer for **2.2.1** was not in Downloads (only older 2.0.x). Official setup still missing.
+
+---
+
+## CallerIdOverlay
+
+Scheduled task `\CallerIdOverlay` **At logon** as the display user → `C:\ProgramData\CallerIdOverlay\CallerIdOverlay.exe`. Config: `store_id` **103**, listen **47990**, admin `http://10.0.253.113:8080`, overlay 900×260 top-center, 8s, font 64. Exe is on the controller and NAS; token on NAS only.
 
 ---
 
@@ -68,24 +105,26 @@ Do not put the display user in Administrators.
 
 - SPOT, Citrix, SPOTLauncher
 - SPOT Edge-only lockdown
-- Cloning the live disk or overlay token into git
+- Cloning the live disk; putting overlay token or DSM password in git
+- Expecting live DPAPI password blobs to work on a new PC
 
 ---
 
 ## Secrets this row needs (existence only)
 
-NAS pack (Q-074): `ZenithAdmin` password, `ZenithUser` auto-logon secret, RustDesk public key, **CallerIdOverlay token**, SS Client NAS/login (Q-082). Layout: [secret-pack.md](secret-pack.md).
+NAS `rows/zenith-video-wall/`: `ZenithAdmin` password, `ZenithUser` Windows auto-logon secret, RustDesk public key, CallerIdOverlay token, **DSM password for SS Client** (`dsm-login.txt`). Layout: [secret-pack.md](secret-pack.md).
 
 ---
 
 ## Validation (after a future USB build)
 
-1. Reboot: `ZenithUser` desktop, no password prompt.
-2. Surveillance Station Client is running (layout still Q-082).
-3. CallerIdOverlay is running (task `\CallerIdOverlay`); overlay appears as on the live wall.
-4. No SPOT shortcut.
-5. RustDesk reaches `rustdesk.vogueclean.int`.
-6. WinRM from `10.0.253.225` as `ZenithAdmin`.
-7. Wallpaper shows Zenith + `Z-SSTATION` only.
+1. Reboot: `ZenithUser` desktop, no Windows password prompt.
+2. Surveillance Station Client starts by itself (Startup `.lnk`).
+3. SS Client **auto-logs into** `10.0.253.110:9901` as `ATestUserson` and shows the camera wall (no click through a login dialog).
+4. CallerIdOverlay is running (task `\CallerIdOverlay`).
+5. No SPOT shortcut.
+6. RustDesk reaches `rustdesk.vogueclean.int`.
+7. WinRM from `10.0.253.225` as `ZenithAdmin`.
+8. Wallpaper shows Zenith + `Z-SSTATION` only.
 
-Live `Z-SSTATION` is **not** rebuilt until a replacement is built and tested. Camera layout remains Open (Q-082).
+Live `Z-SSTATION` is **not** rebuilt until a replacement is built and tested. Exact camera grid inside SS Client is whatever the live session had; it was not a separate layout file (settings live in that HKCU key).

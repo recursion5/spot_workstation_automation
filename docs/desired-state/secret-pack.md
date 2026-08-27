@@ -48,7 +48,7 @@ Machine-readable twin: [config/examples/secret-pack.manifest.example.yml](../../
       zenithadmin.password
       zenithuser.autologon
       calleridoverlay.token
-      ss-client.login                  # Q-082
+      ss-client/                       # HKCU export + dsm-login.txt (fill password)
 ```
 
 Admin password may be one value reused across rows; still store it in the pack, not git. Vogue rows get the same shape when those PCs are inventoried.

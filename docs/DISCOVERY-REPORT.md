@@ -104,7 +104,7 @@ Scanners: USB HID keyboard-wedge like WS3 (`VID_0536`). All stations the same.
 
 ### RustDesk / UPS
 
-- All reached PCs have RustDesk; configs still use **IP** `10.0.253.110`, not `dsm.vogueclean.int` (**Requirement** for new builds).
+- All reached PCs have RustDesk; live configs use **IP** `10.0.253.110`. **Requirement** for new builds: **`rustdesk.vogueclean.int`**. That name did not resolve from the controller on 2026-08-27; live configs were not changed.
 - UPS HID: WS1 APC, WS2 CyberPower, WS3 none, workdesk none, video wall HID present.
 
 ### Hours
@@ -150,7 +150,7 @@ WS2 substitutes Citrix Workspace / `wfica32` / ICA `SPOT - Auto Login` for the m
 - Win10 17763 vs 19044/19045 vs Win11 26200
 - Citrix install, Receiver autostart, leftover ICA
 - POS shop-floor users in Administrators
-- RustDesk IP `10.0.253.110`
+- RustDesk IP `10.0.253.110` (rebuilds use `rustdesk.vogueclean.int`)
 - Chrome hijack leftovers; OneLaunch
 - Yevhen account
 
@@ -164,7 +164,7 @@ WS2 substitutes Citrix Workspace / `wfica32` / ICA `SPOT - Auto Login` for the m
 2. Windows 11 Pro; skip retail OOBE.
 3. SPOT rows: SPOTLauncher RDS, not Citrix ([ADR-0009](DECISIONS/0009-rds-not-citrix.md)).
 4. Secrets from NAS `dsm.vogueclean.int`, applied at build ([ADR-0005](DECISIONS/0005-secrets-handling.md), [ADR-0011](DECISIONS/0011-replacement-policy-notes.md)).
-5. RustDesk → `dsm.vogueclean.int`.
+5. RustDesk → `rustdesk.vogueclean.int`.
 6. UPS; stay on battery; **shut down** when the UPS cannot continue (not hibernate).
 7. Black wallpaper: store, computer name, SPOT id if `runs_spot`.
 8. Admin + standard user; SPOT and video wall auto-logon as standard user.

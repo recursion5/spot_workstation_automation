@@ -39,7 +39,7 @@
 - Operator workflow 2026-08-20: tag print failed (not repaired). Invoice/scan/relaunch were attempted. Details in DISCOVERIES.
 - Printer/PnP correlation (logical names captured; USB mapping still partly hypothesis).
 - Reboot test: `ZenithUser` auto-signed in; WinRM still works. Auto-logon mechanism still not the classic registry switch.
-- Replacement policy notes recorded (ADR-0011): UPS, RustDesk `dsm.vogueclean.int`, identity wallpaper, admin + standard SPOT user, secrets on NAS, skip retail OOBE. Refinement list: [issue 007](issues/007-replacement-refinements.md).
+- Replacement policy notes recorded (ADR-0011): UPS, RustDesk **`rustdesk.vogueclean.int`**, identity wallpaper, admin + standard SPOT user, secrets on NAS, skip retail OOBE. Refinement list: [issue 007](issues/007-replacement-refinements.md).
 - **WS1 print outage resolved:** SPOT **Logoff** (not Exit) then relaunch. New `mstsc` at 20:33Z; printing works. Exit disconnects and keeps the hosted session.
 
 ## Morning observation

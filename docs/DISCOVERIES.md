@@ -135,7 +135,7 @@ Live state after the **second** Windows reboot `2026-08-21T19:56:06Z` (2:56 p.m.
 | WS2 Mark-In 1 | HID UPS `VID_0764` (CyberPower) | same | same IP | Spotlight/Iris |
 | WS1 Front Counter | APC USB UPS `VID_051D` | same, but **hibernate is not available** on this Win10 box | same IP | default `img0.jpg` |
 
-RustDesk is installed under `C:\Program Files\RustDesk\` with a service and Startup tray on the inventoried PCs. Desired replacement value is hostname **`dsm.vogueclean.int`** (ADR-0011). Shop-floor wallpaper was not read in this pass.
+RustDesk is installed under `C:\Program Files\RustDesk\` with a service and Startup tray on the inventoried PCs. Live rendezvous/relay is still **`10.0.253.110`**. **Requirement (2026-08-27):** new builds use **`rustdesk.vogueclean.int`**. That name did not resolve from the controller the day it was recorded. Shop-floor wallpaper was not read in this pass.
 
 ### Zenith non-SPOT PCs (operator 2026-08-22)
 
@@ -170,7 +170,7 @@ RustDesk is installed under `C:\Program Files\RustDesk\` with a service and Star
 - Console: `Zenith User` logged on. Winlogon **`AutoAdminLogon=1`**, `DefaultUserName=Zenith User`, `DisableCAD=1` (classic auto-logon; POS PCs had AutoAdminLogon=0).
 - **Synology Surveillance Station Client 2.2.1.2565** at `C:\Program Files\Synology\SynologySurveillanceStationClient`, running, in Zenith User Startup.
 - **Caller ID overlay (custom):** **not** in Startup folder or Run keys. Scheduled task `\CallerIdOverlay` **At logon** as `Zenith User` → `C:\ProgramData\CallerIdOverlay\CallerIdOverlay.exe` (v1.0.0.0, ~173 MB, last written 2026-08-19). Process running. Config (no token in git): `store_id` 103, listen port 47990, admin UI `http://10.0.253.113:8080`, overlay 900×260 top-center, 8s, font 64. First inventory missed this because it only listed Win32_StartupCommand.
-- RustDesk 1.4.9 installed and running; config still `10.0.253.110` (not `dsm.vogueclean.int`).
+- RustDesk 1.4.9 installed and running; config still `10.0.253.110` (desired: `rustdesk.vogueclean.int`).
 - HID UPS battery present. BIOS American Megatrends 5.13; board strings empty (“Default string”).
 - No SPOT / Citrix / mstsc.
 

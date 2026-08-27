@@ -20,7 +20,7 @@ USB replacement needs drivers, fonts, Citrix Workspace, SPOTLauncher, and secret
 - Canonical pack UNC: `\\dsm.vogueclean.int\spot-rebuild`.
 - USB, once on the LAN, **pulls** packages and secrets from that share (Q-062 still open only for “NAS down”).
 - Windows 11 Pro activation: hardware COA / OEM entitlement. Unattend skips OOBE without injecting a key.
-- How the stick authenticates to the share (guest, NAS user, USB-stage secret) is still Open — path is no longer Open.
+- Stick and controller authenticate to the share as a **NAS user** (operator will name the account). Password lives in the pack, not git. Username still to be supplied when the share exists.
 
 ## Alternatives considered
 

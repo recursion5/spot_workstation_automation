@@ -1,7 +1,7 @@
 # NAS secret pack (existence only)
 
 **Status:** draft layout. **No values in git.**  
-**Class:** Requirement (ADR-0005, ADR-0011, ADR-0013). Open: USB auth to the share; what to do if the share is down (Q-062 remainder).
+**Class:** Requirement (ADR-0005, ADR-0011, ADR-0013). Open: NAS **username** for `\\dsm.vogueclean.int\spot-rebuild`; what to do if the share is down (Q-062 remainder). Auth method: NAS user, password in the pack (not git).
 
 The USB process must **apply** these so SPOT support does not remote in to finish a replacement. Pack root: `\\dsm.vogueclean.int\spot-rebuild` (operator, 2026-08-27). Git may list **file names and purpose** only.
 

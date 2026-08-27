@@ -68,7 +68,7 @@
 
 ## Next
 
-1. Create NAS share `\\dsm.vogueclean.int\spot-rebuild` (path decided, ADR-0013). How the USB authenticates still open.
+1. Create NAS share `\\dsm.vogueclean.int\spot-rebuild` (ADR-0013). Auth = a NAS user you will name; password in the pack, not git.
 2. Copy controller `vendor-installers/` onto that share. Operator places passwords/tokens (never git).
 3. Still missing **official** setups: `CitrixWorkspaceApp.exe`, `SPOTLauncherSetup_1.1.169.3.exe`, SS Client **2.2.1**. We have install-dir payload / installed tree / overlay exe instead.
 4. USB/WinPE only after the share exists; first stick is a **staffed Front Counter test**.

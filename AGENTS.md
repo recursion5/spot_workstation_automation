@@ -2,6 +2,11 @@
 
 This file is binding for any agent working in this repository.
 
+Machine-level context, before any lab SSH or deploy: `~/projects/root/WORKSPACE.md`
+(repo `recursion5/root`) — lab VPN/WireGuard reachability, ssh-fleet aliases, the
+production-edge rule, and what every directory in the workspace is. That file is the
+single tracked home for workspace setup; this repo does not duplicate it.
+
 ## Read first, in order
 
 1. [project-spec.md](project-spec.md)

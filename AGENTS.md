@@ -6,6 +6,9 @@ Machine-level context, before any lab SSH or deploy: `~/projects/root/WORKSPACE.
 (repo `recursion5/root`) — lab VPN/WireGuard reachability, ssh-fleet aliases, the
 production-edge rule, and what every directory in the workspace is. That file is the
 single tracked home for workspace setup; this repo does not duplicate it.
+Workspace skills (`handoff-finalize`, …) are projected from root:
+`python3 ~/projects/root/scripts/install_skills.py` if
+`~/.grok/skills/handoff-finalize` is missing on this machine.
 
 ## Read first, in order
 
